@@ -828,4 +828,58 @@ ul#menu li ul li div:hover {
 	background:url(../image/bg-ben-body.png) no-repeat center top;
 	height:511px;	
 }
-
+.homeitem
+{
+	position:absolute;	
+}
+#videohome
+{
+	margin-left:132px;
+	margin-top:20px;	
+}
+#sloganhome
+{
+	margin-top:290px;	
+}
+#aboutdtht
+{
+	margin-left:787px;
+	margin-top:27px;
+}
+@font-face
+{
+	font-family:Flamenco;
+	src:url(../image/UTMFlamenco.ttf)
+}
+#aboutdtht .item
+{
+	width:238px;
+	background:url(../image/bg-homeitem.png) no-repeat;
+	margin-bottom:25px;
+	cursor:pointer;
+}
+#aboutdtht .item:hover
+{
+	background:url(../image/bg-homeitem-hover.png) no-repeat;
+}
+#aboutdtht .item .text
+{
+	
+	font-family:Flamenco;
+	font-size:1.5em;
+	text-align:right;
+	width:182px;
+	padding:2px 0;
+}
+#aboutdtht .item .icon
+{
+	background:url(../image/bg-home-item-icon.png) no-repeat;
+	width:49px;
+	height:49px;
+	margin-top:-10px;
+}
+#sanphamhome
+{
+	margin-left:798px;
+	margin-top:295px;	
+}
