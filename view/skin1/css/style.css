@@ -448,14 +448,16 @@ color:#000;
 #ben-main-nav ul {
 position:absolute;
 display:none;
-
-top:1.5em;
-background:#000;
+background:#479405;
+top:3em;
 }
 
 #ben-main-nav ul li{
 	margin-left:0px;
 	border-bottom: thin solid #CCCCCC;
+}
+#ben-main-nav ul li:hover{
+	background:none;
 }
 #ben-main-nav ul li:last-child{
 	
@@ -505,6 +507,7 @@ display:block;
 #ben-content {margin:1px auto; width:1020px}
 
 #ben-maincontent{}
+.ben-two-columns{padding-top:6px;}
 .ben-two-columns #ben-maincontent{width: 750px;}
 .ben-three-columns #ben-maincontent{width:896px; margin:0 2px;}
 .ben-three-columns-right #ben-maincontent{width:520px; margin-right:20px}
@@ -561,19 +564,23 @@ display:block;
 .ben-sidebar .ben-section-content{padding:5px;}
 #ben-maincontent .ben-section-content{padding:5px;margin-bottom:5px;}
 
-.ben-section-title {
-	background:url(../image/bg-section-tile.png) repeat-x;
-	height:33px;
-	color: #FFF;
-	font: bold 1.2em sans-serif;
+.ben-section-title {	
+	
 	
 }
 .ben-section-title .title
 {
-	padding:7px 20px;
-	background:url(../image/bg-setion-tile-icon.png) no-repeat;
+	text-align:center;
+	padding:8px 0;
 }
-.ben-sidebar .ben-section-title {}
+.ben-sidebar .ben-section-title {
+	background:url(../image/bg-sitebar-title.png) no-repeat;
+	height:38px;
+	color:#000;
+	font-weight:bold;
+	text-transform:uppercase;
+	font-size:1.2em;
+}
 #ben-maincontent .ben-section-title {margin-bottom: 8px;}
 
 
@@ -877,7 +884,7 @@ ul#menu li ul li div:hover {
 	font-family:Flamenco;
 	font-size:1.5em;
 	text-align:right;
-	width:182px;
+	width:172px;
 	padding:2px 0;
 }
 #aboutdtht .item .icon

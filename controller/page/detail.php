@@ -28,7 +28,7 @@ class ControllerPageDetail extends Controller
 			if($this->document->sitemapid != "")
 			{
 				$sitemap = $this->model_core_sitemap->getItem($this->document->sitemapid, $siteid);
-				
+				$this->data['sitemap'] = $sitemap;
 				switch($sitemap['moduleid'])
 				{
 					case "":
@@ -238,7 +238,7 @@ class ControllerPageDetail extends Controller
 		}
 		$this->id="content";
 		$this->template="page/detail.tpl";
-		$this->layout="layout/home";
+		$this->layout="layout/detail";
 		$this->render();
 	}
 	
@@ -247,27 +247,28 @@ class ControllerPageDetail extends Controller
 		//Left sitebar
 		$arr = array('san-pham');
 		$this->data['leftsitebar']['produtcategory'] = $this->loadModule('sitebar/catalogue','index',$arr);
-		$this->data['leftsitebar']['search'] = $this->loadModule('sitebar/searchproduct');
-		$this->data['leftsitebar']['dknhantinh'] = $this->loadModule('sitebar/dangkynhantin');
-		
-		//$this->data['leftsitebar']['exchange'] = $this->loadModule('sitebar/exchange');
-		
-		$this->data['leftsitebar']['hitcounter'] = $this->loadModule('sitebar/hitcounter');
-		
-		//Rigth sitebar
-		$this->data['rightsitebar']['cart'] = $this->loadModule('sitebar/cart');
-		$this->data['rightsitebar']['login'] = $this->loadModule('sitebar/login');
-		$this->data['rightsitebar']['supportonline'] = $this->loadModule('sitebar/supportonline');
-		
+		//$this->data['leftsitebar']['search'] = $this->loadModule('sitebar/searchproduct');
+		//$this->data['leftsitebar']['dknhantinh'] = $this->loadModule('sitebar/dangkynhantin');
 		$template = array(
 						  'template' => "sitebar/news.tpl",
 						  'width' => 50,
 						  'height' =>50
 						  
 						  );
-		$arr = array('tin-tuc-san-pham',10,'',$template);
-		$this->data['rightsitebar']['newsproduct'] = $this->loadModule('sitebar/news','index',$arr);
-		$this->data['rightsitebar']['weblink'] = $this->loadModule('sitebar/weblink');
+		$arr = array('tin-tuc',10,'',$template);
+		$this->data['leftsitebar']['newsproduct'] = $this->loadModule('sitebar/news','index',$arr);
+		//$this->data['leftsitebar']['weblink'] = $this->loadModule('sitebar/weblink');
+		//$this->data['leftsitebar']['exchange'] = $this->loadModule('sitebar/exchange');
+		
+		//$this->data['leftsitebar']['hitcounter'] = $this->loadModule('sitebar/hitcounter');
+		
+		//Rigth sitebar
+		//$this->data['rightsitebar']['cart'] = $this->loadModule('sitebar/cart');
+		//$this->data['rightsitebar']['login'] = $this->loadModule('sitebar/login');
+		//$this->data['rightsitebar']['supportonline'] = $this->loadModule('sitebar/supportonline');
+		
+		
+		
 		//$this->data['rightsitebar']['search'] = $this->loadModule('sitebar/search');
 		
 		//$this->data['rightsitebar']['banner'] = $this->loadModule('sitebar/banner');
