@@ -10,15 +10,7 @@
     	
     	<div class="ben-section">
         	<div class="ben-section-title">
-                <div class="ben-navigation ">
-        
-                    <ul id="ben-main-nav">
-                        <?php echo $mainmenu?>
-                    </ul>
-            
-                    <div class="clearer">&nbsp;</div>
-            
-                </div>
+                
             </div>
         	<div class="ben-section-breadcrumb">Tin nóng</div>
             <div class=" ben-section-content">

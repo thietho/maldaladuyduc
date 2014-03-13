@@ -228,15 +228,6 @@ ul.ben-tab-list {
 ul.ben-tab-list li {float: left;}
 
 
-/* Navigation */
-.ben-navigation a {
-	color: #888;
-	text-decoration: none;
-}
-.ben-navigation a:hover {color: #002;}
-.ben-navigation li.current-tab a {color: #222;}
-
-
 
 /* Tables */
 table {margin-bottom: 0.5em; width: 100%;}
@@ -385,8 +376,8 @@ input.ben-button:active {border-style: inset;}
 #ben-top{
 	margin: 0 auto;
 	width: 1020px;
-	height:120px;
-	padding-bottom: 0px;
+	height:100px;
+	
 }
 
 
@@ -416,31 +407,42 @@ z-index:100;
 }
 .ben-navigation 
 {
-	padding:6px;
+	
+	width:1020px;
+	margin:0 auto;
 }
 #ben-main-nav a{
 display:block;
 padding:0px 47px;
-
+font-weight:bold;
 color:#fff;
 text-decoration:none;
+text-transform:uppercase;
+font-size:1.2em;
 
 }
 
 #ben-main-nav a:hover{
 
-color:red;
+color:#000;
 }
 
 #ben-main-nav li{
-float:left;
-position:relative;
-margin-left:5px;
-}
+	float:left;
+	position:relative;
+	padding:12px 0;
 
+}
+#ben-main-nav li:hover{
+	background:url(../image/bg-menu-hover.png) no-repeat bottom center;
+}
+#ben-main-nav li.current-tab{
+	
+	background:url(../image/bg-menu-hover.png) no-repeat bottom center;
+}
 #ben-main-nav a.current-tab{
-	background-color:#000000;
-	color:#FFFFFF;
+	
+	color:#000;
 }
 
 #ben-main-nav ul {
@@ -814,4 +816,9 @@ ul#menu li ul li div:hover {
 {
 	width:271px;
 	margin-top:35px;
+}
+#ben-main-menu
+{
+	background:url(../image/bg-main-menu.png) repeat-x;
+	height:42px;
 }

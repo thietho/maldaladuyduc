@@ -13,7 +13,7 @@ class ControllerCommonHeader extends Controller
 		
 		$this->id="header";
 		$this->template="common/header.tpl";
-		//$this->data['mainmenu'] = $this->getMenu("menu-chinh");
+		$this->data['mainmenu'] = $this->getMenu("");
 		$this->render();
 	}
 	
@@ -36,7 +36,7 @@ class ControllerCommonHeader extends Controller
 		$rootid = $this->model_core_sitemap->getRoot($this->document->sitemapid, $siteid);
 
 		if($this->document->sitemapid == "")
-			$rootid = 'trangchu';
+			$rootid = 'trang-chu';
 		$str = "";
 		
 		
@@ -60,14 +60,16 @@ class ControllerCommonHeader extends Controller
 					$link = "<a ".$currenttab." href='".HTTP_SERVER."'>".html_entity_decode($item['sitemapname'])."</a>";
 					break;
 				case "module/forward":
-				default:
 					$link = "<a ".$currenttab." href='".$item['forward']."' title='".$item['sitemapname']."'>".html_entity_decode($item['sitemapname'])."</a>";
+					break;
+				default:
+					$link = "<a ".$currenttab." href='".$this->document->createLink($item['sitemapid'])."' title='".$item['sitemapname']."'>".html_entity_decode($item['sitemapname'])."</a>";
 					break;	
 			}
 			
 			
 			
-			$str .= "<li>";
+			$str .= "<li ".$currenttab.">";
 			$str .= $link;
 			
 			if(count($childs) > 0)
