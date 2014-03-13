@@ -302,9 +302,12 @@ textarea {overflow: auto;}
 
 input.ben-textbox, textarea, select {
 	background: #FCFCFC;
-	border: 1px inset #AAA;
+	border: 1px solid #6cbf0a;
+	border-radius:5px;
 	margin: 0.2em 0;
 	padding: 4px 5px;
+	color:#6cbf0a;
+	font-style:italic;
 }
 
 textarea
@@ -362,7 +365,7 @@ input.ben-button:active {border-style: inset;}
 /* Wrapper */
 #ben-main {
 	margin: 0 auto;
-	width: 1300px;
+	
 	
 }
 
@@ -372,12 +375,15 @@ input.ben-button:active {border-style: inset;}
 
 /*---------- HEADER AREA ------------*/
 /* Header */
-#ben-header {padding-top: 0px;}
+#ben-header {
+	padding-top: 0px;
+	background:url(../image/bg-header.png) no-repeat top center;
+}
 
 /* Optional Top */
 #ben-top{
 	margin: 0 auto;
-	width: 1300px;
+	width: 1020px;
 	height:120px;
 	padding-bottom: 0px;
 }
@@ -385,7 +391,7 @@ input.ben-button:active {border-style: inset;}
 
 /* Logo */
 #ben-logo {	
-	margin:5px 10px;
+	margin:15px 30px;
 }
 #ben-logo img {}
 
@@ -493,7 +499,7 @@ display:block;
 
 
 /*---------- BODY AREA ------------*/
-#ben-content {margin:0 auto; width:1300px}
+#ben-content {margin:0 auto; width:1020px}
 
 #ben-maincontent{}
 .ben-two-columns #ben-maincontent{width: 750px;}
@@ -802,4 +808,8 @@ ul#menu li ul li div:hover {
 .tooltip-summary
 {
 	padding:5px;
+}
+#ben-header-search
+{
+	width:271px;	
 }
