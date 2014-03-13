@@ -308,6 +308,7 @@ input.ben-textbox, textarea, select {
 	padding: 4px 5px;
 	color:#6cbf0a;
 	font-style:italic;
+	background:#fdfde1;
 }
 
 textarea
@@ -811,5 +812,6 @@ ul#menu li ul li div:hover {
 }
 #ben-header-search
 {
-	width:271px;	
+	width:271px;
+	margin-top:35px;
 }

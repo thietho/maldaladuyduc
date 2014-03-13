@@ -7,11 +7,11 @@
        
     	
         
-        <div id="ben-header-search">
+        <div class="ben-right" id="ben-header-search">
         	<table>
             	<tr>
                 	<td>
-                    	<input class="ben-textbox" type="text" value="Tìm kiếm"/>
+                    	<input class="ben-textbox" type="text" value="Tìm kiếm" style="width:221px;"/>
                     </td>
                     <td>
                     	<img src="<?php echo HTTP_SERVER.DIR_IMAGE?>btn-search.png"/>
