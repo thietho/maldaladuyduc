@@ -8,7 +8,7 @@
 <div id="aboutdtht" class="homeitem">
 	<div class="item">
     	<div class="ben-left text">
-        	Đông trùng hạ thảo
+        	<a href="#">Đông trùng hạ thảo</a>
         </div>
         <div class="ben-right icon">
         	<img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon-dtht.png" />
@@ -17,7 +17,7 @@
     </div>
     <div class="item">
     	<div class="ben-left text">
-        	Lợi ích cho sức khỏe
+        	<a href="#">Lợi ích cho sức khỏe</a>
         </div>
         <div class="ben-right icon">
         	<img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon-suckhoe.png" />
@@ -26,7 +26,7 @@
     </div>
     <div class="item">
     	<div class="ben-left text">
-        	Nguồn gốc
+        	<a href="#">Nguồn gốc</a>
         </div>
         <div class="ben-right icon">
         	<img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon-nguongoc.png" />
@@ -35,7 +35,7 @@
     </div>
     <div class="item">
     	<div class="ben-left text">
-        	Hường dẫn sử dụng
+        	<a href="#">Hường dẫn sử dụng</a>
         </div>
         <div class="ben-right icon">
         	<img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon-huongdan.png" />

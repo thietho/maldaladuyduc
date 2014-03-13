@@ -862,6 +862,15 @@ ul#menu li ul li div:hover {
 {
 	background:url(../image/bg-homeitem-hover.png) no-repeat;
 }
+#aboutdtht .item a
+{
+	color:#000;	
+}
+#aboutdtht .item a:hover
+{
+	color:#fa8903;
+	text-decoration:none;
+}
 #aboutdtht .item .text
 {
 	
