@@ -66,7 +66,7 @@ var HTTP_SERVER = '<?php echo HTTP_SERVER?>';
 
 <script type="text/javascript" language="javascript" src="<?php echo HTTP_SERVER.DIR_JS?>jquery.carouFredSel-6.2.1.js"></script>
 
-<script type="text/javascript" language="javascript" src="<?php echo HTTP_SERVER.DIR_JS?>hoaroi.js"></script>
+
 <link rel='stylesheet' type='text/css' href='<?php echo HTTP_SERVER.DIR_VIEW?>css/stickytooltip.css'>
 <script type='text/javascript' language='javascript' src='<?php echo HTTP_SERVER.DIR_VIEW?>js/menu-collapsed.js'></script>
 <script type="text/javascript">
@@ -86,24 +86,6 @@ $(document).ready(function() {
 		
 	});
 </script>
-<script language="javascript">
-$(function() {
-	$(".ben-datepicker").datepicker({
-			changeMonth: true,
-			changeYear: true,
-			dateFormat: 'dd-mm-yy',
-			
-			});
-	});
-</script>
-
-<?php 
-	$str = "";
-    if($this->document->setup['background'] !=""){
-    	$str = "background: url('".HTTP_IMAGE.$this->document->setup['background']."') top center repeat-y fixed";
-	}
-?>
-<body style="<?php echo $str?>" >
 
 <body>
 
@@ -112,12 +94,12 @@ $(function() {
     <div id="ben-main">
         
         <?php echo $header?>
-        
-        <div id="ben-content">
-            <?php echo $content?>
-            
+        <div id="ben-home">
+            <div id="ben-content">
+                <?php echo $content?>
+                
+            </div>
         </div>
-        
         
     
     </div>
