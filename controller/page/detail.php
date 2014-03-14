@@ -257,7 +257,7 @@ class ControllerPageDetail extends Controller
 						  );
 		$arr = array('tin-tuc',10,'',$template);
 		$this->data['leftsitebar']['newsproduct'] = $this->loadModule('sitebar/news','index',$arr);
-		//$this->data['leftsitebar']['weblink'] = $this->loadModule('sitebar/weblink');
+		$this->data['leftsitebar']['weblink'] = $this->loadModule('sitebar/weblink');
 		//$this->data['leftsitebar']['exchange'] = $this->loadModule('sitebar/exchange');
 		
 		//$this->data['leftsitebar']['hitcounter'] = $this->loadModule('sitebar/hitcounter');

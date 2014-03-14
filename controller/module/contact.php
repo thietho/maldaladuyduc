@@ -16,7 +16,7 @@ class ControllerModuleContact extends Controller
 		
 		$this->data['post']['description'] = html_entity_decode($this->data['post']['description']);
 		$this->document->title .= " - ".$this->data['post']['title'];
-		$arr = array("sododuongdi");
+		$arr = array("so-do-duong-di");
 						
 		$this->data['sododuongdi'] = $this->loadModule('module/location','loadLocation',$arr);
 		
