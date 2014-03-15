@@ -562,6 +562,7 @@ display:block;
 
 .ben-section-content{}
 .ben-sidebar .ben-section-content{padding:5px;}
+.ben-sidebar .ben-section-content img{padding-bottom:5px;}
 #ben-maincontent .ben-section-content{padding:5px;margin-bottom:5px;}
 
 .ben-section-title {	
