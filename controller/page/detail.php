@@ -257,7 +257,16 @@ class ControllerPageDetail extends Controller
 						  );
 		$arr = array('tin-tuc',10,'',$template);
 		$this->data['leftsitebar']['newsproduct'] = $this->loadModule('sitebar/news','index',$arr);
-		$this->data['leftsitebar']['weblink'] = $this->loadModule('sitebar/weblink');
+		
+		$siteid = $this->member->getSiteId();
+		$sitemap = $this->model_core_sitemap->getItem($this->document->sitemapid, $siteid);
+		//if($sitemap['moduleid']=="module/information")
+		{
+			$mediaid = $siteid.$this->document->sitemapid;
+			$arr = array($mediaid);
+			$this->data['leftsitebar']['listimage'] = $this->loadModule('sitebar/listimage','index',$arr);
+		}
+		//$this->data['leftsitebar']['weblink'] = $this->loadModule('sitebar/weblink');
 		//$this->data['leftsitebar']['exchange'] = $this->loadModule('sitebar/exchange');
 		
 		//$this->data['leftsitebar']['hitcounter'] = $this->loadModule('sitebar/hitcounter');
