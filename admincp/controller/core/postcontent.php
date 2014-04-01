@@ -80,7 +80,7 @@ class ControllerCorePostcontent extends Controller
 				$this->data['post']=$this->model_core_media->initialization($this->data['post']['mediaid'],$this->data['post']['mediatype']);
 				$this->data['post'] = $this->model_core_media->getItem($this->data['post']['mediaid']);
 				$this->data['post']['mediatype'] = "module/information";
-				if($this->data['post']['title'] == '' && $route='module/information')
+				if($this->data['post']['title'] == '' && $route=='module/information')
 				{
 					$this->data['post']['mediaid'] = $this->user->getSiteId().$sitemapid;
 					$this->data['post']['title'] = $sitemap['sitemapname'];
@@ -196,6 +196,7 @@ class ControllerCorePostcontent extends Controller
 		
 		if($route == "module/productpage")
 		{
+			
 			$this->data['hasId'] = true;
 			$this->data['hasCode'] = true;
 			$this->data['hasProperties'] = true;
