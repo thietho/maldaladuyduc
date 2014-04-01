@@ -13,6 +13,7 @@ class ModelCoreSitemap extends Model
 							//'module/video'=>'Video',
 							//'module/audio'=>'Audio',
 							'module/product'=>'Product',
+							'module/productpage'=>'Product page',
 							//'module/download'=>'Download',
 							'module/contact'=>'Contact',
 							'module/link'=>'Web URL',

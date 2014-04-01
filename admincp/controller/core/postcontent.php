@@ -71,7 +71,7 @@ class ControllerCorePostcontent extends Controller
 		{
 			
 			case "module/information":
-			
+			case "module/productpage":
 				
 				//$this->data['post'] = $this->model_core_media->getInformationMedia($sitemapid, "content");
 				$this->data['post']['mediaid'] = $this->user->getSiteId().$sitemapid;
@@ -194,7 +194,17 @@ class ControllerCorePostcontent extends Controller
 		}
 		
 		
-		
+		if($route == "module/productpage")
+		{
+			$this->data['hasId'] = true;
+			$this->data['hasCode'] = true;
+			$this->data['hasProperties'] = false;
+			$this->data['hasPrice'] = true;
+			$this->data['hasSubInfor'] = false;
+			$this->data['hasProductPrice'] = true;
+			$this->data['hasSource'] = false;
+			$this->data['hasTabComment'] = true;
+		}
 		if($route == "module/product")
 		{
 			$this->data['hasId'] = true;
