@@ -198,7 +198,7 @@ class ControllerCorePostcontent extends Controller
 		{
 			$this->data['hasId'] = true;
 			$this->data['hasCode'] = true;
-			$this->data['hasProperties'] = false;
+			$this->data['hasProperties'] = true;
 			$this->data['hasPrice'] = true;
 			$this->data['hasSubInfor'] = false;
 			$this->data['hasProductPrice'] = true;

@@ -17,6 +17,7 @@ class ControllerPageDetail extends Controller
 			$this->data['mainmenu'] = $this->loadModule('common/header','showMenu',$arr);
 			
 			$this->load->model("core/sitemap");
+			$this->load->model("core/media");
 			$this->document->sitemapid = $this->request->get['sitemapid'];
 			$siteid = $this->member->getSiteId();
 			
@@ -39,6 +40,16 @@ class ControllerPageDetail extends Controller
 					break;
 					case "module/information":
 						$this->data['module'] = $this->loadModule('module/information');
+					break;
+					case "module/productpage":
+						$template = array(
+									  'template' => "module/product_page.tpl",
+									  'width' => 250,
+									  'height' =>250
+									  );
+						$media = $this->model_core_media->getItem($siteid.$this->document->sitemapid);
+						$arr = array($this->document->sitemapid,0,$template,$media);
+						$this->data['module'] = $this->loadModule('module/pagedetail','getFormProduct',$arr);
 					break;
 					case "module/location":
 						$this->data['module'] = $this->loadModule('module/location');

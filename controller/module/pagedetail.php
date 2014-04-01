@@ -116,8 +116,14 @@ class ControllerModulePagedetail extends Controller
 		}
 		$mediaid = $id;
 		$siteid = $this->member->getSiteId();
-		
-		$this->data['post'] = $this->model_core_media->getByAlias($mediaid);
+		if(count($media))
+		{
+			$this->data['post'] = $media;
+		}
+		else
+		{
+			$this->data['post'] = $this->model_core_media->getByAlias($mediaid);
+		}
 		$arr = $this->string->referSiteMapToArray($this->data['post']['refersitemap']);
 		$sid = $arr[0];
 		$this->data['post']['link'] = $this->document->createLink($sid,$this->data['post']['alias']);
@@ -194,11 +200,12 @@ class ControllerModulePagedetail extends Controller
 			$this->data['priceproduct'][$key]['tenkhuyenmai'] = $khuyenmai['title'];
 		}*/
 		
-		$queryoptions = array();
+		/*$queryoptions = array();
 		$queryoptions['mediaparent'] = '%';
 		$queryoptions['mediatype'] = '%';
 		$queryoptions['refersitemap'] = $sitemapid;
-		$this->data['othernews'] = $this->model_core_media->getOthersMedia($this->data['post']['mediaid'], $queryoptions, $count);
+		if($count)
+			$this->data['othernews'] = $this->model_core_media->getOthersMedia($this->data['post']['mediaid'], $queryoptions, $count);*/
 		
 		
 		/*$temp = array(
@@ -217,7 +224,8 @@ class ControllerModulePagedetail extends Controller
 		}
 		$where = " AND mediaid not like '".$mediaid."'";
 		$arr = array($where,$nhanhieuid);
-		$this->data['saphamcungnhanhieu'] = $this->loadModule('addon/brand','getList',$arr);
+		if($count)
+			$this->data['saphamcungnhanhieu'] = $this->loadModule('addon/brand','getList',$arr);
 		//Load comemnt
 		$temp = array(
 						  'template' => "module/comment_list.tpl"
