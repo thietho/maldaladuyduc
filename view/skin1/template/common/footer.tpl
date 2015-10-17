@@ -1,6 +1,6 @@
 <div id="ben-footer">
 	<p>
-		Copyright © <strong>CÔNG TY TNHH DƯỢC PHẨM DUY ĐỨC</strong>
+		Copyright © <strong>CÔNG TY CỔ PHẦN DƯỢC PHẨM DUY ĐỨC</strong>
 	</p>
     <p>
     	Địa chỉ: 252 Hải Thượng Lãng Ông - Phường 14 - Quận 5 - TP. HCM
