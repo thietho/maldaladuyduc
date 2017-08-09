@@ -7,14 +7,14 @@ class ControllerSitebarSearchproduct extends Controller
 		$this->load->model("core/sitemap");
 		$this->data['para'] = array();
 		
-		$para = $this->string->referSiteMapToArray($_GET['search']);
+		@$para = $this->string->referSiteMapToArray($_GET['search']);
 		
 		if(count($para))
 		{
 			foreach($para as $val)
 			{
-				$ar = split("=",$val);
-				$datasearch[$ar[0]] = $ar[1];	
+				$ar = explode("=",$val);
+				@$datasearch[$ar[0]] = $ar[1];
 			}
 			
 			$this->data['para'] = $datasearch;

@@ -122,7 +122,7 @@ class ModelCoreSitemap extends Model
 		$arr=array();
 		$row=$this->getItem($id, $siteid);
 		array_push($arr,$row);
-		while($row['sitemapparent']!="")
+		while(@$row['sitemapparent']!="")
 		{
 			$row=$this->getItem($row['sitemapparent'], $siteid);
 			array_push($arr,$row);
@@ -137,7 +137,7 @@ class ModelCoreSitemap extends Model
 		for($i=count($data)-1;$i>$end;$i--)
 		{
 			$link = "".$data[$i]['sitemapname']."";
-			if($data[$i]['modulepath'] != "")
+			if(@$data[$i]['modulepath'] != "")
 			{
 				$link = "<a class='ben-smaller' href='index.php?route=page/detail&sitemapid=".$data[$i]['sitemapid']."'>".$data[$i]['sitemapname']."</a>";
 			}
@@ -282,7 +282,7 @@ class ModelCoreSitemap extends Model
 		
 		$arr['countchild'] = count($rows);
 		
-		if($arr['sitemapparent'] != "") $parentpath .= "-".$arr['sitemapparent'];
+		if(@$arr['sitemapparent'] != "") $parentpath .= "-".$arr['sitemapparent'];
 		
 		if($id!="")
 		{

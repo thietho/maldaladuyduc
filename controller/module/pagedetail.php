@@ -29,7 +29,7 @@ class ControllerModulePagedetail extends Controller
 		{
 			$this->data['post']['imagethumbnail'] = HelperImage::resizePNG($this->data['post']['imagepath'], $template['width'], $template['height']);
 		}
-		$this->document->meta_image = $this->data['post']['imagethumbnail'];
+		@$this->document->meta_image = $this->data['post']['imagethumbnail'];
 		$this->data['post']['startdate'] = $this->model_core_media->getInformation($mediaid,"startdate");
 		$this->data['post']['enddate'] = $this->model_core_media->getInformation($mediaid,"enddate");
 		
