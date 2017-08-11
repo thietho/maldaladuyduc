@@ -921,8 +921,8 @@ final class Mail {
         $encoded = "";
         switch(strtolower($encoding)) {
           case "base64":
-              // chunk_split is found in PHP >= 3.0.6
-              $encoded = chunk_split(base64_encode($str), 76, $this->LE);
+              // chunk_explode is found in PHP >= 3.0.6
+              $encoded = chunk_explode(base64_encode($str), 76, $this->LE);
               break;
           case "7bit":
           case "8bit":

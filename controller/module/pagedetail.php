@@ -36,7 +36,7 @@ class ControllerModulePagedetail extends Controller
 		$listfile = $this->model_core_media->getInformation($this->data['post']['mediaid'], "attachment");
 		$listfileid=array();
 		if($listfile)
-			$listfileid=split(",",$listfile);
+			$listfileid=explode(",",$listfile);
 			
 		
 		
@@ -109,7 +109,7 @@ class ControllerModulePagedetail extends Controller
 		
 		if($sitemapid == "")
 			$sitemapid = $this->document->sitemapid;
-		$id = $this->request->get['id'];
+		@$id = $this->request->get['id'];
 		if(count($media))
 		{
 			$id = $media['alias'];	
@@ -161,7 +161,7 @@ class ControllerModulePagedetail extends Controller
 		$listfile = $this->model_core_media->getInformation($mediaid, "attachment");
 		$listfileid=array();
 		if($listfile)
-			$listfileid=split(",",$listfile);
+			$listfileid=explode(",",$listfile);
 			
 		array_unshift($listfileid,$this->data['post']['imageid']);
 		

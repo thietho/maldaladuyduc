@@ -172,9 +172,7 @@ class ModelCoreSitemap extends Model
 		$strBreadcrumb = "";
 		for($i=count($data)-1;$i>=$end;$i--)
 		{
-			
-			
-				$link='<a href="?route='.$data[$i]['moduleid']."&sitemapid=".$data[$i]['sitemapid'].'" title="[Detail]">'.$data[$i]['sitemapname'].'</a>';
+			@$link='<a href="?route='.$data[$i]['moduleid']."&sitemapid=".$data[$i]['sitemapid'].'" title="[Detail]">'.$data[$i]['sitemapname'].'</a>';
 			if($i<count($data)-1)
 				$strBreadcrumb .= " >> ".$link; 
 			else

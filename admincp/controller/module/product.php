@@ -63,7 +63,7 @@ class ControllerModuleProduct extends Controller
 			$where .= "AND (". implode($arr," OR ").")";
 		
 		$keyword = urldecode($this->request->get['keyword']);
-		$arrkey = split(' ', $keyword);
+		$arrkey = explode(' ', $keyword);
 		
 		if($keyword !="")
 		{
@@ -391,7 +391,7 @@ class ControllerModuleProduct extends Controller
 	public function importData()
 	{
 		
-		$arr = split("\.",$_FILES['fileimport']['name']);
+		$arr = explode("\.",$_FILES['fileimport']['name']);
 		$ext = $arr[1];
 		include DIR_COMPONENT.'PHPExcel/Classes/PHPExcel/IOFactory.php';
 		//$inputFileName = 'GuiHangChoHo_20131002.xls';

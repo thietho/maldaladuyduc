@@ -566,7 +566,7 @@ class ModelCoreMedia extends ModelCoreFile
 		$sql = "Select * from media_information where mediaid = '".$mediaid."' and fieldname = '".$fieldname."'";
 		$query = $this->db->query($sql);
 		$info = $query->row;
-		return $info['fieldvalue'];
+		return @$info['fieldvalue'];
 	}
 	
 	public function saveInformation($mediaid, $fieldname, $fieldvalue)

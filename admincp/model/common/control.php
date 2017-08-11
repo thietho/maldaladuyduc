@@ -28,6 +28,7 @@ class ModelCommonControl extends Model
 	
 	public function getComboboxData($id, $data, $selectedvalue="")
 	{
+		$str = '';
 		foreach($data as $key => $value)
 		{
 			$selected = "";

@@ -15,7 +15,7 @@
         </div>
         
     	<div class="right">
-        	<?php if($_GET['dialog']==""){ ?>
+        	<?php if(@$_GET['dialog']==""){ ?>
         	<input class="button" type="button" value="<?php echo $button_save?>" onclick="save()"/>
             <a class="button" href="<?php echo $DIR_CANCEL.'&page='.$_GET['page']?>"><?php echo $button_cancel?></a>
              <?php } ?>
@@ -33,17 +33,17 @@
             
         	<ul>
                 <li class="tabs-selected"><a href="#fragment-content" ><span><?php echo $tab_editcontent?></span></a></li>
-                <?php if($hasProperties) {?>
+                <?php if(@$hasProperties) { ?>
                 <li><a href="#fragment-properties"><span><?php echo $lbl_property ?></span></a></li>
                 <?php }?>
                 <li><a href="#fragment-detail"><span><?php echo $lbl_detail ?></span></a></li>
-                <?php if($hasVideo) {?>
+                <?php if($hasVideo) { ?>
                 <li><a href="#fragment-video"><span>Video</span></a></li>
                 <?php }?>
-                <?php if($hasAudio) {?>
+                <?php if(@$hasAudio) { ?>
                 <li><a href="#fragment-audio"><span>Audio</span></a></li>
                 <?php }?>
-                <?php if($hasSubInfor) {?>
+                <?php if($hasSubInfor) { ?>
                 <li><a href="#fragment-subinfor"><span><?php echo $lbl_infor ?></span></a></li>
                 <?php }?>
                 <?php if($hasTabImages){ ?>
@@ -367,7 +367,7 @@ $(document).ready(function(e) {
                 </div>
                 
             </div>
-            <?php if($hasProperties) {?>
+            <?php if(@$hasProperties) { ?>
             <div id="fragment-properties">
             	<div>
                 	
@@ -438,7 +438,7 @@ $(document).ready(function(e) {
             </div>
             <?php } ?>
             
-            <?php if($hasAudio) {?>
+            <?php if(@$hasAudio) { ?>
             <div id="fragment-audio">
                     <p id="pnAudio">
                         <label for="file"><?php echo $lbl_file ?></label><br />
@@ -458,7 +458,7 @@ $(document).ready(function(e) {
             </div>
             <?php } ?>
             
-            <?php if($hasSubInfor) {?>
+            <?php if($hasSubInfor) { ?>
             <div id="fragment-subinfor">
             	<input type="hidden" name="sub_mediaid" id="sub_mediaid" />
             	<div>
@@ -579,7 +579,7 @@ $(document).ready(function() {
             </div>
             <?php } ?>
             
-            <?php if($hasTabMap) {?>
+            <?php if($hasTabMap) { ?>
             
             <div id="fragment-map">
                 <div>
@@ -592,7 +592,7 @@ $(document).ready(function() {
                 
                 </div>
             </div>
-            <?php if(count($arrrefersitemap)){?>
+            <?php if(count($arrrefersitemap)){ ?>
             	<?php foreach($arrrefersitemap as $sitemapid){?>
                 	<?php if($sitemapid){ ?>
                     <script language="javascript">
@@ -642,7 +642,7 @@ function save()
 	var oEditor = CKEDITOR.instances['editor1'] ;
 	var pageValue = oEditor.getData();
 	$('textarea#editor1').val(pageValue);
-	<?php if($hasSummary) {?>
+	<?php if($hasSummary) { ?>
 	var oEditor = CKEDITOR.instances['summary'] ;
 	var pageValue = oEditor.getData();
 	$('textarea#summary').val(pageValue);
@@ -651,7 +651,7 @@ function save()
 		function(data){
 			if(data=="true")
 			{
-				window.location = "<?php echo $DIR_CANCEL.'&page='.$_GET['page']?>";
+				window.location = "<?php echo @$DIR_CANCEL.'&page='.@$_GET['page']?>";
 				
 			}
 			else
@@ -673,17 +673,17 @@ $(document).ready(function() {
 	
 });
 </script>
-<?php if($hasFile) {?>
+<?php if(@$hasFile) { ?>
 
-<?php if($hasSubInfor) {?>
+<?php if(@$hasSubInfor) { ?>
 <script src="<?php echo DIR_JS?>uploadsubimage.js" type="text/javascript"></script>
 <?php } ?>
 
 <?php }?>
-<?php if($hasVideo) {?>
+<?php if(@$hasVideo) { ?>
 <script src="<?php echo DIR_JS?>uploadvideo.js" type="text/javascript"></script>
 <?php }?>
-<?php if($hasAudio) {?>
+<?php if(@$hasAudio) { ?>
 <script src="<?php echo DIR_JS?>uploadaudio.js" type="text/javascript"></script>
 <?php }?>
 <script language="javascript">

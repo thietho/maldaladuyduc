@@ -184,14 +184,14 @@ abstract class Controller {
 	public function getRoute()
 	{
 		$route = $this->request->get['route'];
-		$arr = split("/",$route);
+		$arr = explode("/",$route);
 		return $arr[0]."/".$arr[1];
 	}
 	
 	public function getMethod()
 	{
 		$route = $this->request->get['route'];
-		$arr = split("/",$route);
+		$arr = explode("/",$route);
 		return @$arr[2];
 	}
 	

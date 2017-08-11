@@ -31,11 +31,11 @@ class ControllerCorePostcontent extends Controller
 	private function getForm()
 	{
 		$this->load->model("core/media");
-		$mediaid = $this->request->get['mediaid'];
+		@$mediaid = $this->request->get['mediaid'];
 		
 		$route = $this->getRoute();
-		$sitemapid = $this->request->get['sitemapid'];
-		$goback = $this->request->get['goback'];
+		@$sitemapid = $this->request->get['sitemapid'];
+		@$goback = $this->request->get['goback'];
 		$siteid = $this->user->getSiteId();
 
 		$this->load->language($route);
@@ -304,7 +304,7 @@ class ControllerCorePostcontent extends Controller
 		$listfile = $this->model_core_media->getInformation($mediaid, "attachment");
 		$listfileid=array();
 		if($listfile)
-			$listfileid=split(",",$listfile);
+			$listfileid=explode(",",$listfile);
 		$this->data['attachment']=array();
 		foreach($listfileid as $key => $item)
 		{
@@ -370,18 +370,18 @@ class ControllerCorePostcontent extends Controller
 		$this->data['post'] = $this->request->post;
 		if($this->validate($this->data['post']))
 		{
-			$sitemapid = $this->request->get['sitemapid'];
-			$mediaid = $this->request->get['mediaid'];
+			@$sitemapid = $this->request->get['sitemapid'];
+			@$mediaid = $this->request->get['mediaid'];
 			$siteid = $this->user->getSiteId();
 				
-			$sitemapid = $this->request->get['sitemapid'];
+			@$sitemapid = $this->request->get['sitemapid'];
 			
 			$data = $this->data['post'];
 			
 			
 			$data['userid'] = $this->user->getId();
 			//$data['saleprice'] = "";
-			if(count($data['saleprice']))
+			if(count(@$data['saleprice']))
 			{
 				foreach($data['saleprice'] as $key => $val)
 				{
@@ -391,8 +391,8 @@ class ControllerCorePostcontent extends Controller
 			}
 			
 			
-			if($data['price'] == "")
-				$data['price'] = $this->data['post']['mainprice'];
+			if(@$data['price'] == "")
+				@$data['price'] = $this->data['post']['mainprice'];
 			
 			$data['groupkeys'] = $this->getProperties($this->data['post']);
 			
@@ -408,7 +408,7 @@ class ControllerCorePostcontent extends Controller
 			}*/
 			
 			$data['refersitemap'] = "";
-			if($this->request->post['listrefersitemap'])
+			if(@$this->request->post['listrefersitemap'])
 			{
 				foreach ($this->request->post['listrefersitemap'] as $refersiteid) {
 					$data['refersitemap'] .= "[".$refersiteid."]";
@@ -419,7 +419,7 @@ class ControllerCorePostcontent extends Controller
 			$this->model_core_media->save($data);
 			
 			
-			$listAttachment=$this->data['post']['attimageid'];
+			@$listAttachment=$this->data['post']['attimageid'];
 			$this->model_core_media->saveAttachment($data['mediaid'],$listAttachment);
 			/*$listdelfile=$this->data['post']['delfile'];
 			if(count($listdelfile))
@@ -449,7 +449,7 @@ class ControllerCorePostcontent extends Controller
 	
 	private function getProperties($data)
 	{
-		$arr = $data['loaisp'];
+		@$arr = $data['loaisp'];
 		
 		$groupkeys = $this->string->arrayToString($arr);
 		return $groupkeys;	
@@ -587,7 +587,7 @@ class ControllerCorePostcontent extends Controller
 		$para = $this->string->referSiteMapToArray($media['summary']);
 		foreach($para as $val)
 		{
-			$ar = split("=",$val);
+			$ar = explode("=",$val);
 			$media[$ar[0]] = $ar[1];	
 		}
 		

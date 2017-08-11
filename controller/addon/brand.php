@@ -15,7 +15,7 @@ class ControllerAddonBrand extends Controller
 		$this->load->model("core/sitemap");
 		if($categoryid=="")
 		{
-			$arr = split("-",$this->request->get['id']);
+			$arr = explode("-",$this->request->get['id']);
 			$categoryid = $arr[0];
 			$sitemapid = $arr[1];
 		}

@@ -13,7 +13,7 @@ class ControllerPageHome extends Controller
 		else
 		{
 			
-			$allow_modules = $this->model_core_module->getList($where);
+			$allow_modules = $this->model_core_module->getList();
 			$this->data['allow_modules'] = $this->string->matrixToArray($allow_modules,'moduleid');
 		}
 		

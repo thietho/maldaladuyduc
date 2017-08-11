@@ -370,7 +370,7 @@ function selectFilm(eid,type)
 		$( eid ).dialog({
 			autoOpen: false,
 			show: "blind",
-			hide: "explode",
+			hide: "split",
 			width: $(document).width()-100,
 			height: 600,
 			modal: true,

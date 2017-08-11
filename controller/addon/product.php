@@ -24,7 +24,7 @@ class ControllerAddonProduct extends Controller
 		{
 			foreach($para as $val)
 			{
-				$ar = split("=",$val);
+				$ar = explode("=",$val);
 				$datasearch[$ar[0]] = $ar[1];	
 			}
 			
@@ -51,7 +51,7 @@ class ControllerAddonProduct extends Controller
 		if($datasearch['gia'] != "")
 		{
 			$hasprice = true;
-			$arrgia = split("-",$datasearch['gia']);
+			$arrgia = explode("-",$datasearch['gia']);
 			$giatu = (int)$arrgia[0];
 			$giaden = (int)$arrgia[1];
 			if($giatu)

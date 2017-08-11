@@ -84,7 +84,7 @@ class ControllerModuleComment extends Controller
 		$this->load->model("core/comment");
 		$where.=" ORDER BY `commentdate` DESC";
 		$this->data['comments'] = $this->model_core_comment->getList($where);
-		$this->data['title'] = $template['title'];
+		@$this->data['title'] = $template['title'];
 		$this->id="content";
 		$this->template=$template['template'];
 		$this->render();

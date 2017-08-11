@@ -15,7 +15,7 @@ class ControllerAddonKt extends Controller
 	{
 		$this->load->model("core/media");
 		$this->load->model("core/sitemap");
-		$arr = split("-",$this->request->get['id']);
+		$arr = explode("-",$this->request->get['id']);
 		$char = $arr[0];
 		$sitemapid = $arr[1];
 		$header = "Sản phẩm bắt đầu bằng chữ ".$char;

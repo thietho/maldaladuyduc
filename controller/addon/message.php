@@ -92,7 +92,7 @@ class ControllerAddonMessage extends Controller
 		$this->model_core_message->updateStatus($this->messageid,"read");
 		if($this->data['item']['attachment'] !="")
 		{
-			$listfileid = split(",",$this->data['item']['attachment']);
+			$listfileid = explode(",",$this->data['item']['attachment']);
 			$this->data['attachment']=array();
 			foreach($listfileid as $key => $item)
 			{

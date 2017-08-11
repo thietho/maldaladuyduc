@@ -15,7 +15,7 @@ class ControllerLayoutHome extends Controller
 		else
 			$this->data['meta_keyword'] = $this->document->meta_keyword;
 		//
-		@$arr = split(',',$this->document->meta_image);
+		@$arr = explode(',',$this->document->meta_image);
 		$this->data['meta_image'] = "";
 		
 		if(count($arr))

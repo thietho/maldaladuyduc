@@ -63,7 +63,7 @@ class ControllerCoreMedia extends Controller
 							OR description like '%".$keyword."%' 
 							)";	
 		}*/
-		$arrkey = split(' ', $keyword);
+		$arrkey = explode(' ', $keyword);
 		$where = "";
 		if($keyword !="")
 		{
@@ -220,7 +220,7 @@ class ControllerCoreMedia extends Controller
 			$refersitemap = $data['refersitemap'];
 			if($refersitemap!="")
 			{
-				$arrsitemapname = split(',',$refersitemap);
+				$arrsitemapname = explode(',',$refersitemap);
 				$arrsitemapid = array();
 				foreach($arrsitemapname as $sitemapname)
 				{
@@ -255,13 +255,13 @@ class ControllerCoreMedia extends Controller
 			$arrsaleprice = array();
 			if($saleprice!="")
 			{
-				$arr = split(',',$saleprice);
+				$arr = explode(',',$saleprice);
 				print_r($arr);
 				foreach($arr as $val)
 				{
 					if($val!="")
 					{
-						$ar = split('-',$val);
+						$ar = explode('-',$val);
 						
 						$donvi = $ar[0];
 						$price = $ar[1];

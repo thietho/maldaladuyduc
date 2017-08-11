@@ -1,6 +1,4 @@
-
-
-<h2><?php echo $sitemap['breadcrumb']?></h2>
+<h2><?php echo @$sitemap['breadcrumb']?></h2>
 <div class="ben-post">
 	<div class="ben-left product-left">
     	<?php if(in_array("sanphamhot",$properties)){ ?>
@@ -18,7 +16,7 @@
             <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon/ico-new.png" />
         </div>
         <?php } ?>
-        <?php if($media['imagethumbnail'] !=""){ ?>
+        <?php if(@$media['imagethumbnail'] !=""){ ?>
         <a class="islink" href="<?php echo $media['link']?>"><img src='<?php echo $media['imagethumbnail']?>' class='ben-center' /></a>
         <?php }?>
     	<?php if($post['imagethumbnail'] !=""){ ?>
@@ -226,7 +224,7 @@ $("#ben-next").click(function(){
                 
             </p>
             
-            <?php if(count($data_samplecode)>1){ ?>
+            <?php if(count(@$data_samplecode)>1){ ?>
             <p>
             	<?php foreach($data_samplecode as $key => $item){?>
                 <a href="<?php echo $this->document->createLink($this->document->sitemapid,$item['alias'])?>" title="<?php echo $item['color']?>"><img src="<?php echo $item['icon']?>" /></a>

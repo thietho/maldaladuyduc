@@ -3,7 +3,7 @@
 
     <div class="left text-center" id="weblogo">
         <a href="http://ben-solution.com/">		
-			<?php echo $imagepreview ?>
+			<?php echo @$imagepreview ?>
 		</a>  
     </div>
 
