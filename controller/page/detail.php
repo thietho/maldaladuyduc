@@ -266,8 +266,8 @@ class ControllerPageDetail extends Controller
 						  'height' =>50
 						  
 						  );
-		$arr = array('tin-tuc',10,'',$template);
-		$this->data['leftsitebar']['newsproduct'] = $this->loadModule('sitebar/news','index',$arr);
+		//$arr = array('tin-tuc',10,'',$template);
+		//$this->data['leftsitebar']['newsproduct'] = $this->loadModule('sitebar/news','index',$arr);
 		
 		$siteid = $this->member->getSiteId();
 		$sitemap = $this->model_core_sitemap->getItem($this->document->sitemapid, $siteid);

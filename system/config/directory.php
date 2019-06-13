@@ -1,7 +1,7 @@
 <?php
 // HTTP
-define('HTTP_IMAGE', 'http://localhost/maldaladuyduc/file/');
-define('HTTP_SERVER', 'http://localhost/maldaladuyduc/');
+define('HTTP_IMAGE', 'http://maldaladuyduc.vn/file/');
+define('HTTP_SERVER', 'http://maldaladuyduc.vn/');
 
 // HTTPS
 define('HTTPS_SERVER', '');
