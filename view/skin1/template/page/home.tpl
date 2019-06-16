@@ -4,7 +4,7 @@ if(detectflash()){
     //alert("Flash is enabled");
 	video = '<embed width="438" height="266" wmode="transparent" flashvars="file=<?php echo HTTP_SERVER.DIR_IMAGE?>QC DTHT 120 - YouTube.FLV&amp;image=<?php echo HTTP_SERVER.DIR_IMAGE?>hinhvideo.png&amp;provider=video" allowfullscreen="true" allowscriptaccess="always" src="<?php echo HTTP_SERVER?>component/player/mediaplayer.swf" name="player2" type="application/x-shockwave-flash">';
 } else{
-    video = '<video src="<?php echo HTTP_SERVER.DIR_IMAGE?>QC DTHT 120 - YouTube.FLV" width="438" height="266" controls="controls"></video>';
+    video = '<video src="<?php echo HTTP_SERVER.DIR_IMAGE?>QC.mp4" width="438" height="266" controls="controls"></video>';
 }
 
 $(document).ready(function(e) {

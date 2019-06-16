@@ -1,40 +1,85 @@
 <div class="section">
 
-	<div class="section-title"><?php echo $this->document->title?></div>
+	<div class="section-title"><?php echo @$this->document->title?></div>
     
     <div class="section-content">
-    	<div id="showdanhmuc" class="left" style="width:20%">
+    	
+        <div>
         	
-        </div>
-        <div  class="left" style="width:80%">
-        	<h2><?php echo $breadcrumb?></h2>
+            
         	<div id="search">
-            	<label>Từ khóa:</label>
-                <input type="text" class="text" id="keyword" size="100"/>
-                <select id="brand">
-                	<option value="">Tất cả nhản hiệu</option>
-                    <?php foreach($nhanhieu as $it){ ?>
-                    <option value="<?php echo $it['categoryid']?>"><?php echo $this->string->getPrefix("&nbsp;&nbsp;&nbsp;&nbsp;",$it['level']) ?><?php echo $it['categoryname']?></option>                        
-                    <?php } ?>
-                </select>
-                <input type="button" class="button" id="btnSearch" value="Tìm" />
+            	<table>
+                	<tr>
+                    	<td width="40%">
+                        	<input type="text" class="text" id="keyword" placeholder="Tìm kiếm sản phẩm"/>
+                        </td>
+                        <td>
+                        	<select id="brand">
+                                <option value="">Tất cả nhản hiệu</option>
+                                <?php foreach($nhanhieu as $it){ ?>
+                                <option value="<?php echo @$it['categoryid']?>"><?php echo @$this->string->getPrefix("&nbsp;&nbsp;&nbsp;&nbsp;",$it['level']) ?><?php echo @$it['categoryname']?></option>                        
+                                <?php } ?>
+                            </select>
+                        </td>
+                        <td>
+                        	<select id="grouppro" name="grouppro">
+                                <option value="">Dòng sản phẩm</option>
+                            </select>
+                        </td>
+                        <td>
+                        	<select id="sitemapid">
+                                <option value="">Tất cả danh mục</option>
+                                <?php foreach($sitemaps as $sitemap){ ?>
+                                <?php if(@$sitemap['moduleid'] == 'module/product'){ ?>
+                                <option value="<?php echo @$sitemap['sitemapid']?>"><?php echo @$this->string->getPrefix("&nbsp;&nbsp;&nbsp;&nbsp;",$sitemap['level']) ?><?php echo @$sitemap['sitemapname']?></option>
+                                <?php } ?>
+                                <?php } ?>
+                            </select>
+                        </td>
+                        <td>
+                        	 <select id="status">            	
+                                <option value=""></option>
+                                <?php foreach($status as $it){ ?>
+                                <option value="<?php echo @$it['categoryid']?>"><?php echo @$it['categoryname']?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            	<input type="button" class="button" id="btnSearch" value="Tìm" />
+                <input type="button" class="button" id="btnViewAll" value="Tất cả" />
+                <input type="button" class="button" value="Sắp xếp" onclick="pro.showListSort()"/>
+                
+                
+                
+               
+                
+                
             </div>
             <div class="right">
-                <?php if($this->user->checkPermission("module/product/insert")==true){ ?>
-                <a class="button" href="?route=module/product/insert&sitemapid=<?php echo $sitemapid?>&page=<?php echo $page?>"><?php echo $button_add?></a>
+                <?php if(@$this->user->checkPermission("module/product/insert")==true){ ?>
+                <a class="button" onclick="showProductForm('','','pro.searchForm()');"><?php echo @$button_add?></a>
                 <a class="button" id="btnImport" onclick="pro.importData()">Import</a>
                 <a class="button" id="btnExport" onclick="pro.exportData()">Export</a>
+               
+                <?php } ?>
+                <a class="button" onclick="pro.showDanhMuc()">Danh mục sản phẩm</a>
+                <?php if(@$this->user->checkPermission("module/product/baogia")==true){ ?>
+                <a class="button" onclick="pro.viewListBaoGia()">Danh sách báo giá</a>
+                <?php } ?>
+                <?php if(@$this->user->checkPermission("module/product/viewListSelect")==true){ ?>
+                <a class="button" onclick="pro.viewListSelect()">Xem danh sách</a>
+                <?php } ?>
+                <?php if(@$this->user->checkPermission("module/product/update")==true){ ?>
+                <?php if(@$this->user->checkPermission("module/product/updateInventory")==true){ ?>
+                <a class="button" onclick="pro.updateInventory()">Cập nhật tồn kho</a>
+                <?php } ?>
+                
+                
                 
                 <?php } ?>
-                <a class="button" onclick="pro.viewListSelect()">Xem danh sách</a>
-                <?php if($this->user->checkPermission("module/product/update")==true){ ?>
-                <a class="button" onclick="pro.updatePosition()"><?php echo $button_updateposition?></a>&nbsp;
-                <a class="button" href="?route=module/information&sitemapid=<?php echo $sitemapid?>&goback=module/product">Biên tập nội dung</a>&nbsp;
-                <?php } ?>
-                <?php if($this->user->checkPermission("module/product/deleted")==true){ ?>
-                <a class="button" onclick="pro.deleteProduct()">Xóa</a>&nbsp;
-                <?php } ?>
-                <a class="button" href="index.php"><?php echo $button_cancel?></a>
+                
+                <a class="button" href="index.php"><?php echo @$button_cancel?></a>
             </div>
             <div class="clearer">^&nbsp;</div>
             <form id="postlist" name="postlist" method="post" action="">
@@ -44,51 +89,68 @@
             </form>
         </div>
         <div class="clearer">^&nbsp;</div>
+        
     </div>
 </div>
 <script language="javascript">
-$(document).ready(function(e) {
-    $('#showdanhmuc').load('?route=module/product/productCat');
-	var page = control.getParam("page",strurl);
-	if(page != undefined)
-	{
-		pro.loadProduct(pro.url+"&page="+page);
-	}
-	else
-	{
-		pro.loadProduct(pro.url+"&page=<?php echo $_GET['page']?>");	
-	}
-	
-	$('#btnSearch').click(function(e) {
-		pro.searchForm();
-	});
-	$('#keyword').keyup(function(e) {
-        if(e.keyCode == 13)
+$('#search select').change(function(e) {
+    pro.searchForm();
+});
+$('#search #brand').change(function(e) {
+	$.getJSON("?route=core/category/getListChild&categoryid="+ $(this).val(),function(data){
+		var str = '<option value="">Dòng sản phẩm</option>';
+		for(i in data)
+		{
+			str += '<option value="'+data[i].categoryid+'">'+data[i].categoryname+'</option>';
+		}
+		$('#search #grouppro').html(str);
+		$('#search #grouppro').val(objdl.grouppro);
+		if(objdl.grouppro != "")
 			pro.searchForm();
-    });
-	
-	$(document).ajaxComplete(function() {
-		//alert($('#selectmediaid').val())
-		if($('#selectmediaid').val()!="")
-		{
-			$('.enterGroup').hide();
-			$('.selectGroup').show();
-		}
-		else
-		{
-			$('.enterGroup').show();
-			$('.selectGroup').hide();
-		}
 	});
 });
 
 function Product()
 {
-	this.url = "?route=module/product/getList&sitemapid=<?php echo $sitemapid?>";
+	this.open = "<?php echo @$this->request->get['open']?>";
+	//console.log(this.open);
+	this.url = "?route=module/product/getList";
+	this.page = 0;
+	this.createData = function(obj)
+	{
+		var db = openDatabase('mydb', '1.0', 'ClientDB', 2 * 1024 * 1024);
+		db.transaction(function (tx) {
+		   tx.executeSql('CREATE TABLE IF NOT EXISTS media (id unique, mediaid, barcode, ref, code, sizes, unit, color, material, brand, mediaparent, mediatype, refersitemap, userid, title, summary, description, metadescription, alias, keyword, author, source, saleprice, price, noteprice, discountpercent, pricepromotion, imageid, imagepath, fileid, filepath, groupkeys, viewcount, position, status, temp, statusdate, statusby, updateddate, noted)');
+		   
+		   for(i in obj)
+		   {
+			   tx.executeSql('INSERT INTO media (id, mediaid, barcode, ref, code, sizes, unit, color, material, brand, mediaparent, mediatype, refersitemap, userid, title, summary, description, metadescription, alias, keyword, author, source, saleprice, price, noteprice, discountpercent, pricepromotion, imageid, imagepath, fileid, filepath, groupkeys, viewcount, position, status, temp, statusdate, statusby, updateddate, noted) VALUES ('+ obj[i].id +', '+ obj[i].mediaid +', '+ obj[i].barcode +', '+ obj[i].ref +', '+ obj[i].code +', '+ obj[i].sizes +', '+ obj[i].unit +', '+ obj[i].color +', '+ obj[i].material +', '+ obj[i].brand +', '+ obj[i].mediaparent +', '+ obj[i].mediatype +', '+ obj[i].refersitemap +', '+ obj[i].userid +', '+ obj[i].title +', '+ obj[i].summary +', '+ obj[i].description +', '+ obj[i].metadescription +', '+ obj[i].alias +', '+ obj[i].keyword +', '+ obj[i].author +', '+ obj[i].source +', '+ obj[i].saleprice +', '+ obj[i].price +', '+ obj[i].noteprice +', '+ obj[i].discountpercent +', '+ obj[i].pricepromotion +', '+ obj[i].imageid +', '+ obj[i].imagepath +', '+ obj[i].fileid +', '+ obj[i].filepath +', '+ obj[i].groupkeys +', '+ obj[i].viewcount +', '+ obj[i].position +', '+ obj[i].status +', '+ obj[i].temp +', '+ obj[i].statusdate +', '+ obj[i].statusby +', '+ obj[i].updateddate +', '+ obj[i].noted +')');
+		   }
+		   
+		   tx.executeSql('SELECT * FROM media', [], function (tx, results) {
+				var len = results.rows.length, i;
+				
+				msg = "<p>Found rows: " + len + "</p>";
+				document.querySelector('#resulttable').innerHTML +=  msg;
+				for (i = 0; i < len; i++){
+					msg = "<p><b>" + results.rows.item(i).log + "</b></p>";
+					document.querySelector('#resulttable').innerHTML +=  msg;
+				}
+			}, null);
+		});
+		
+		db.transaction(function (tx) {
+			
+		});
+	}
 	this.loadProduct = function(url)
 	{
-		$('#showsanpham').html(loading);
-		$('#showsanpham').load(url);
+		//$('#showsanpham').html(loading);
+		$.blockUI({ message: "<h1>Please wait...</h1>" }); 
+		$('#showsanpham').load(url,function(){
+			$.unblockUI();
+			<?php echo @$this->request->get['callfunc']?>
+		});
 	}
 	this.add = function(parent,sitemapid)
 	{
@@ -101,16 +163,81 @@ function Product()
 	}
 	this.searchForm = function()
 	{
-		url = this.url;
-		if($('#keyword').val()!="")
+		this.loadProduct(this.url+this.getUrl());
+	}
+	this.getUrl = function()
+	{
+		url = "";
+		if($('#search #keyword').val()!="")
 		{
-			url += "&keyword="+encodeURI($('#keyword').val());
+			url += "&keyword="+encodeURI($('#search #keyword').val());
+			objdl.keyword = $('#search #keyword').val();
 		}
-		if($('#brand').val()!="")
+        else
+            objdl.keyword ='';
+		if($('#search #brand').val()!="")
 		{
-			url += "&brand="+encodeURI($('#brand').val());
+			url += "&brand="+encodeURI($('#search #brand').val());
+			objdl.brand = $('#search #brand').val();
 		}
-		this.loadProduct(url);
+        else
+            objdl.brand = '';
+		if($('#search #grouppro').val()!="")
+		{
+			url += "&grouppro="+encodeURI($('#search #grouppro').val());
+			objdl.grouppro = $('#search #grouppro').val();
+		}
+        else
+            objdl.grouppro = '';
+		if($('#search #sitemapid').val()!="")
+		{
+			url += "&sitemapid="+encodeURI($('#search #sitemapid').val());
+			objdl.sitemapid = $('#search #sitemapid').val();
+		}
+        else
+            objdl.sitemapid = '';
+		if($('#search #status').val()!="")
+		{
+			url += "&status="+encodeURI($('#search #status').val());
+			objdl.status = $('#search #status').val();
+		}
+		else
+            objdl.status = '';
+		url += "&page=" + Number(control.getParam("page",control.getUrl()));
+		return url
+	}
+	this.showDanhMuc = function()
+	{
+		$('body').append('<div id="showdanhmuc" style="display:none"></div>');
+		var eid = "#showdanhmuc";
+		$(eid).attr('title','Danh mục sản phẩm');
+			$(eid).dialog({
+				autoOpen: false,
+				show: "blind",
+				hide: "explode",
+				width: $(document).width()-100,
+				height: window.innerHeight,
+				modal: true,
+				close:function()
+				{
+					$(eid).remove();
+				},
+				buttons: {
+					
+					
+					'Đóng': function() 
+					{
+						
+						$( eid ).dialog( "close" );
+					}
+				}
+			});
+		
+			$(eid).dialog("open");
+			$(eid).html(loading);
+			$(eid).load("?route=module/product/productCat",function(){
+				
+			});
 	}
 	this.addToList = function(mediaid)
 	{
@@ -131,7 +258,23 @@ function Product()
 		$.blockUI({ message: "<h1>Please wait...</h1>" }); 
 		$.get("?route=module/product/removeListItem&mediaid="+mediaid,function(){
 			$.unblockUI();	
+			pro.viewListSelect();
 		});	
+	}
+	this.updateRowSelect = function(mediaid)
+	{
+		$('.ProductList').each(function(index, element) {
+			if($(this).attr('mediaid') == mediaid)
+			{
+				var col = $(this).attr('col')
+				var val = this.value;
+				$.get("?route=module/product/updateProductList",{
+					mediaid:mediaid,
+					col:col,
+					val:stringtoNumber(val)
+				});
+			}
+		});
 	}
 	this.viewListSelect = function()
 	{
@@ -142,17 +285,19 @@ function Product()
 				autoOpen: false,
 				show: "blind",
 				hide: "explode",
-				width: 800,
-				height: 600,
+				width: $(document).width()-100,
+				height: window.innerHeight,
 				modal: true,
+				close:function()
+				{
+					$(eid).remove();
+				},
 				buttons: {
-					'Xóa khỏi danh sách':function()
+					
+					'Lập báo giá':function()
 					{
-						$('.itemselected').each(function(index, element) {
-							var meidaid = $(this).attr('mediaid');
-                            pro.removeListItem(meidaid);
-                        });
-						pro.viewListSelect();
+						//pro.baogiaForm('');
+						window.location = "?route=module/product/baogiaForm";
 					},
 					'Lập phiếu nhập kho':function()
 					{
@@ -167,14 +312,107 @@ function Product()
 					{
 						
 						$( eid ).dialog( "close" );
-					},
+					}
 				}
 			});
 		
-			
+			$(eid).dialog("open");
+			$(eid).html(loading);
 			$(eid).load("?route=module/product/listProductSelected",function(){
-				$(eid).dialog("open");	
+				
 			});
+	}
+	this.viewListBaoGia = function()
+	{
+		$('body').append('<div id="listbaogia" style="display:none"></div>');
+		var eid = "#listbaogia";
+		$(eid).attr('title','Danh sách báo giá');
+			$(eid).dialog({
+				autoOpen: false,
+				show: "blind",
+				hide: "explode",
+				width: $(document).width()-100,
+				height: window.innerHeight,
+				modal: true,
+				close:function()
+				{
+					$(eid).remove();
+				},
+				buttons: {
+					'Xóa':function()
+					{
+						var arr = new Array();
+						$('.rowselect').each(function(index, element) {
+							if(this.checked)
+							{
+								arr.push(this.value);
+							}
+						});
+						$.post("?route=module/product/delBaoGia",
+								{
+									arrbaogiaid:arr
+								},
+								function(data){
+									$(eid).html(loading);
+									$(eid).load("?route=module/product/listBaoGia");
+								});
+					},
+					'Lập báo giá':function()
+					{
+						
+						window.location = "?route=module/product/baogiaForm";
+					},
+					'Đóng': function() 
+					{
+						
+						$( eid ).dialog( "close" );
+					}
+				}
+			});
+		
+			$(eid).dialog("open");
+			$(eid).html(loading);
+			$(eid).load("?route=module/product/listBaoGia",function(){
+				
+			});
+	}
+	this.viewBaoGia = function(baogiaid)
+	{
+		$('body').append('<div id="baogiaview" style="display:none"></div>');
+		var eid = "#baogiaview";
+		$(eid).attr('title','Danh sách báo giá');
+			$(eid).dialog({
+				autoOpen: false,
+				show: "blind",
+				hide: "explode",
+				width: 1000,
+				height: window.innerHeight,
+				modal: true,
+				close:function()
+				{
+					$(eid).remove();
+				},
+				buttons: {
+					'In':function()
+					{
+						openDialog("?route=module/product/viewBaoGia&baogiaid="+baogiaid+"&opendialog=print",800,500)
+					},
+					'Chỉnh sửa':function()
+					{
+						
+						window.location = "?route=module/product/baogiaForm&baogiaid="+baogiaid;
+					},
+					'Đóng': function() 
+					{
+						
+						$( eid ).dialog( "close" );
+					}
+				}
+			});
+		
+			$(eid).dialog("open");
+			$(eid).html(loading);
+			$(eid).load("?route=module/product/viewBaoGia&baogiaid="+baogiaid);
 	}
 	this.enterGroup = function(mediaid)
 	{
@@ -183,30 +421,41 @@ function Product()
 		$('.enterGroup').hide();
 		$('.selectGroup').show();
 	}
-	this.selectGroup = function(mediaid)
+	this.activeGroup = function()
 	{
-		if($('#selectmediaid').val() == mediaid)
-		{
-			alert('Bạn không thể đưa vào nhóm sản phẩm bạn dang chọn!!!')
-			return;
-		}
-		$.post("?route=core/media/updateCol",
+		$('.mediaitem').draggable();
+		$('.listitem').droppable({
+		  drop: function( event, ui ) {
+			
+			var desid = ui.draggable.attr('id');
+			var souid = $(this).attr('id');
+			pro.selectGroup(desid,souid)
+			//console.log(ui);
+		  }
+		});	
+	}
+	this.selectGroup = function(des,sou)
+	{
+		
+		$.post("?route=core/media/enterGroup",
 			{
-				mediaid:$('#selectmediaid').val(),
+				mediaid:des,
 				col:'mediaparent',
-				val:mediaid
+				val:sou
 			},
 			function(data){
 				if(data == 'true')	
 				{
 					alert("Đưa vào nhóm thành công");	
-					window.location.reload();
+					//window.location.reload();
+					pro.searchForm();
+					
 				}
 			});
 	}
 	this.outGroup = function(mediaid)
 	{
-		$.post("?route=core/media/updateCol",
+		$.post("?route=core/media/outGroup",
 			{
 				mediaid:mediaid,
 				col:'mediaparent',
@@ -216,7 +465,8 @@ function Product()
 				if(data == 'true')	
 				{
 					alert("Đưa ra nhóm thành công");
-					window.location.reload();
+					//window.location.reload();
+					pro.searchForm();
 				}
 			});
 	}
@@ -232,8 +482,27 @@ function Product()
 						if(data!="")
 						{
 							alert(data);
-							window.location.reload();
-							
+							//window.location.reload();
+							pro.searchForm();
+						}
+					}
+			);
+		}
+	}
+	this.delete = function(mediaid)
+	{
+		var answer = confirm("Bạn có chắc xóa không?")
+		if (answer)
+		{
+			$.post("?route=core/media/delete", 
+					{delete:Array(mediaid)}, 
+					function(data)
+					{
+						if(data!="")
+						{
+							alert(data);
+							//window.location.reload();
+							pro.searchForm();
 						}
 					}
 			);
@@ -241,9 +510,9 @@ function Product()
 	}
 	this.updatePosition = function()
 	{
-		$.blockUI({ message: "<h1><?php echo $announ_infor ?></h1>" }); 
+		$.blockUI({ message: "<h1><?php echo @$announ_infor ?></h1>" }); 
 		$.post("?route=core/postlist/updatePosition", $("#postlist").serialize(), function(data){
-			pro.loadProduct(pro.url);
+			pro.searchForm();
 			$.unblockUI();
 		});	
 	}
@@ -252,26 +521,28 @@ function Product()
 	{
 		$('body').append('<div id="history_form" style="display:none"></div>');
 		var eid = "#history_form";
-		
+		$('body').css('overflow','hidden');
 		
 		$(eid).attr('title','Lịch sử xuất nhập');
 			$( eid ).dialog({
 				autoOpen: false,
 				show: "blind",
 				hide: "explode",
-				width: 800,
-				height: 600,
+				width: $(document).width()-100,
+				height: window.innerHeight,
 				modal: true,
 				close:function()
 					{
 						$(eid).remove();
-					},
+						$('body').css('overflow','auto');
+					}
 				
 			});
 		
-			
+			$(eid).dialog("open");
+			$(eid).html(loading);
 			$(eid).load("?route=module/product/history&mediaid="+mediaid+"&dialog=true",function(){
-				$(eid).dialog("open");	
+				
 			});
 		
 		
@@ -288,7 +559,7 @@ function Product()
 				show: "blind",
 				hide: "explode",
 				width: $(document).width()-100,
-				height: 600,
+				height: window.innerHeight,
 				modal: true,
 				close:function()
 					{
@@ -311,14 +582,15 @@ function Product()
 						
 						$(eid).dialog( "close" );
 						window.location.reload();
-					},
+					}
 				}
 				
 			});
 		
-			
+			$(eid).dialog("open");	
+			$(eid).html(loading);
 			$(eid).load("?route=module/product/import&dialog=true",function(){
-				$(eid).dialog("open");	
+				
 			});
 	}
 	this.postProduct = function(k)
@@ -337,7 +609,7 @@ function Product()
 				saleprice:$('#item'+k+' #J').html(),
 				discountpercent:$('#item'+k+' #K').html(),
 				pricepromotion:$('#item'+k+' #L').html(),
-				summary:$('#item'+k+' #M').html(),
+				summary:$('#item'+k+' #M').html()
 				
 			},
 			function(data)
@@ -358,7 +630,124 @@ function Product()
 			window.location = "download.php?url="+ encodeURI(data);
 		});	
 	}
+	this.updateInventory = function()
+	{
+		$.blockUI({ message: "<h1><?php echo @$announ_infor ?></h1>" }); 
+		$.getJSON("?route=module/product/updateInventory",function(data){
+			
+			//alert(data.length);
+			pro.updateInventoryItem(data,0);
+		});	
+	}
+	this.updateInventoryItem = function(data,i)
+	{
+		if(i<data.length)
+		{
+			$('.blockMsg h1').html( Math.round((i/(data.length-1))*100) +"%");
+			$.get("?route=module/product/updateProductInventory&id="+data[i].id,function(html){
+				pro.updateInventoryItem(data,i+1);				
+			});
+		}
+		else
+			$.unblockUI();
+	}
+	this.updateImage = function(mediaid,imagepath)
+	{
+		$.post("?route=core/media/updateCol",
+			{
+				mediaid:mediaid,
+				col:"imagepath",
+				val:imagepath
+			});
+	}
+	this.showListSort = function()
+	{
+		var eid = "listsort";
+		$('body').append('<div id="'+eid+'" style="display:none"></div>');
+		$('body').css('overflow','hidden');
+		$("#"+eid).attr('title','Danh sách sản phẩm');
+			$("#"+eid).dialog({
+				autoOpen: false,
+				show: "blind",
+				hide: "explode",
+				width: $(document).width()-100,
+				height: window.innerHeight,
+				modal: true,
+				close:function()
+					{
+						$("#"+eid).remove();
+						$('body').css('overflow','auto');
+					},
+				buttons: {
+					
+					'Lưu':function()
+					{
+						$.post("?route=module/product/savesort",$('#frm_sortproduct').serialize(),
+						function(data)
+						{
+							$("#"+eid).dialog( "close" );
+							pro.searchForm();
+						});
+					},
+					'Đóng': function() 
+					{
+						
+						$("#"+eid).dialog( "close" );
+						
+					}
+				}
+			});
+			
+			$("#"+eid).dialog("open");
+			$("#"+eid).html(loading);
+			$("#"+eid).load("?route=module/product/listsort"+pro.getUrl()+"&dialog=true",function(){
+				
+			});
+		}
 }
 var pro = new Product();
+$(document).ready(function(e) {
 
+	$('#search #keyword').val(objdl.keyword);
+    if(objdl.brand !='')
+	    $('#search #brand').val(objdl.brand).change();
+	$('#search #grouppro').val(objdl.grouppro);
+	$('#search #sitemapid').val(objdl.sitemapid);
+	$('#search #status').val(objdl.status);
+    //$('#showdanhmuc').load('?route=module/product/productCat');
+	pro.page = Number(control.getParam("page",control.getUrl()));
+	if(objdl.grouppro=="")	
+		pro.searchForm();
+	//console.log("aa");
+	$('#btnSearch').click(function(e) {
+		
+		pro.searchForm();
+	});
+	$('#btnViewAll').click(function(e) {
+        $('#search #keyword').val('');
+		$('#search #brand').val('');
+		$('#search #sitemapid').val('');
+		$('#search #status').val('');
+		pro.searchForm();
+		//window.location = "?route=module/product";
+    });
+	$('#search #keyword').keyup(function(e) {
+        if(e.keyCode == 13)
+			pro.searchForm();
+    });
+	
+	$(document).ajaxComplete(function() {
+		//alert($('#selectmediaid').val())
+		if($('#selectmediaid').val()!="")
+		{
+			$('.enterGroup').hide();
+			$('.selectGroup').show();
+		}
+		else
+		{
+			$('.enterGroup').show();
+			$('.selectGroup').hide();
+		}
+	});
+});
 </script>

@@ -1,6 +1,6 @@
 <div class="section">
 
-	<div class="section-title"><?php echo $this->document->title?></div>
+	<div class="section-title"><?php echo @$this->document->title?></div>
     
     <div class="section-content">
     	
@@ -12,6 +12,10 @@
                 <input type="text" id="nguoithuchien" name="nguoithuchien" class="text" value="" />-->
                 <label>Khách hàng</label>
                 <input type="text" id="tenkhachhang" name="tenkhachhang" class="text" value="" />
+                <label>Số điện thoại</label>
+                <input type="text" id="dienthoai" name="dienthoai" class="text" value="" />
+                <label>Địa chỉ</label>
+                <input type="text" id="diachi" name="diachi" class="text" value="" />
                 <label>Từ ngày</label>
                 <input type="text" class="text date" id="tungay" />
                 <script language="javascript">
@@ -34,19 +38,28 @@
 								});
 						});
 				 </script>
+                <label>Tình trạng</label>
+                <select id="trangthai" name="trangthai">
+                	<option value=""></option>
+                    <?php foreach(@$this->document->status_phieunhapxuat as $key => $val){?>
+                    <option value="<?php echo @$key?>"><?php echo @$val?></option>
+                    <?php } ?>
+                </select>
                 <br />
                 <input type="button" class="button" name="btnSearch" value="Tìm" onclick="searchForm()"/>
-                <input type="button" class="button" name="btnSearch" value="Xem tất cả" onclick="viewAll()"/>
+                <input type="button" class="button" name="btnViewAll" value="Xem tất cả" onclick="viewAll()"/>
+                <input type="button" class="button" name="btnExport" value="Xuất ra excel" onclick="exportExcel()"/>
             </div>
         	<div class="button right">
-            	<?php if($dialog==true){ ?>
+            	<?php if(@$dialog==true){ ?>
             	
                 <?php }else{ ?>
-                
-                <?php if($this->user->checkPermission("quanlykho/phieuxuat/insert")==true){ ?>
-                <input class="button" value="Thêm" type="button" onclick="linkto('<?php echo $insert?>')">
+                <input class="button" id="btnPrint" value="In" type="button">
+                <input class="button" id="btnPrintDiscount" value="In giảm giá" type="button">
+                <?php if(@$this->user->checkPermission("quanlykho/phieuxuat/insert")==true){ ?>
+                <input class="button" value="Thêm" type="button" onclick="linkto('<?php echo @$insert?>')">
                 <?php } ?>
-                <?php if($this->user->checkPermission("quanlykho/phieuxuat/delete")==true){ ?>
+                <?php if(@$this->user->checkPermission("quanlykho/phieuxuat/delete")==true){ ?>
             	<input class="button" type="button" name="delete_all" value="Xóa" onclick="deleteitem()"/>
                 <?php } ?>
                 <?php } ?>
@@ -64,7 +77,28 @@
     
 </div>
 <script language="javascript">
-
+$('#btnPrint').click(function(e) {
+	var arrid = new Array();
+    $('.inputchk').each(function(index, element) {
+        if(this.checked)
+		{
+			arrid.push(this.value);	
+		}
+    });
+	
+	objdl.printPX(arrid.join("-"));
+});
+$('#btnPrintDiscount').click(function(e) {
+	var arrid = new Array();
+    $('.inputchk').each(function(index, element) {
+        if(this.checked)
+		{
+			arrid.push(this.value);	
+		}
+    });
+	
+	objdl.printPXDisCount(arrid.join("-"));
+});
 function deleteitem()
 {
 	var answer = confirm("Bạn có muốn xóa không?")
@@ -104,14 +138,20 @@ function loadData(url)
 function viewAll()
 {
 	url = "?route=quanlykho/phieuxuat/getList";
-	if("<?php echo $_GET['opendialog']?>" == "true")
+	if("<?php echo @$_GET['opendialog']?>" == "true")
 	{
 		url += "&opendialog=true";
 	}
 	loadData(url);
 }
-
-function searchForm()
+function exportExcel()
+{
+	var url = createParam();
+	$.get("?route=quanlykho/phieuxuat/export"+url,function(data){
+			window.location = "download.php?url="+ encodeURI(data);
+		});		
+}
+function createParam()
 {
 	var url =  "";
 	if($("#frm_phieunhap #maphieu").val() != "")
@@ -119,20 +159,31 @@ function searchForm()
 	
 	if($("#frm_phieunhap #tenkhachhang").val() != "")
 		url += "&tenkhachhang="+ encodeURI($("#frm_phieunhap #tenkhachhang").val());
+	if($("#frm_phieunhap #dienthoai").val() != "")
+		url += "&dienthoai="+ encodeURI($("#frm_phieunhap #dienthoai").val());
+	if($("#frm_phieunhap #diachi").val() != "")
+		url += "&diachi="+ encodeURI($("#frm_phieunhap #diachi").val());
 	
 	if($("#frm_phieunhap #tungay").val() != "")
 		url += "&tungay="+ encodeURI($("#frm_phieunhap #tungay").val());
 	if($("#frm_phieunhap #denngay").val() != "")
 		url += "&denngay="+ encodeURI($("#frm_phieunhap #denngay").val());
-	
-	if("<?php echo $_GET['opendialog']?>" == "true")
+	if($("#frm_phieunhap #trangthai").val() != "")
+		url += "&trangthai="+ encodeURI($("#frm_phieunhap #trangthai").val());
+	return url;
+}
+function searchForm()
+{
+	var url = createParam();
+	if("<?php echo @$_GET['opendialog']?>" == "true")
 	{
 		url += "&opendialog=true";
 	}
+	//console.log(url);
 	loadData("?route=quanlykho/phieuxuat/getList"+url);
 }
 
-<?php if($dialog==true){ ?>
+<?php if(@$dialog==true){ ?>
 	$(".inputchk").click(function()
 	{
 		$("#selectnguyenlieu").val('');

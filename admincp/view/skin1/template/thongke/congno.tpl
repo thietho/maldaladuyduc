@@ -1,6 +1,6 @@
 <div class="section" id="sitemaplist">
 
-	<div class="section-title"><?php echo $this->document->title?></div>
+	<div class="section-title"><?php echo @$this->document->title?></div>
     <div class="section-content">
     	<h3>Công nợ khách hàng</h3>
         <table class="data-table" cellpadding="0" cellspacing="0">
@@ -27,11 +27,11 @@
                     
                     
                     
-                    <td><?php echo $user['fullname']?></td>
-                    <td><?php echo $user['phone']?></td>
-                    <td><?php echo $user['address']?></td>
-                    <td><?php echo $user['email']?></td>
-                    <td class="number"><a onclick="viewCongNo(<?php echo $user['id']?>)"><?php echo $this->string->numberFormate($user['congno'])?></a></td>
+                    <td><?php echo @$user['fullname']?></td>
+                    <td><?php echo @$user['phone']?></td>
+                    <td><?php echo @$user['address']?></td>
+                    <td><?php echo @$user['email']?></td>
+                    <td class="number"><a onclick="viewCongNo(<?php echo @$user['id']?>)"><?php echo @$this->string->numberFormate($user['congno'])?></a></td>
                     
                 </tr>
     <?php
@@ -40,7 +40,7 @@
                     
             	<tr>
                 	<td align="right" colspan="4">Tổng công nợ</td>
-                    <td class="number"><?php echo $this->string->numberFormate($tongcongno)?></td>
+                    <td class="number"><?php echo @$this->string->numberFormate($tongcongno)?></td>
                 </tr>                             
             </tbody>
         </table>
@@ -70,11 +70,11 @@
                     
                     
                     
-                    <td><?php echo $item['tennhacungcap']?></td>
-                    <td><?php echo $item['sodienthoai']?></td>
-                    <td><?php echo $item['diachi']?></td>
-                    <td><?php echo $item['email']?></td>
-                    <td class="number"><a onclick="viewCongNoNCC(<?php echo $item['id']?>)"><?php echo $this->string->numberFormate($item['congno'])?></a></td>
+                    <td><?php echo @$item['tennhacungcap']?></td>
+                    <td><?php echo @$item['sodienthoai']?></td>
+                    <td><?php echo @$item['diachi']?></td>
+                    <td><?php echo @$item['email']?></td>
+                    <td class="number"><a onclick="viewCongNoNCC(<?php echo @$item['id']?>)"><?php echo @$this->string->numberFormate($item['congno'])?></a></td>
                     
                 </tr>
     <?php
@@ -83,7 +83,7 @@
                     
             	<tr>
                 	<td align="right" colspan="4">Tổng công nợ</td>
-                    <td class="number"><?php echo $this->string->numberFormate($tongcongnoncc)?></td>
+                    <td class="number"><?php echo @$this->string->numberFormate($tongcongnoncc)?></td>
                 </tr>                             
             </tbody>
         </table>
@@ -96,8 +96,8 @@ function viewCongNo(id)
 					autoOpen: false,
 					show: "blind",
 					hide: "explode",
-					width: 800,
-					height: 500,
+					width: $(document).width()-100,
+					height: window.innerHeight,
 					modal: true,
 					buttons: {
 						'Đóng': function() {
@@ -112,9 +112,10 @@ function viewCongNo(id)
 					}
 				});
 			
-				
+	$("#popup").dialog("open");	
+	$("#popup-content").html(loading);			
 	$("#popup-content").load("?route=core/member/getCongNo&khachhangid="+id+"&dialog=true",function(){
-		$("#popup").dialog("open");	
+		
 	});
 }
 function viewCongNoNCC(id)
@@ -124,8 +125,8 @@ function viewCongNoNCC(id)
 					autoOpen: false,
 					show: "blind",
 					hide: "explode",
-					width: 800,
-					height: 500,
+					width: $(document).width()-100,
+					height: window.innerHeight,
 					modal: true,
 					buttons: {
 						'Đóng': function() {
@@ -140,9 +141,10 @@ function viewCongNoNCC(id)
 					}
 				});
 			
-				
+	$("#popup").dialog("open");	
+	$("#popup-content").html(loading);			
 	$("#popup-content").load("?route=quanlykho/nhacungcap/getCongNo&nhacungcapid="+id+"&dialog=true",function(){
-		$("#popup").dialog("open");	
+		
 	});
 }
 </script>           

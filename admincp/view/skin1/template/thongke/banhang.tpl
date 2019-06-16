@@ -1,6 +1,7 @@
+
 <div class="section">
 
-	<div class="section-title"><?php echo $this->document->title?></div>
+	<div class="section-title"><?php echo @$this->document->title?></div>
     
     <div class="section-content">
     	
@@ -39,7 +40,7 @@
             <div id="showresult">
                 
             </div>
-        	
+        	<input type="button" class="button" id="btnSaveToExcel" name="btnSaveToExcel" value="Lưu thành excel"/>
         
         </form>
         
@@ -56,5 +57,8 @@ $('#btnThongKe').click(function(e) {
 			$('#showresult').html(html);
 		}
 	);
+});
+$('#btnSaveToExcel').click(function(e) {
+	tableToExcel('reportbanhang', 'Ho Lan Solutions');
 });
 </script>

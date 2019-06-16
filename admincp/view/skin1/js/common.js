@@ -40,9 +40,11 @@ function getPosOfNode(idparent,eid)
 
 function setCKEditorType(strID, intType)
 {
-	//obj = CKEDITOR.instances[strID]
-	if (CKEDITOR.instances[strID]) {
-		window.location.reload();
+	obj = CKEDITOR.instances[strID]
+	if (obj) {
+		//console.log(obj)
+		CKEDITOR.remove(obj);
+		
 	}
 	switch (intType)
 	{
@@ -164,9 +166,10 @@ function postStringData(object) {
 	});
 	return str;
 }
-
+var win;
 function openDialog(url,width,height) {
-    var result = window.showModalDialog(url, "", "dialogWidth:"+width+"px; dialogHeight:"+height+"px;");
+    //var result = window.showModalDialog(url, "", "dialogWidth:"+width+"px; dialogHeight:"+height+"px;");
+	win = window.open(url, "_blank", "toolbar=no, scrollbars=yes, resizable=yes, top=0, left=0, width="+width+", height="+height);
 }
 function daysInMonth(month,year) 
 {
@@ -338,7 +341,7 @@ function printObject(o) {
 }
 function logout()
 {
-	$.blockUI({ message: "<h1><?php echo $announ_infor ?></h1>" }); 
+	$.blockUI({ message: "<h1><?php echo @$announ_infor ?></h1>" }); 
 	
 	$.get(HTTP_SERVER+"?route=sitebar/login/logout", 
 		function(data){
@@ -370,9 +373,9 @@ function selectFilm(eid,type)
 		$( eid ).dialog({
 			autoOpen: false,
 			show: "blind",
-			hide: "split",
+			hide: "explode",
 			width: $(document).width()-100,
-			height: 600,
+			height: window.innerHeight,
 			modal: true,
 			close:function()
 				{
@@ -381,65 +384,157 @@ function selectFilm(eid,type)
 			
 		});
 	
-		
+		$(eid).dialog("open");
+		$(eid).html(loading);
 		$(eid).load("?route=lotte/movie&opendialog=true",function(){
-			$(eid).dialog("open");	
+				
 		});
 		
 }
 
 function browserFile(eid,type)
 {
+	
     $('#handler').val(eid);
 	$('#outputtype').val(type);
-	$("#popup").attr('title','Chọn hình');
-		switch(type)
-		{
-			case "single":
-			$( "#popup" ).dialog({
-				autoOpen: false,
-				show: "blind",
-				hide: "explode",
-				width: $(document).width()-100,
-				height: 600,
-				modal: true,
-				
-			});
-			break;
-			case "multi":
-			$( "#popup" ).dialog({
-				autoOpen: false,
-				show: "blind",
-				hide: "explode",
-				width: $(document).width()-100,
-				height: 600,
-				modal: true,
-				buttons:
-				{
-					"Chọn":function()
-					{
-						$('.selectfile').each(function(index, element) {
-							var fileid = $(this).attr('id');
-							var filename = $(this).attr('filename');
-							var imagethumbnail = $(this).attr('imagethumbnail');
-                            $('#attachment').append(attachment.creatAttachmentRow(fileid,filename,imagethumbnail));
-                        });
-						$("#popup").dialog( "close" );
-					},
-					"Bỏ qua":function()
-					{
-						$("#popup").dialog( "close" );
-					}
-				}
-			});
-			break;
-		}
+	var eid = "fileform";
+	$('body').append('<div id="'+eid+'" style="display:none"></div>');
+	$('body').css('overflow','hidden');
+	$("#"+eid).attr('title','Chọn hình');
 	
+	switch(type)
+	{
+		case "single":
 		
-		$("#popup-content").load("?route=core/file&dialog=true&type="+type,function(){
-			$("#popup").dialog("open");	
+		case "video":
+		
+		$("#"+eid).dialog({
+			
+			width: $(document).width()-100,
+			height: window.innerHeight,
+			close:function()
+			{
+				$("#"+eid).remove();
+				
+				if($(".ui-widget-overlay").length==0)
+					$('body').css('overflow','auto');
+			},
+			
 		});
-		
+		break;
+		case "editor":
+		$("#"+eid).dialog({
+			autoOpen: false,
+			show: "blind",
+			hide: "explode",
+			width: $(document).width()-100,
+			height: window.innerHeight,
+			modal: true,
+			close:function()
+			{
+				$("#"+eid).remove();
+				$('body').css('overflow','auto');
+			},
+			buttons:
+			{
+				"Chọn":function()
+				{
+					var value = "";
+					$('.selectfile').each(function(index, element) {
+						width = "";
+							
+						value += "<img src='"+ HTTP_IMAGE+$(this).attr('filepath')+"'/>";
+						
+					});
+					
+					
+					var oEditor = CKEDITOR.instances[''+$('#handler').val()] ;
+					
+					
+					// Check the active editing mode.
+					if (oEditor.mode == 'wysiwyg' )
+					{
+						// Insert the desired HTML.
+						oEditor.insertHtml( value ) ;
+						
+						var temp = oEditor.getData()
+						oEditor.setData( temp );
+					}
+					else
+						alert( 'You must be on WYSIWYG mode!' ) ;
+					$("#"+eid).dialog( "close" );
+				},
+				"Bỏ qua":function()
+				{
+					$("#"+eid).dialog( "close" );
+				}
+			}
+		});
+		break;
+		case "multi":
+		$("#"+eid).dialog({
+			autoOpen: false,
+			show: "blind",
+			hide: "explode",
+			width: $(document).width()-100,
+			height: window.innerHeight,
+			modal: true,
+			close:function()
+			{
+				$("#"+eid).remove();
+				$('body').css('overflow','auto');
+			},
+			buttons:
+			{
+				"Chọn":function()
+				{
+					$('.selectfile').each(function(index, element) {
+						var filepath = $(this).attr('filepath');
+						var filename = $(this).attr('filename');
+						var imagethumbnail = $(this).attr('imagethumbnail');
+						$('#attachment').append(attachment.creatAttachmentRow(filepath,filename,imagethumbnail));
+					});
+					$("#"+eid).dialog( "close" );
+				},
+				"Bỏ qua":function()
+				{
+					$("#"+eid).dialog( "close" );
+				}
+			}
+		});
+		break;
+	}
+	
+	$("#"+eid).dialog("open");	
+	$("#"+eid).html(loading);
+	$("#"+eid).load("?route=core/file&dialog=true&type="+type);
+	
+}
+function openEditor(eid)
+{
+	width= 700;
+	height = 600;
+	win = window.open("?route=common/editor", "_blank", "toolbar=no, scrollbars=yes, resizable=yes, top=0, left=0, width="+width+", height="+height);
+	writeFile($('#'+eid).val());
+}
+function writeFile(text)
+{
+	var fso = new ActiveXObject("Scripting.FileSystemObject");
+	var fh = fso.OpenTextFile("D:\\data.txt", 8);
+	fh.WriteLine(text);
+	fh.Close(); 
+}
+function readFile()
+{
+	fh = fopen("c:\\MyFile.txt", 0); // Open the file for reading 
+	var str = "";
+	if(fh!=-1) // If the file has been successfully opened 
+	{ 
+		length = flength(fh);         // Get the length of the file     
+		str = fread(fh, length);     // Read in the entire file 
+		fclose(fh);                    // Close the file 
+	}
+	return str;
 }
 function intSeleteFile(type)
 {
@@ -447,24 +542,30 @@ function intSeleteFile(type)
 	switch(type)
 	{
 		case "single":
-			$('.filelist').click(function(e) {
+			$('.fileitem').dblclick(function(e) {
 				$('#'+ $('#handler').val()+'_fileid').val($(this).attr('id'));
 				$('#'+ $('#handler').val()).html($(this).attr('filepath'));
 				$('#'+ $('#handler').val()+'_filepath').val($(this).attr('filepath'));
 				$('#'+ $('#handler').val()+'_preview').attr('src',$(this).attr('imagethumbnail'));
-				
+				callback = $('#'+ $('#handler').val()+'_callback').val();
+				if(callback != undefined)
+				{
+					callback += ",'"+$(this).attr('filepath')+"')";
+					setTimeout(callback,0);
+				}
 				/*$('#imagepreview').attr('src',$(this).attr('imagethumbnail'));
 				$('#imageid').val(this.id);
 				$('#imagepath').val($(this).attr('filepath'));
 				$('#imagethumbnail').val($(this).attr('imagethumbnail'));*/
-				$("#popup").dialog( "close" );
+				
+				$("#fileform").dialog( "close" );
 				
 				
 			});			
 			break;
 			
 		case "editor":
-			$('.filelist').click(function(e) {
+			$('.fileitem').dblclick(function(e) {
 
 				
 				width = "";
@@ -485,11 +586,11 @@ function intSeleteFile(type)
 				}
 				else
 					alert( 'You must be on WYSIWYG mode!' ) ;
-				$("#popup").dialog( "close" );
+				$("#fileform").dialog( "close" );
 			});			
 			break;
 		case "video":
-			$('.filelist').click(function(e) {
+			$('.fileitem').dblclick(function(e) {
 
 				
 				width = "";
@@ -512,7 +613,7 @@ function intSeleteFile(type)
 				}
 				else
 					alert( 'You must be on WYSIWYG mode!' ) ;*/
-				$("#popup").dialog( "close" );
+				$("#fileform").dialog( "close" );
 			});			
 			break;
 		case "multi":
@@ -564,7 +665,20 @@ function addImageTo()
 		}
 	}
 }
-
+function toPhpTime(t)
+{
+	var d = new Date(t);
+	var date = d.getFullYear()+"-"+ (d.getMonth()<10?"0"+(d.getMonth()+1):d.getMonth()+1) +"-"+(d.getDate()<10?"0"+d.getDate():d.getDate());
+	var time = (d.getHours()<10?"0"+d.getHours():d.getHours())+":"+(d.getMinutes()<10?"0"+d.getMinutes():d.getMinutes())+":"+ (d.getSeconds()<10?"0"+d.getSeconds():d.getSeconds());
+	
+	return date+" "+time;
+}
+function intToDate(n)
+{
+	var d = new Date(n);
+	var date =(d.getDate()<10?"0"+d.getDate():d.getDate())+"-"+(d.getMonth()+1 < 10?"0"+(d.getMonth()+1):d.getMonth()+1)+"-"+d.getFullYear();
+	return date;
+}
 function Attachment()
 {
 	this.index = 0;
@@ -589,3 +703,178 @@ function Attachment()
 
 }
 var attachment = new Attachment();
+
+$.xhrPool = [];
+$.xhrPool.abortAll = function() {
+    $(this).each(function(idx, jqXHR) {
+        jqXHR.abort();
+    });
+    $.xhrPool = [];
+};
+
+$.ajaxSetup({
+    beforeSend: function(jqXHR) {
+        $.xhrPool.push(jqXHR);
+		//console.log($.xhrPool);
+    },
+    complete: function(jqXHR) {
+        var index = $.xhrPool.indexOf(jqXHR);
+        if (index > -1) {
+            $.xhrPool.splice(index, 1);
+        }
+    }
+});
+function Notification()
+{
+	this.count = 0;
+	this.systemCheck = function()
+	{
+		this.count = 0;
+		$.getJSON("?route=core/notification/systemCheckMinSize",function(data){
+			
+			var str = '<ul class="notification-content">';
+			if(data.minsizeactive.length>0)
+			{
+				str += '<li><strong>Các sản phẩm mini size có tồn mà đang bị ẩn ('+ data.minsizeactive.length +')</strong>';
+				str += '<ul>';
+				for(i in data.minsizeactive)
+				{
+					
+					no.count++;
+					str += '<li>'+ data.minsizeactive[i].productName+' tồn: '+ data.minsizeactive[i].inventory +'</li>';
+				}
+				str += '</ul>';
+				str += '</li>';
+			}
+			
+			if(data.minsizehide.length>0)
+			{
+				str += '<li><strong>Các sản phẩm mini size đã hết hàng chưa ẩn ('+ data.minsizehide.length +')</strong>';
+				str += '<ul>';
+				for(i in data.minsizehide)
+				{
+					
+					no.count++;
+					str += '<li>'+ data.minsizehide[i].productName+' tồn: '+ data.minsizehide[i].inventory +'</li>';
+				}
+				str += '</ul>';
+				str += '</li>';
+			}
+			//
+			/*
+			
+			str += '<li><strong>Các sản phẩm chưa có giá</strong>';
+			str += '<ul>';
+			for(i in data.productprice)
+			{
+				
+				count++;
+				str += '<li>'+ data.productprice[i].productName +'</li>';
+			}
+			str += '</ul>';
+			str += '</li>';
+			
+			str += '<li><strong>Các sản phẩm đang active mà chưa có hình</strong>';
+			str += '<ul>';
+			for(i in data.productimage)
+			{
+				
+				count++;
+				str += '<li>'+ data.productimage[i].productName +'</li>';
+			}
+			str += '</ul>';
+			str += '</li>';*/
+			
+			str += '</ul>';
+			$('#notification-content').html(str);
+			no.systemCheckInventory();
+		});
+	}
+	this.systemCheckInventory = function()
+	{
+		//Các sản phẩm tồn âm kho
+		$.getJSON("?route=core/notification/systemCheckInventory",function(data){
+			if(data.productinventory.length>0)
+			{
+				str = '<li><strong>Các sản phẩm tồn âm kho ('+ data.productinventory.length +')</strong>';
+				if(data.productinventory.length>0)
+				{
+					
+					str += '<ul>';
+					for(i in data.productinventory)
+					{
+						
+						no.count++;
+						str += '<li>'+ data.productinventory[i].productName+' tồn: '+ data.productinventory[i].inventory +'</li>';
+					}
+					str += '</ul>';
+					str += '</li>';
+				}
+				$('.notification-content').append(str);
+			}
+			
+			if(data.productprice.length>0)
+			{
+				str = '<li><strong>Các sản phẩm có tồn mà chưa có giá ('+ data.productprice.length +')</strong>';
+				if(data.productprice.length>0)
+				{
+					
+					str += '<ul>';
+					for(i in data.productprice)
+					{
+						
+						no.count++;
+						str += '<li>'+ data.productprice[i].productName +'</li>';
+					}
+					str += '</ul>';
+					str += '</li>';
+				}
+				$('.notification-content').append(str);
+			}
+			if(data.productimage.length>0)
+			{
+				str = '<li><strong>Các sản phẩm có tồn mà chưa có hình ('+ data.productimage.length +')</strong>';
+				if(data.productimage.length>0)
+				{
+					
+					str += '<ul>';
+					for(i in data.productimage)
+					{
+						
+						no.count++;
+						str += '<li>'+ data.productimage[i].productName+' tồn: '+ data.productimage[i].inventory +'</li>';
+					}
+					str += '</ul>';
+					str += '</li>';
+				}
+				$('.notification-content').append(str);
+			}
+			no.effect();
+	
+		});
+	}
+	this.effect = function()
+	{
+		if(no.count)
+			$('#notification-number').html(this.count).show();
+		$('.notification-content li ul').hide();
+		$('.notification-content li strong').click(function(e) {
+			//alert($('.notification-content li ul').html())
+			
+			$(this).parent().children('ul').toggle(
+			function(e)
+			{
+				if($(this).css('display')== 'block')
+				{
+					$('#notification-content').height(window.innerHeight - 100);
+				}
+				else
+				{
+					$('#notification-content').css('height','auto');
+				}
+			});
+			
+		});
+	}
+}
+var no = new Notification();

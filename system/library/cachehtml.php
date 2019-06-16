@@ -1,14 +1,14 @@
 <?php
 final class Cachehtml { 
-	private $expire = 30;
+	private $expire = 3600;
 
   	public function __construct() {
-		/*$files = glob(DIR_CACHEHTML . 'cachehtml.*');
+		$files = glob(DIR_CACHEHTML . '*');
     	if(count($files))
 		{
 			foreach ($files as $file) 
 			{
-				//$time = end(explode('.', basename($file)));
+				
 				$time = fileatime($file);
 				if (time()- $time >$this->expire)
 				{
@@ -16,7 +16,7 @@ final class Cachehtml {
 				}
 				
 			}
-		}*/
+		}
   	}
 	
 	public function iscacht($key)
@@ -52,7 +52,7 @@ final class Cachehtml {
 
   	public function set($key, $value) {
 		
-    	$key = eregi_replace('[/]', '_', $key);
+    	@$key = eregi_replace('[/]', '_', $key);
 		
 		if (!is_dir(DIR_CACHEHTML))
 			mkdir( DIR_CACHEHTML , 0777 );

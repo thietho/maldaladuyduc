@@ -271,7 +271,7 @@ caption {
 
 table.data-table {
 	border: 1px solid #CCB;
-	margin-bottom: 2em;
+	
 	width: 100%;
 }
 
@@ -1228,7 +1228,7 @@ ul.autocomplete {
 	list-style-type: none;
 }
 .ui-autocomplete-loading {
-	background: white url(../image/ui-anim_basic_16x16.gif) right center no-repeat !important;
+	background: white url(../image/loading.gif) right center no-repeat !important;
 }
 .qlk_group
 {
@@ -1298,11 +1298,11 @@ ul.autocomplete {
 {
 	width:150px;	
 	height:150px;
-	background:url(../image/folder.png) no-repeat center center;
+	
 }
 .filename
 {
-	margin-top: 133px;
+	margin-top: 123px;
     position: absolute;
     text-align: center;
     width: 150px;
@@ -1427,11 +1427,11 @@ ul.autocomplete {
 }
 .folderitem
 {
-	padding:2px;	
+
 }
 .selectfolder
 {
-	background:#09F;
+	background:#F00;
 }
 .selectfile
 {
@@ -1446,4 +1446,52 @@ ul.autocomplete {
     height: 18px;
     background: green;
 	text-align:center;
+}
+.selected
+{
+	background-color:#F00 !important;
+}
+.links
+{
+	margin:5px;	
+}
+#notification-number
+{
+	position:absolute;
+	background:red;
+	border-radius: 20px;
+    font-weight: bold;
+    padding: 2px;
+	color:#fff;
+	border:#fff thick double;
+	display:none;
+}
+#notification-content
+{
+	position:absolute;
+	display:none;
+	background:#fff;
+	
+	overflow:auto;
+	border:#999 thin solid;
+	padding:5px;
+	border-radius:5px;
+}
+.hl-color-icon
+{
+	width: 1em;
+    height: 1em;
+    border-radius: 1em;
+}
+.xuatkho
+{
+	background:#FF0;	
+}
+#search table input
+{
+	width:100%;	
+}
+#search table select
+{
+	width:100%;	
 }

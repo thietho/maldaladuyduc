@@ -1,19 +1,28 @@
 <center>
-    <h2>Phiếu bán hàng</h2>
-    Ngày <?php echo $this->date->getDay($item['ngaylap'])?> tháng <?php echo $this->date->getMonth($item['ngaylap'])?> năm <?php echo $this->date->getYear($item['ngaylap'])?><br />
-	<label>Số:</label> <?php echo $item['maphieu']?>
-
+    <h2><?php echo $this->document->getCategory($item['loaiphieu'])?></h2>
+    
 </center>
 <table>
 	<tr>
-    	<td width="50%"><label>Người bán:</label> <?php echo $item['nguoithuchien']?></td>
-        <td>
-        	<label>Khách hàng:</label> <?php echo $item['nguoinhan']?>
+    	<td>
+            <div class="cusinfo">
+                <label>Khách hàng:</label> <?php echo @$item['tenkhachhang']?>
+                - <label>ĐT:</label> <?php echo @$item['dienthoai']?>
+            </div>
+            <div class="cusinfo">
+                <label>Địa chỉ:</label> <?php echo @$item['diachi']?>
+                
+                <!--<?php echo @$this->document->getCustomer($item['khachhangid'],'address')?>-->
+            </div>
         </td>
-    </tr>
-    
-    <tr>
-    	<td colspan="2"><label>Ghi chú:</label> <?php echo $item['ghichu']?></td>
+        <td align="right">
+        	<p>
+            	Ngày <?php echo @$this->date->getDay($item['ngaylap'])?> tháng <?php echo @$this->date->getMonth($item['ngaylap'])?> năm <?php echo @$this->date->getYear($item['ngaylap'])?>
+            </p>
+            <p>
+                <label>Số:</label> <?php echo @$item['maphieu']?>
+            </p>
+        </td>
     </tr>
 </table>
 
@@ -21,62 +30,67 @@
 	<thead>
         <tr>
             <th>STT</th>
-            <th>Code</th>
+            
             <th>Sản phẩm</th>
-            <th>Số lượng</th>
-            <th>Đơn vị</th>
+			<th>Nhãn hiệu</th>            
+            <th>SL</th>
+            <!--<th>Đơn vị</th>-->
             <th>Giá</th>
             <th>Thành tiền</th>
         </tr>
     </thead>
     <tbody>
-    	
+    	<?php $count = 0;?>
         <?php foreach($data_nhapkho as $key =>$val){ ?>
+        	<?php $count += $val['soluong'];?>    
+        <tr <?php if($val['xuattu']=='kho') echo 'class="xuatkho"'?> <?php if(@$val['thanhtien']==0) echo 'style="font-weight:bold"'?>>
+            <td><center><?php echo @$key+1?></center></td>
             
-        <tr>
-            <td><center><?php echo $key+1?></center></td>
-            <td><?php echo $val['code']?></td>
-            <td><?php echo $val['title']?></td>
-            <td class="number"><?php echo $this->string->numberFormate($val['soluong'])?></td>
-            <td><?php echo $this->document->getDonViTinh($val['madonvi'])?></td>
-            <td class="number"><?php echo $this->string->numberFormate($val['giatien'])?></td>
-            <td class="number"><?php echo $this->string->numberFormate($val['thanhtien'])?></td>
+            <td>
+                <?php echo @$this->document->productName($val['mediaid'])?>
+            </td>
+            <td><font style="text-transform:uppercase"><?php echo @$this->document->getCategory(@$this->document->getMedia($val['mediaid'],'brand'))?></font></td>
+            <td class="number"><?php echo @$this->string->numberFormate($val['soluong'])?></td>
+            <!--<td><?php echo @$this->document->getDonViTinh($val['madonvi'])?></td>-->
+            <td class="number">
+            	<?php if(@$val['giatien'] == 0){ ?>
+                <?php echo @$this->string->numberFormate(@$this->document->getMedia($val['mediaid'],'price'))?>
+                <?php }else{ ?>
+            	<?php echo @$this->string->numberFormate($val['giatien'] - $val['giamgia'])?>
+                <?php } ?>
+            </td>
+            <td class="number"><?php if(@$val['thanhtien']) echo @$this->string->numberFormate($val['thanhtien']); else echo "Tặng"?></td>
             
         </tr>
         <?php } ?>
+        <?php if(@$item['thuphi'] != 0 || $item['lydothu']!=''){ ?>
         <tr>
             
-           
-            <td colspan="6" class="number">Tổng tiền</td>
-            <td class="number"><?php echo $this->string->numberFormate($item['tongtien'])?></td>
+           	<td><center><?php echo @$key+2?></center></td>
+            <td><?php echo @$item['lydothu']?></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="number"><?php echo @$this->string->numberFormate($item['thuphi'])?></td>
         </tr>
+        <?php } ?>
         <tr>
-          
-            <td colspan="6" class="number">Thanh toán</td>
-            <td class="number"><?php echo $this->string->numberFormate($item['thanhtoan'])?></td>
+            <td></td>
+           	<td></td>
+            <td></td>
+            <td class="number"><?php echo @$this->string->numberFormate($count)?></td>
+            <td class="number"><strong>Tổng tiền</strong></td>
+            <td class="number"><?php echo @$this->string->numberFormate($item['tongtien'])?></td>
         </tr>
-        <?php if($item['congno']){ ?>
-        <tr>
-            <td colspan="6" class="number">Công nợ</td>
-            <td class="number"><?php echo $this->string->numberFormate($item['congno'])?></td>
-        </tr>
-        <tr>
-            <td colspan="6" class="number">Số ngày công nợ</td>
-            <td class="number"><?php echo $this->string->numberFormate($item['songaycongno'])?> ngày</td>
-        </tr>
-        <tr>
-            <td colspan="6" class="number">Ngày đến hạng thanh toán</td>
-            <td class="number"><?php echo $this->date->formatMySQLDate($this->date->addday($item['ngaylap'],$item['songaycongno']))?></td>
-        </tr>
-        <?php }?>
+        
     </tbody>
 </table>
 <table style="margin:15px 0">
 	<tr>
     	
         <th width="20%">Người lập phiếu</th>
-        <th width="20%">Khách hàng</th>
-        <th width="20%">Thủ quỷ</th>
+        <th width="20%">Người giao</th>
+        <th width="20%">Thủ quỹ</th>
     </tr>
     <tr>
     	
@@ -85,6 +99,3 @@
         <td align="center"><i>(Ký, Họ tên)</i></td>
     </tr>
 </table>
-<div style="height:80px"></div>
-
-         

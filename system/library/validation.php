@@ -32,7 +32,7 @@ final class Validation
 	function _checkEmail( $string )
 	{
 		$Message = NULL ;
-		(eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$", $string)) ? $Message = true : $Message = false ;
+		@(eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$", $string)) ? $Message = true : $Message = false ; 
 		return $Message ;
 	}
 	

@@ -19,6 +19,11 @@ final class Document {
 	public $text = array();
 	public $setting = array();
 	public $setup = array();
+	public $productdisplay = array(
+						   '' => "Chi tiết",
+						   'compact' => "Rút gọn",
+						   
+						   );
 	public $status = array(
 						   'new' => "Đơn hàng mới",
 						   'wait' => "Đang xử lý",
@@ -34,8 +39,8 @@ final class Document {
 						   );
 	public $status_media = array(
 						   'active' => "Hiện",
-						   'hide' => "Ẩn"
-						   
+						   'hide' => "Ẩn",
+						   'show' => "Luôn hiện"
 						   );
 	public $paymenttype = array(
 							'cash'=>'Tiền mặt',
@@ -65,6 +70,10 @@ final class Document {
 	public $mediatypes = array(
 						'module/product'=>'Product',
 						'module/news'=>'News'
+						);
+	public $shoptype = array(
+						'retail' => "Cửa hàng bán lẻ",
+						'saleoflot' => "Cửa hàng bán sỉ"
 						);
 	public function toVND($value,$donvi)
 	{
@@ -147,7 +156,7 @@ final class Document {
 		$query = $this->db->query("Select `sitemap`.* 
 									from `sitemap` 
 									where sitemapid ='".$sitemapid."' AND siteid = '".$siteid."'");
-		return $query->row[$name];	
+		return @$query->row[$name];	
 	}
 	
 	public function getCategory($categoryid,$name="categoryname")
@@ -155,7 +164,7 @@ final class Document {
 		$query = $this->db->query("Select `category`.* 
 									from `category` 
 									where categoryid ='".$categoryid."' ");
-		return $query->row[$name];	
+		return @$query->row[$name];	
 	}
 	
 	public function getMedia($mediaid,$name="title")
@@ -163,7 +172,32 @@ final class Document {
 		$query = $this->db->query("Select `media`.* 
 									from `media` 
 									where mediaid ='".$mediaid."' ");
-		return $query->row[$name];	
+		return @$query->row[$name];	
+	}
+	public function productName($mediaid)
+	{
+		if(!is_array( $mediaid))
+		{
+			$query = $this->db->query("Select `media`.* 
+										from `media` 
+										where mediaid ='".$mediaid."' ");
+			$media = $query->row;
+		}
+		else
+		{
+			$media = $mediaid;	
+		}
+		$productname = $media['title'];
+		if(@$media['code'])
+			@$productname .= " - ".$media['code'];
+		if(@$media['sizes'])
+			@$productname .= " ".$media['sizes'];
+		if(@$media['material'])
+			@$productname .= " ".$media['material'];
+		if(@$media['color'])
+			@$productname .= " ".$media['color'];
+		return $productname;
+		
 	}
 	public function getNhanVien($id,$name = 'hoten')
 	{
@@ -171,7 +205,7 @@ final class Document {
 									from `qlknhanvien` 
 									where id ='".$id."' ";
 		$query = $this->db->query($sql);
-		return $query->row[$name];
+		return @$query->row[$name];
 	}
 	
 	
@@ -181,7 +215,7 @@ final class Document {
 									from `usertype` 
 									where usertypeid ='".$usertypeid."' ";
 		$query = $this->db->query($sql);
-		return $query->row[$name];
+		return @$query->row[$name];
 	}
 	
 	public function getUser($userid,$name = 'fullname')
@@ -190,29 +224,29 @@ final class Document {
 									from `user` 
 									where userid ='".$userid."' ";
 		$query = $this->db->query($sql);
-		return $query->row[$name];
+		return @$query->row[$name];
 	}
-	
+	public function getCustomer($id,$name = 'fullname')
+	{
+		$sql = "Select `user`.* 
+									from `user` 
+									where id ='".$id."' ";
+		$query = $this->db->query($sql);
+		return @$query->row[$name];
+	}
 	public function getModule($id,$name = 'modulename')
 	{
 		$query = $this->db->query("Select `module`.* 
 									from `module` 
 									where id ='".$id."' ");
-		return $query->row[$name];	
+		return @$query->row[$name];	
 	}
 	public function getModuleId($moduleid,$name = 'modulename')
 	{
 		$query = $this->db->query("Select `module`.* 
 									from `module` 
 									where moduleid ='".$moduleid."' ");
-		return $query->row[$name];	
-	}
-	public function getTenDonVi($madonvi)
-	{
-		$query = $this->db->query("Select `qlkdonvitinh`.* 
-									from `qlkdonvitinh` 
-									where madonvi ='".$madonvi."' ");
-		return $query->row['tendonvitinh'];	
+		return @$query->row[$name];	
 	}
 	
 	public function getDonViTinh($madonvi,$name="tendonvitinh")
@@ -220,7 +254,7 @@ final class Document {
 		$query = $this->db->query("Select `qlkdonvitinh`.* 
 									from `qlkdonvitinh` 
 									where madonvi ='".$madonvi."' ");
-		return $query->row[$name];	
+		return @$query->row[$name];	
 	}
 	
 	public function getNguyenLieu($id,$name = 'tennguyenlieu')
@@ -229,7 +263,7 @@ final class Document {
 									from `qlknguyenlieu` 
 									where id ='".$id."' ";
 		$query = $this->db->query($sql);
-		return $query->row[$name];
+		return @$query->row[$name];
 	}
 	public function getNhaCungCap($id,$name = 'tennhacungcap')
 	{
@@ -237,7 +271,7 @@ final class Document {
 									from `qlknhacungcap` 
 									where id ='".$id."' ";
 		$query = $this->db->query($sql);
-		return $query->row[$name];
+		return @$query->row[$name];
 	}
 	public function getSanPham($id,$name = 'tensanpham')
 	{
@@ -245,7 +279,16 @@ final class Document {
 									from `qlksanpham` 
 									where id ='".$id."' ";
 		$query = $this->db->query($sql);
-		return $query->row[$name];
+		return @$query->row[$name];
+	}
+	
+	public function getShop($id,$name = 'shopname')
+	{
+		$sql = "Select `shop`.* 
+									from `shop` 
+									where id ='".$id."' ";
+		$query = $this->db->query($sql);
+		return @$query->row[$name];
 	}
 	
 	public function createLink($sitemap="",$id="",$key = "",$val = "")
@@ -279,14 +322,14 @@ final class Document {
 	public function getPara()
 	{
 		$uri = $_SERVER['REQUEST_URI'];
-		$arr = explode("\?",$uri);
+		@$arr = split("\?",$uri);
 		
-		$listpara = explode("&",$arr[1]);
+		@$listpara = split("&",$arr[1]);
 		$para = array();
 		foreach($listpara as $val)
 		{
-			$ar = explode("=",$val);	
-			$para[$ar[0]] = $ar[1];
+			@$ar = split("=",$val);	
+			@$para[$ar[0]] = $ar[1];
 		}
 		return $para;
 	}
@@ -298,6 +341,117 @@ final class Document {
 		
 		return $uri;
 	}
+	public function httppost($url,$data)
+	{
+		$options = array(
+			'http' => array(
+				'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+				'method'  => 'POST',
+				'content' => http_build_query($data),
+			),
+		);
+		//print_r($options);
+		$context  = stream_context_create($options);
+		$result = file_get_contents($url, false, $context);
+		return $result;
+	}
 	
+	public function httpget($url,$data)
+	{
+		$options = array(
+			'http' => array(
+				'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+				'method'  => 'GET',
+				'content' => http_build_query($data),
+			),
+		);
+		$context  = stream_context_create($options);
+		$result = file_get_contents($url, false, $context);
+		return $result;
+	}
+	public function objectToArray(&$obj)
+	{
+		
+		
+		foreach($obj as $key => $item)
+		{
+			
+			if(is_object($item))
+			{	
+				$obj[$key] = (array)$item;
+				$this->objectToArray($item);
+			}
+		}
+	}
+	public function select($sql)
+	{
+		$url = HTTP_SERVICE.'?route=core/db/select';
+		$data = array('sql' => base64_encode($sql));
+		$str = $this->httppost($url,$data);
+		$tb = json_decode($str);
+		$this->objectToArray($tb);
+		
+		return $tb;
+	}
+	public function insertData($table,$field,$value)
+	{
+		$url = HTTP_SERVICE.'?route=core/db/insertData';
+		$da = array(
+						'table'=>$table,
+						'field'=>$field,
+						'value'=>$value
+					);
+		
+		$id = $this->httppost($url,$da);
+		return $id;
+	}
+	public function updateData($table,$field,$value,$where)
+	{
+		$url = HTTP_SERVICE.'?route=core/db/updateData';
+		$da = array(
+						'table'=>$table,
+						'field'=>$field,
+						'value'=>$value,
+						'where'=> base64_encode($where)
+					);
+		
+		$id = $this->httppost($url,$da);
+	}
+	public function deleteData($table,$where)
+	{
+		$url = HTTP_SERVICE.'?route=core/db/deleteData';
+		$da = array(
+						'table'=>$table,
+						'where'=> base64_encode($where)
+					);
+		
+		$id = $this->httppost($url,$da);
+	}
+	
+	public function getNextIdVarChar($tablename,$tableid,$temp)
+	{
+	 	//echo $temp;
+		$sql="SELECT $tableid FROM `$tablename` WHERE $tableid LIKE '$temp%'";
+		$mid=$this->select($sql);
+		
+		//echo count($mid);
+		if(count($mid)==0)
+			return $temp."1";
+		
+		$mnum=array();
+		for($i=0; $i<count($mid); $i++)
+		{
+			//echo $mid[$i][$tableid];
+			//echo substr($mid[$i][$tableid],strlen($temp));
+			array_push($mnum,substr($mid[$i][$tableid],strlen($temp)));
+		}
+		$max=0;
+		//print_r($mnum);
+		for($i=0; $i<count($mnum); $i++)
+			if($max<intval($mnum[$i]))
+				$max=intval($mnum[$i]);
+		$nextid=$max+1;
+		return $temp.$nextid;
+	}
 }
 ?>

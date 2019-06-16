@@ -6,8 +6,8 @@
         <select id="sitemapid" name="sitemapid">
         	<option value=""></option>
             <?php foreach($data_danhmuc as $danhmuc){ ?>
-            <?php if($danhmuc['moduleid']== 'module/product'){ ?>
-            <option value="<?php echo $danhmuc['sitemapid']?>"><?php echo $this->string->getPrefix("&nbsp;&nbsp;&nbsp;&nbsp;",$danhmuc['level']) ?><?php echo $danhmuc['sitemapname']?></option>
+            <?php if(@$danhmuc['moduleid']== 'module/product'){ ?>
+            <option value="<?php echo @$danhmuc['sitemapid']?>"><?php echo @$this->string->getPrefix("&nbsp;&nbsp;&nbsp;&nbsp;",$danhmuc['level']) ?><?php echo @$danhmuc['sitemapname']?></option>
             <?php } ?>
             <?php } ?>
         </select>
@@ -29,7 +29,7 @@ $(document).ready(function(e) {
 });
 
 $('#btnAddProduct').click(function(e) {
-    addQuickProduct();
+    showProductForm('','searchForm()');
 });
 function loadData(url)
 {

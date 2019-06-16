@@ -28,11 +28,10 @@ class ModelCommonControl extends Model
 	
 	public function getComboboxData($id, $data, $selectedvalue="")
 	{
-		$str = '';
 		foreach($data as $key => $value)
 		{
 			$selected = "";
-			if($key == $selectedvalue) $selected = "selected='selected'";
+			if(@$key == $selectedvalue) $selected = "selected='selected'";
 			
 			$str .= "<option value='".$key."' ".$selected.">".$value."</option>";
 		}
@@ -46,7 +45,7 @@ class ModelCommonControl extends Model
 		for($i=0; $i<count($data); $i++)
 		{
 			$selected = "";
-			if($data[$i][$valuemember] == $selectedvalue) $selected = "selected='selected'";
+			if(@$data[$i][$valuemember] == $selectedvalue) $selected = "selected='selected'";
 			
 			echo $str .= "<option value='".$data[$i][$valuemember]."' ".$selected.">".$data[$i][$displaymember]."</option>";
 		}

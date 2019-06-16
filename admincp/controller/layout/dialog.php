@@ -3,13 +3,12 @@ class ControllerLayoutDialog extends Controller
 {
 	public function index()
 	{
-		$this->template="layout/dialog.tpl";
-		$this->children=array(
-				'common/header',
-				'common/footer'
+		@$this->template="layout/dialog.tpl";
+		@$this->children=array(
+				
 				
 				);
-				$this->render();
+				@$this->render();
 	}
 }
 ?>

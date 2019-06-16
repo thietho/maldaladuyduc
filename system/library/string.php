@@ -46,7 +46,7 @@ final class String
 	public function getTextLength($str, $to,$form)
 	{
 		
-		$arr = explode(" ",strip_tags($str));
+		@$arr = split(" ",strip_tags($str));
 		$arr_str = array();
 		for($i=$to;$i<$form && $i<count($arr) ;$i++)
 		{
@@ -223,7 +223,7 @@ final class String
 	{
 		
 		$image = array('jpg','png','gif');
-		if(in_array($ext,$image))
+		if(in_array(strtolower($ext),$image))
 			return true;
 		else
 			return false;
@@ -280,10 +280,12 @@ final class String
 	
 	function referSiteMapToArray($refersitemap)
 	{
+		if($refersitemap =="")
+			return array();
 		$refersitemap = str_replace("][","@",$refersitemap);
 		$refersitemap = str_replace("[","",$refersitemap);
 		$refersitemap = str_replace("]","",$refersitemap);
-		$arr = explode("@",$refersitemap);
+		@$arr = split("@",$refersitemap);
 		return $arr;
 	}
 	
@@ -292,19 +294,20 @@ final class String
 		$s="";
 		if(count($arr))
 			foreach($arr as $item)
-				$s.="[".$item."]";
+				if(trim($item)!="")
+					$s.="[".$item."]";
 		return $s;
 	}
 	
 	function getFileName($path)
 	{
-		$arr = explode("/",$path);
+		@$arr = split("/",$path);
 		return $arr[count($arr)-1];
 	}
 	
 	function getFileExt($path)
 	{
-		$arr = explode("\.",$path);
+		@$arr = split("\.",$path);
 		return $arr[count($arr)-1];
 	}
 	
@@ -473,7 +476,7 @@ final class String
 		$s = $this->chuyenvekodau($s);
 		$s= str_replace("\\n","",$s);
 		$s = $this->removeKtdatbiet($s);
-		$arr = explode(" ",$s);
+		@$arr = split(" ",$s);
 		
 		
 		return $arr;
@@ -511,7 +514,7 @@ final class String
 	
 	function createDirpath($path)
 	{
-		$arr = explode("/",$path);
+		@$arr = split("/",$path);
 		$pa="";
 		foreach($arr as $item)
 		{
@@ -523,7 +526,7 @@ final class String
 	
 	function getFileInfo($filepath)
 	{
-		$arr = explode("/",$filepath);
+		@$arr = split("/",$filepath);
 		if(count($arr)>0)
 		{
 			$data['filename'] = array_pop($arr);
@@ -535,7 +538,7 @@ final class String
 			$data['filepath'] = "";
 		}
 		$data['filesize'] = filesize($filepath);
-		$arr = explode("\.",$data['filename']);
+		@$arr = split("\.",$data['filename']);
 		$data['ext'] = array_pop($arr);
 		return $data;
 	}

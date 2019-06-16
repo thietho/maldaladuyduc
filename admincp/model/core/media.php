@@ -1,6 +1,6 @@
 <?php
-$this->load->model("quanlykho/donvitinh");
-$this->load->model("core/file");
+@$this->load->model("quanlykho/donvitinh");
+@$this->load->model("core/file");
 class ModelCoreMedia extends ModelCoreFile 
 { 
 	private $arr_col = array(
@@ -11,8 +11,10 @@ class ModelCoreMedia extends ModelCoreFile
 							'sizes',
 							'unit',
 							'color',
+							'colorcode',
 							'material',
 							'brand',
+							'grouppro',
 							'mediaparent',
 							'mediatype',
 							'refersitemap',
@@ -22,9 +24,11 @@ class ModelCoreMedia extends ModelCoreFile
 							'description',
 							'alias',
 							'keyword',
+							'metadescription',
 							'author',
 							'source',
 							'saleprice',
+							'retail',
 							'price',
 							'noteprice',
 							'discountpercent',
@@ -45,7 +49,7 @@ class ModelCoreMedia extends ModelCoreFile
 							);
 	public function getItem($mediaid, $where="")
 	{
-		$query = $this->db->query("Select `media`.* 
+		$query = @$this->db->query("Select `media`.* 
 									from `media` 
 									where mediaid ='".$mediaid."' ".$where);
 		return $query->row;
@@ -53,7 +57,7 @@ class ModelCoreMedia extends ModelCoreFile
 	
 	public function getByAlias($alias, $where="")
 	{
-		$query = $this->db->query("Select `media`.* 
+		$query = @$this->db->query("Select `media`.* 
 									from `media` 
 									where alias ='".$alias."' ".$where);
 		return $query->row;
@@ -65,12 +69,12 @@ class ModelCoreMedia extends ModelCoreFile
 		$sql = "Select `media`.* 
 									from `media` 
 									where status not like 'delete' AND temp not like 'temp'  " . $where ;
-		if($to > 0)
+		if(@$to > 0)
 		{
 			$sql .= " Limit ".$from.",".$to;
 		}
 		//echo $sql;
-		$query = $this->db->query($sql);
+		$query = @$this->db->query($sql);
 		return $query->rows;
 	}
 	public function getMedias($where="", $from=0, $to=5)
@@ -79,12 +83,12 @@ class ModelCoreMedia extends ModelCoreFile
 		$sql = "Select `media`.* 
 									from `media` 
 									where status not like 'delete' " . $where ;
-		if($to > 0)
+		if(@$to > 0)
 		{
 			$sql .= " Limit ".$from.",".$to;
 		}
 		
-		$query = $this->db->query($sql);
+		$query = @$this->db->query($sql);
 		return $query->rows;
 	}
 	public function getPaginationList($options, $step=0, $to=20)
@@ -112,7 +116,7 @@ class ModelCoreMedia extends ModelCoreFile
 				$where .= " AND mediaparent ='".$item."'";
 			}
 		}
-		elseif($mediaparent != "%")
+		elseif(@$mediaparent != "%")
 		{
 			$where .= " AND mediaparent ='".$mediaparent."'";
 		}
@@ -125,13 +129,13 @@ class ModelCoreMedia extends ModelCoreFile
 				$where .= " AND mediatype ='".$item."'";
 			}
 		}
-		elseif($mediatype != "%")
+		elseif(@$mediatype != "%")
 		{
 			$where .= " AND mediatype ='".$mediatype."'";
 		}
 		
 		//Date
-		if($month != "" && $day != "" && $year != "")
+		if(@$month != "" && $day != "" && $year != "")
 		{
 			$php_start_time = mktime(0,0,0, $month, $day, $year);
 			$php_end_time = $php_start_time + (24 * 60 * 60); // Add 1 day to start date.
@@ -151,17 +155,17 @@ class ModelCoreMedia extends ModelCoreFile
 			
 			$where .= "AND (". implode($arr," OR ").")";
 		}
-		elseif($refersitemap != "%")
+		elseif(@$refersitemap != "%")
 		{
 			$where .= " AND refersitemap like '%[".$refersitemap."]%'";
 		}
 		
-		return $this->getList($where, $from, $to);
+		return @$this->getList($where, $from, $to);
 	}
 	
 	public function getInformationMedia($sitemapid, $type)
 	{
-		$query = $this->db->query("Select `media`.* 
+		$query = @$this->db->query("Select `media`.* 
 									from `media` 
 									where refersitemap like '%[".$sitemapid."]%' AND mediatype = '".$type."'");
 									
@@ -170,7 +174,7 @@ class ModelCoreMedia extends ModelCoreFile
 	
 	public function getListBySitemap($sitemapid, $type)
 	{
-		$query = $this->db->query("Select `media`.* 
+		$query = @$this->db->query("Select `media`.* 
 									from `media` 
 									where refersitemap like '%[".$sitemapid."]%' AND mediatype = '".$type."'");
 									
@@ -179,23 +183,25 @@ class ModelCoreMedia extends ModelCoreFile
 	
 	public function getListByParent($parent,$order = "", $from=0, $length=0)
 	{
-		$where = "AND mediaparent = '".$parent."' ".$order;		
-		return $this->getMedias($where, $from, $length);		
-		
+		if($parent)
+		{
+			$where = "AND mediaparent = '".$parent."' ".$order;		
+			return @$this->getMedias($where, $from, $length);		
+		}
 		
 	}
 
 	
 	public function updateMediaDate($mediaid, $statusdate)
 	{
-		$createddate = $this->date->getToday();
+		$createddate = @$this->date->getToday();
 		$sql = "Update `media` set `createddate` = '".$createddate."' where `mediaid` = '".$mediaid."'";
-		$this->db->query($sql);
+		@$this->db->query($sql);
 	}
 	
 	public function updatePos($data)
 	{
-		$mediaid = $this->db->escape(@$data['mediaid']);
+		$mediaid = @$this->db->escape(@$data['mediaid']);
 		$position=(int)@$data['position'];
 		
 		
@@ -207,13 +213,13 @@ class ModelCoreMedia extends ModelCoreFile
 					);
 		
 		$where="mediaid = '".$mediaid."'";
-		$this->db->updateData('media',$field,$value,$where);
+		@$this->db->updateData('media',$field,$value,$where);
 	}
 	
 	public function updateStatus($mediaid, $status)
 	{
-		$mediaid = $this->db->escape(@$mediaid);
-		$status=$this->db->escape(@$status);
+		$mediaid = @$this->db->escape(@$mediaid);
+		$status=@$this->db->escape(@$status);
 		
 		
 		$field=array(
@@ -224,7 +230,7 @@ class ModelCoreMedia extends ModelCoreFile
 					);
 		
 		$where="mediaid = '".$mediaid."'";
-		$this->db->updateData('media',$field,$value,$where);
+		@$this->db->updateData('media',$field,$value,$where);
 	}
 	public function updateCol($mediaid,$col,$val)
 	{
@@ -241,21 +247,21 @@ class ModelCoreMedia extends ModelCoreFile
 					);
 		
 		$where="mediaid = '".$mediaid."'";
-		$this->db->updateData('media',$field,$value,$where);
+		@$this->db->updateData('media',$field,$value,$where);
 	}
 	public function initialization($mediaid,$mediatype)
 	{
 		
-		$mediaid=$this->db->escape(@$mediaid);
-		$arr = $this->getItem($mediaid);
+		$mediaid=@$this->db->escape(@$mediaid);
+		$arr = @$this->getItem($mediaid);
 		
 		if(count($arr)==0)
 		{
-			$mediatype = $this->db->escape(@$mediatype);
+			$mediatype = @$this->db->escape(@$mediatype);
 			$status="active";
-			$statusdate = $this->date->getToday();
-			$statusby=$this->db->escape(@$data['userid']);
-			$updateddate = $this->date->getToday();
+			$statusdate = @$this->date->getToday();
+			$statusby=@$this->db->escape(@$data['userid']);
+			$updateddate = @$this->date->getToday();
 			
 			$field=array(
 							'mediaid',
@@ -273,7 +279,7 @@ class ModelCoreMedia extends ModelCoreFile
 							$statusby,
 							$updateddate
 						);
-			$this->db->insertData("media",$field,$value);
+			@$this->db->insertData("media",$field,$value);
 			
 		}
 		return $arr;
@@ -281,48 +287,48 @@ class ModelCoreMedia extends ModelCoreFile
 	
 	private function nextID($prefix)
 	{
-		return $this->db->getNextIdVarChar("media","mediaid",$prefix);	
+		return @$this->db->getNextIdVarChar("media","mediaid",$prefix);	
 	}
 	
 	public function insert($data)
 	{
 		$date = getdate();
 		
-		$mediaid = $this->db->escape(@$data['mediaid']);
-		if($mediaid == "")
-			$mediaid = $this->nextID($date['year'].$this->date->numberFormate($date['mon']));
-		$code = $this->db->escape(@$data['code']);
-		$sizes = $this->db->escape(@$data['sizes']);
-		$unit = $this->db->escape(@$data['unit']);
-		$color = $this->db->escape(@$data['color']);
-		$brand = $this->db->escape(@$data['brand']);
-		$mediaparent=$this->db->escape(@$data['mediaparent']);
-		$mediatype=$this->db->escape(@$data['mediatype']);
-		$refersitemap=$this->db->escape(@$data['refersitemap']);
-		$userid=$this->db->escape(@$data['userid']);
+		$mediaid = @$this->db->escape(@$data['mediaid']);
+		if(@$mediaid == "")
+			$mediaid = @$this->nextID($date['year'].@$this->date->numberFormate($date['mon']));
+		$code = @$this->db->escape(@$data['code']);
+		$sizes = @$this->db->escape(@$data['sizes']);
+		$unit = @$this->db->escape(@$data['unit']);
+		$color = @$this->db->escape(@$data['color']);
+		$brand = @$this->db->escape(@$data['brand']);
+		$mediaparent=@$this->db->escape(@$data['mediaparent']);
+		$mediatype=@$this->db->escape(@$data['mediatype']);
+		$refersitemap=@$this->db->escape(@$data['refersitemap']);
+		$userid=@$this->db->escape(@$data['userid']);
 		
-		$title=$this->db->escape(@$data['title']);
-		$summary=$this->db->escape(@$data['summary']);
-		$saleprice=$this->db->escape(@$data['saleprice']);
-		$price=$this->db->escape(@$this->string->toNumber($data['price']));
-		$discountpercent=$this->db->escape(@$this->string->toNumber($data['discountpercent']));
-		$pricepromotion=$this->db->escape(@$this->string->toNumber($data['pricepromotion']));
+		$title=@$this->db->escape(@$data['title']);
+		$summary=@$this->db->escape(@$data['summary']);
+		$saleprice=@$this->db->escape(@$data['saleprice']);
+		$price=@$this->db->escape(@$this->string->toNumber($data['price']));
+		$discountpercent=@$this->db->escape(@$this->string->toNumber($data['discountpercent']));
+		$pricepromotion=@$this->db->escape(@$this->string->toNumber($data['pricepromotion']));
 		$description=(@$data['description']);
-		$author=$this->db->escape(@$data['author']);
-		$source=$this->db->escape(@$data['source']);
+		$author=@$this->db->escape(@$data['author']);
+		$source=@$this->db->escape(@$data['source']);
 		
 		$imageid=(int)@$data['imageid'];
-		$imagepath=$this->db->escape(@$data['imagepath']);
+		$imagepath=@$this->db->escape(@$data['imagepath']);
 		$fileid=(int)@$data['fileid'];
-		$filepath=$this->db->escape(@$data['filepath']);
+		$filepath=@$this->db->escape(@$data['filepath']);
 		
-		$groupkeys=$this->db->escape(@$data['groupkeys']);
+		$groupkeys=@$this->db->escape(@$data['groupkeys']);
 		$viewcount=0;
 		$position=(int)@$data['position'];
 		$status="active";
-		$statusdate = $this->date->getToday();
-		$statusby=$this->db->escape(@$data['userid']);
-		$updateddate = $this->date->getToday();
+		$statusdate = @$this->date->getToday();
+		$statusby=@$this->db->escape(@$data['userid']);
+		$updateddate = @$this->date->getToday();
 		
 		$field=array(
 						'mediaid',
@@ -388,57 +394,59 @@ class ModelCoreMedia extends ModelCoreFile
 						$statusby,
 						$updateddate
 					);
-		$this->db->insertData("media",$field,$value);
-		$this->updateFileTemp($imageid);
-		$this->updateFileTemp($fileid);
+		@$this->db->insertData("media",$field,$value);
+		@$this->updateFileTemp($imageid);
+		@$this->updateFileTemp($fileid);
 		return $mediaid;
 	}
 	
 	public function update($data)
 	{
 		
-		$mediaid = $this->db->escape(@$data['mediaid']);
-		$code = $this->db->escape(@$data['code']);
-		$sizes = $this->db->escape(@$data['sizes']);
-		$unit = $this->db->escape(@$data['unit']);
-		$color = $this->db->escape(@$data['color']);
-		$brand = $this->db->escape(@$data['brand']);
-		$mediaparent=$this->db->escape(@$data['mediaparent']);
-		$mediatype=$this->db->escape(@$data['mediatype']);
-		$refersitemap=$this->db->escape(@$data['refersitemap']);
-		$userid=$this->db->escape(@$data['userid']);
+		$mediaid = @$this->db->escape(@$data['mediaid']);
+		$code = @$this->db->escape(@$data['code']);
+		$sizes = @$this->db->escape(@$data['sizes']);
+		$unit = @$this->db->escape(@$data['unit']);
+		$color = @$this->db->escape(@$data['color']);
+		$colorcode = @$this->db->escape(@$data['colorcode']);
+		$brand = @$this->db->escape(@$data['brand']);
+		$mediaparent=@$this->db->escape(@$data['mediaparent']);
+		$mediatype=@$this->db->escape(@$data['mediatype']);
+		$refersitemap=@$this->db->escape(@$data['refersitemap']);
+		$userid=@$this->db->escape(@$data['userid']);
 		
-		$title=$this->db->escape(@$data['title']);
-		$summary=$this->db->escape(@$data['summary']);
-		$price=$this->db->escape(@$this->string->toNumber($data['price']));
-		$discountpercent=$this->db->escape(@$this->string->toNumber($data['discountpercent']));
-		$pricepromotion=$this->db->escape(@$this->string->toNumber($data['pricepromotion']));
-		$saleprice = $this->db->escape(@$data['saleprice']);
+		$title=@$this->db->escape(@$data['title']);
+		$summary=@$this->db->escape(@$data['summary']);
+		$price=@$this->db->escape(@$this->string->toNumber($data['price']));
+		$discountpercent=@$this->db->escape(@$this->string->toNumber($data['discountpercent']));
+		$pricepromotion=@$this->db->escape(@$this->string->toNumber($data['pricepromotion']));
+		$saleprice = @$this->db->escape(@$data['saleprice']);
 		$description=(@$data['description']);
-		$alias=$this->db->escape(@$data['alias']);
-		$keyword=$this->db->escape(@$data['keyword']);
-		$author=$this->db->escape(@$data['author']);
-		$source=$this->db->escape(@$data['source']);		
+		$alias=@$this->db->escape(@$data['alias']);
+		$keyword=@$this->db->escape(@$data['keyword']);
+		$author=@$this->db->escape(@$data['author']);
+		$source=@$this->db->escape(@$data['source']);		
 		$imageid=(int)@$data['imageid'];
-		$imagepath=$this->db->escape(@$data['imagepath']);
+		$imagepath=@$this->db->escape(@$data['imagepath']);
 		$fileid=(int)@$data['fileid'];
-		$filepath=$this->db->escape(@$data['filepath']);
-		//$status=$this->db->escape(@$data['status']);;
-		$groupkeys=$this->db->escape(@$data['groupkeys']);
-		$tagkeyword=$this->db->escape(@$data['tagkeyword']);
+		$filepath=@$this->db->escape(@$data['filepath']);
+		//$status=@$this->db->escape(@$data['status']);;
+		$groupkeys=@$this->db->escape(@$data['groupkeys']);
+		$tagkeyword=@$this->db->escape(@$data['tagkeyword']);
 		
 		
-		//$createddate=$this->db->escape(@$data['createddate']);
+		//$createddate=@$this->db->escape(@$data['createddate']);
 		
 		$viewcount=(int)@$data['viewcount'];
 
-		$updateddate = $this->date->getToday();
-		$noted=$this->db->escape(@$data['noted']);
+		$updateddate = @$this->date->getToday();
+		$noted=@$this->db->escape(@$data['noted']);
 		$field=array(
 						'code',
 						'sizes',
 						'unit',
 						'color',
+						'colorcode',
 						'brand',
 						'mediaparent',
 						'mediatype',
@@ -469,6 +477,7 @@ class ModelCoreMedia extends ModelCoreFile
 						$sizes,
 						$unit,
 						$color,
+						$colorcode,
 						$brand,
 						$mediaparent,
 						$mediatype,
@@ -496,22 +505,22 @@ class ModelCoreMedia extends ModelCoreFile
 					);
 		
 		$where="mediaid = '".$mediaid."'";
-		$this->db->updateData('media',$field,$value,$where);
+		@$this->db->updateData('media',$field,$value,$where);
 		return true;
 	}
 	
 	public function save($data)
 	{
-		$media = $this->getItem($data['mediaid']);
+		$media = @$this->getItem($data['mediaid']);
 		
 		$date = getdate();
-		if($data['mediaid'] == "")
-				$data['mediaid'] = $this->nextID($date['year'].$this->date->numberFormate($date['mon']));
-		$data['price']=$this->db->escape(@$this->string->toNumber($data['price']));
-		$data['discountpercent']=$this->db->escape(@$this->string->toNumber($data['discountpercent']));
-		$data['pricepromotion']=$this->db->escape(@$this->string->toNumber($data['pricepromotion']));
-		$data['updateddate'] = $this->date->getToday();
-		
+		if(@$data['mediaid'] == "")
+				$data['mediaid'] = @$this->nextID($date['year'].@$this->date->numberFormate($date['mon']));
+		$data['price']=@$this->db->escape(@$this->string->toNumber($data['price']));
+		$data['discountpercent']=@$this->db->escape(@$this->string->toNumber($data['discountpercent']));
+		$data['pricepromotion']=@$this->db->escape(@$this->string->toNumber($data['pricepromotion']));
+		$data['updateddate'] = @$this->date->getToday();
+		$data['keyword']=$this->createKeyword($data);
 		$value = array();
 		if(count($media))
 		{
@@ -524,28 +533,29 @@ class ModelCoreMedia extends ModelCoreFile
 		}
 		else
 		{
-			$data['statusby']=$this->db->escape(@$data['userid']);
+			$data['statusby']=@$this->db->escape(@$data['userid']);
 			$data['status']="active";
-			$data['statusdate'] = $this->date->getToday();
+			$data['statusdate'] = @$this->date->getToday();
 		}
 		
-		foreach($this->arr_col as $col)
+		foreach(@$this->arr_col as $col)
 		{
-			$value[] = $this->db->escape(@$data[$col]);
+			$value[] = @$this->db->escape(@$data[$col]);
 		}
 		
 
-		$field=$this->arr_col;
+		$field=@$this->arr_col;
 		
 		if(count($media) == 0)
 		{
-			$data['id'] = $this->db->insertData("media",$field,$value);
+			$data['id'] = @$this->db->insertData("media",$field,$value);
 		}
 		else
 		{
 			$where="mediaid = '".$data['mediaid']."'";
-			$this->db->updateData("media",$field,$value,$where);
+			@$this->db->updateData("media",$field,$value,$where);
 		}
+		
 		return $data['id'];
 	}
 	
@@ -554,25 +564,25 @@ class ModelCoreMedia extends ModelCoreFile
 		if(count($listfile))
 		{
 			$listfileid=implode(",",$listfile);
-			$this->model_core_media->saveInformation($mediaid, "attachment", $listfileid);
-			$this->model_core_media->updateListFileTemp($listfile);
+			@$this->model_core_media->saveInformation($mediaid, "attachment", $listfileid);
+			@$this->model_core_media->updateListFileTemp($listfile);
 		}
 		else
-			$this->model_core_media->saveInformation($mediaid, "attachment", "");
+			@$this->model_core_media->saveInformation($mediaid, "attachment", "");
 	}
 	
 	public function getInformation($mediaid, $fieldname)
 	{
 		$sql = "Select * from media_information where mediaid = '".$mediaid."' and fieldname = '".$fieldname."'";
-		$query = $this->db->query($sql);
+		$query = @$this->db->query($sql);
 		$info = $query->row;
-		return @$info['fieldvalue'];
+		return $info['fieldvalue'];
 	}
 	
 	public function saveInformation($mediaid, $fieldname, $fieldvalue)
 	{
 		$sql = "Select * from media_information where mediaid = '".$mediaid."' and fieldname = '".$fieldname."'";
-		$query = $this->db->query($sql);
+		$query = @$this->db->query($sql);
 		$info = $query->rows;
 		
 		$field=array(
@@ -590,35 +600,102 @@ class ModelCoreMedia extends ModelCoreFile
 		if(count($info) > 0)
 		{
 			$where="mediaid = '".$mediaid."' AND fieldname = '".$fieldname."'";
-			$this->db->updateData('media_information',$field,$value,$where);
+			@$this->db->updateData('media_information',$field,$value,$where);
 		}
 		else
 		{
-			$this->db->insertData("media_information",$field,$value);	
+			@$this->db->insertData("media_information",$field,$value);	
+		}
+	}
+	public function updateInforChild($mediaid)
+	{
+		
+		$data_child = @$this->getListByParent($mediaid);
+		$ref = '';
+		if(count($data_child))
+		{
+			$arrcol = array(
+							'barcode',
+							'ref',
+							'sizes',
+							'color',
+							'material'
+							);
+			$arr = array();			
+			foreach($arrcol as $col)	
+				$arr[$col] = @$this->string->matrixToArray($data_child,$col);
+			//print_r($arr);
+			//$media = @$this->getItem($mediaid);
+			
+			foreach($arr as $col => $val)
+			{
+				//@$this->updateCol($mediaid,$col,@$this->string->arrayToString($val));
+				$ref .= @$this->string->arrayToString($val);
+			}
+			@$this->updateCol($mediaid,"ref",$ref);
+			//Cập nhat thông tin các con giống với cha
+			
+		}
+		
+	}
+	public function updateAllChild($mediaid)
+	{
+		if($mediaid)
+		{
+			$data_child = @$this->getListByParent($mediaid);
+			if(count($data_child))
+			{
+				$arrcol = array(			
+									
+						'title',
+						'code',
+						'summary',
+						'description',
+						'metadescription',
+						'brand',
+						'grouppro',
+						'refersitemap',
+						'groupkeys'
+						);
+				$arrval = array();
+				$media = $this->getItem($mediaid);
+				foreach($arrcol as $val)
+					$arrval[] = $media[$val];
+				foreach($data_child as $child)
+				{
+					$where="mediaid = '".$child['mediaid']."'";
+					@$this->db->updateData('media',$arrcol,$arrval,$where);
+				}
+			}
 		}
 	}
 	
+	public function createKeyword($media)
+	{
+		
+		return $this->document->productName($media)." ".$media['mediaid']." ".$media['barcode']." ".$media['ref'];
+	}
 	public function delete($mediaid)
 	{
 		$status="delete";
-		$statusdate = $this->date->getToday();
-		$statusby=$this->user->getId();
+		$statusdate = @$this->date->getToday();
+		$statusby=@$this->user->getId();
 		
-		if($mediaid != "")
+		if(@$mediaid != "")
 		{
 			$sql = "Update `media` set status='".$status."', statusdate='".$statusdate."', statusby='".$statusby."' where mediaid = '".$mediaid."'";
-			$this->db->query($sql);
+			@$this->db->query($sql);
 		}
 	}
 	
 	public function removeSitemap($mediaid, $sitemapid)
 	{	
-		if($mediaid != "")
+		if(@$mediaid != "")
 		{
-			$media = $this->getItem($mediaid);
-			$refersitemap = $this->getReferSitemapString($sitemapid, $media['refersitemap'], "delete");
+			$media = @$this->getItem($mediaid);
+			$refersitemap = @$this->getReferSitemapString($sitemapid, $media['refersitemap'], "delete");
 			$sql = "Update `media` set refersitemap='".$refersitemap."' where mediaid = '".$mediaid."'";
-			$this->db->query($sql);
+			@$this->db->query($sql);
 		}
 	}
 	
@@ -626,18 +703,18 @@ class ModelCoreMedia extends ModelCoreFile
 	
 	public function clearTempFile()
 	{
-		$this->clearTemp();
+		@$this->clearTemp();
 	}
 	
 	public function getReferSitemapString($sitemapid, $oldReferSitemap="", $type="add")
 	{
 		$sitemapid = "[".$sitemapid."]";
 		$pos = strrpos($oldReferSitemap, $sitemapid);
-		if ($pos === false) {
-			if($type=="add"){ 
+		if(@$pos === false) {
+			if(@$type=="add"){ 
 				$oldReferSitemap .= $sitemapid;
 			}
-		}elseif($type=="delete")
+		}elseif(@$type=="delete")
 		{
 			$oldReferSitemap = str_replace($sitemapid, "", $oldReferSitemap);
 		}
@@ -649,14 +726,14 @@ class ModelCoreMedia extends ModelCoreFile
 	{
 		$step = (int)$step;
 		$result = array();
-		if($index > -1)
+		if(@$index > -1)
 		{
 			$alink = "";
 			$newstep = $step + 1;
 			$oldstep = $step - 1;
 			
-			$newerlist = $this->model_core_media->getPaginationList($queryoptions, $newstep, $to);
-			$olderlist = $this->model_core_media->getPaginationList($queryoptions, $oldstep, $to);
+			$newerlist = @$this->model_core_media->getPaginationList($queryoptions, $newstep, $to);
+			$olderlist = @$this->model_core_media->getPaginationList($queryoptions, $oldstep, $to);
 			
 			$newerid = (float)$medias[0]['id'];
 			$olderid = (float)$medias[$index]['id'];
@@ -685,50 +762,128 @@ class ModelCoreMedia extends ModelCoreFile
 				WHERE mediaid = '".$mediaid."' AND loaiphieu like '".$loaiphieu."%'
 				Group by madonvi
 				";
-		$query = $this->db->query($sql);
-		$query->rows;
+		//$tb = @$this->document->select($sql);
+		//return $tb;
+		$query = @$this->db->query($sql);
+		return $query->rows;
+	}
+	public function getSoLuongTuKho($mediaid)
+	{
+		$sql = "SELECT sum(soluong) as soluong, madonvi
+				FROM  `qlkphieunhapxuat_media` 
+				WHERE mediaid = '".$mediaid."' AND xuattu like 'kho'
+				Group by madonvi
+				";
+		//$tb = @$this->document->select($sql);
+		//return $tb;
+		$query = @$this->db->query($sql);
+		return $query->rows;
+	}
+	/*public function getTongKho($mediaid,$loaiphieu)
+	{
+		$media = @$this->getItem($mediaid);
+		$arr_soluong = @$this->getSoLuong($mediaid,$loaiphieu);
+		$soluong = @$this->model_quanlykho_donvitinh->toDonViTinh($arr_soluong,$media['unit']);
+		$intsoluong = @$this->model_quanlykho_donvitinh->toInt($soluong);
+		$data_soluong = @$this->model_quanlykho_donvitinh->toDonVi($intsoluong,$media['unit']);
+		return @$this->model_quanlykho_donvitinh->toText($data_soluong);
+	}*/
+	
+	public function getInventory($mediaid)
+	{
+		$media = @$this->getItem($mediaid);
 		
+		$arrnhap = @$this->getSoLuong($mediaid,'NK');
+		//$arrnhapkhtra = @$this->getSoLuong($mediaid,'NK-KHTL');
+		//$arrnhap = array_merge($arrnhap,$arrnhapkhtra);
+		
+		$soluongnhap = @$this->model_quanlykho_donvitinh->toDonViTinh($arrnhap,$media['unit']);
+		
+		//print_r($soluongnhap);
+		$int_nhap = @$this->model_quanlykho_donvitinh->toInt($soluongnhap);
+		//$arr_nhap = @$this->model_quanlykho_donvitinh->toDonVi($int_nhap,$media['unit']);
+		//Xuat kho
+		$arrxuat = @$this->getSoLuong($mediaid,'PX');
+		$soluongxuat = @$this->model_quanlykho_donvitinh->toDonViTinh($arrxuat,$media['unit']);
+		$int_xuat = @$this->model_quanlykho_donvitinh->toInt($soluongxuat);
+		//Xuat ban tren phieu ban hang
+		$arrxuattukho = @$this->getSoLuongTuKho($mediaid);
+		$soluongxuattukho = @$this->model_quanlykho_donvitinh->toDonViTinh($arrxuattukho,$media['unit']);
+		$int_xuattukho = @$this->model_quanlykho_donvitinh->toInt($soluongxuattukho);
+		//$arr_xuat = @$this->model_quanlykho_donvitinh->toDonVi($int_xuat,$media['unit']);
+		return $int_nhap - $int_xuat - $int_xuattukho;
+		/*$arr_ton = @$this->model_quanlykho_donvitinh->toDonVi($int_nhap - $int_xuat,$media['unit']);
+		//print_r($arr_ton);
+		//echo "<br>";
+		return @$this->model_quanlykho_donvitinh->toText($arr_ton);*/
+	}
+	
+	public function getShopSoLuong($shopid,$mediaid,$loaiphieu,$tungay='',$denngay='')
+	{
+		if(@$tungay != "")
+		{
+			$where .= " AND ngaylap >= '".$tungay."'";
+		}
+		if(@$denngay != "")
+		{
+			$where .= " AND ngaylap < '".$denngay." 23:59:59'";
+		}
+		$sql = "SELECT sum(soluong) as soluong, madonvi
+				FROM  `qlkphieunhapxuat_media` 
+				WHERE mediaid = '".$mediaid."' AND shopid = '".$shopid."' AND loaiphieu like '".$loaiphieu."'
+				AND xuattu like '' ".$where."
+				Group by madonvi
+				";
+		//$tb = @$this->document->select($sql);
+		//return $tb;
+		$query = @$this->db->query($sql);
 		return $query->rows;
 	}
 	
-	public function getTongKho($mediaid,$loaiphieu)
+	public function getShopInventory($shopid,$mediaid,$tungay='',$denngay='')
 	{
-		$media = $this->getItem($mediaid);
-		$arr_soluong = $this->getSoLuong($mediaid,$loaiphieu);
-		$soluong = $this->model_quanlykho_donvitinh->toDonViTinh($arr_soluong,$media['unit']);
-		$intsoluong = $this->model_quanlykho_donvitinh->toInt($soluong);
-		$data_soluong = $this->model_quanlykho_donvitinh->toDonVi($intsoluong,$media['unit']);
-		return $this->model_quanlykho_donvitinh->toText($data_soluong);
-	}
-	
-	public function getTonKho($mediaid)
-	{
-		$media = $this->getItem($mediaid);
+		$media = @$this->getItem($mediaid);
 		
-		$arrnhap = $this->getSoLuong($mediaid,'NK');
-		//$arrnhapkhtra = $this->getSoLuong($mediaid,'NK-KHTL');
-		//$arrnhap = array_merge($arrnhap,$arrnhapkhtra);
+		//Nhap tu kho
+		$arrnhap = @$this->getShopSoLuong($shopid,$mediaid,'PX-XCH',$tungay,$denngay);
+		$soluongnhap = @$this->model_quanlykho_donvitinh->toDonViTinh($arrnhap,$media['unit']);
+		$int_nhap = @$this->model_quanlykho_donvitinh->toInt($soluongnhap);
+		//Nhap tu NCC
+		$arrnhapncc = @$this->getShopSoLuong($shopid,$mediaid,'CH-NK',$tungay,$denngay);
+		$soluongnhapncc = @$this->model_quanlykho_donvitinh->toDonViTinh($arrnhapncc,$media['unit']);
+		$int_nhapncc = @$this->model_quanlykho_donvitinh->toInt($soluongnhapncc);
+		//$arr_nhap = @$this->model_quanlykho_donvitinh->toDonVi($int_nhap,$media['unit']);
+		//Xuat ban
+		$arrxuatban = @$this->getShopSoLuong($shopid,$mediaid,'CH-BH',$tungay,$denngay);
+		$soluongxuatban = @$this->model_quanlykho_donvitinh->toDonViTinh($arrxuatban,$media['unit']);
+		$int_xuatban = @$this->model_quanlykho_donvitinh->toInt($soluongxuatban);
+		//Xuat ve kho
+		$arrxuatvekho = @$this->getShopSoLuong($shopid,$mediaid,'NK-CH',$tungay,$denngay);
+		$soluongxuatvekho = @$this->model_quanlykho_donvitinh->toDonViTinh($arrxuatvekho,$media['unit']);
+		$int_xuatvekho = @$this->model_quanlykho_donvitinh->toInt($soluongxuatvekho);
 		
-		$soluongnhap = $this->model_quanlykho_donvitinh->toDonViTinh($arrnhap,$media['unit']);
+		return $int_nhap + $int_nhapncc - $int_xuatban - $int_xuatvekho;
 		
-		//print_r($soluongnhap);
-		$int_nhap = $this->model_quanlykho_donvitinh->toInt($soluongnhap);
-		//$arr_nhap = $this->model_quanlykho_donvitinh->toDonVi($int_nhap,$media['unit']);
-		
-		//Xuat kho
-		
-		$arrxuat = $this->getSoLuong($mediaid,'PBH');
-		$soluongxuat = $this->model_quanlykho_donvitinh->toDonViTinh($arrxuat,$media['unit']);
-		
-		
-		$int_xuat = $this->model_quanlykho_donvitinh->toInt($soluongxuat);
-		//$arr_xuat = $this->model_quanlykho_donvitinh->toDonVi($int_xuat,$media['unit']);
-		$arr_ton = $this->model_quanlykho_donvitinh->toDonVi($int_nhap - $int_xuat,$media['unit']);
+		//$arr_xuat = @$this->model_quanlykho_donvitinh->toDonVi($int_xuat,$media['unit']);
+		/*$arr_ton = @$this->model_quanlykho_donvitinh->toDonVi($int_nhap + $int_nhapncc - $int_xuatban - $int_xuatvekho,$media['unit']);
 		//print_r($arr_ton);
 		//echo "<br>";
-		return $this->model_quanlykho_donvitinh->toText($arr_ton);
+		return @$this->model_quanlykho_donvitinh->toText($arr_ton);*/
 	}
-	
-	
+	function getTotalInventory($mediaid)
+	{
+		//So luong ton ko
+		$inventory = $this->getInventory($mediaid);
+		//So luong ton tung shop
+		$sql = "SELECT * FROM  `shop`" ;
+		$query = @$this->db->query($sql);
+		$data_shops = $query->rows;
+		$sumshopinventory = 0;
+		foreach($data_shops as $shop)
+		{
+			$sumshopinventory+= $this->getShopInventory($shop['id'],$mediaid);
+		}
+		return $inventory + $sumshopinventory;
+	}
 }
 ?>
