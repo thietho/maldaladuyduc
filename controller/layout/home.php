@@ -1,4 +1,11 @@
 <?php
+/**
+ * Class ControllerLayoutHome
+ * @property ModelCoreMedia model_core_media
+ * @property Document document
+ * @property Member member
+ *
+ */
 class ControllerLayoutHome extends Controller
 {
 	public function index()
@@ -26,7 +33,10 @@ class ControllerLayoutHome extends Controller
 					$this->data['meta_image'] .= '<meta content="'.$item.'" property="og:image">';
 			}
 		}
-		
+        $this->load->model("core/media");
+        $sitemapid = 'loi-ich-cho-suc-khoe';
+        $this->data['media'] = $this->model_core_media->getItem($this->member->getSiteId().$sitemapid);
+        $this->data['media']['description'] = html_entity_decode($this->data['media']['description']);
 		$this->template="layout/home.tpl";
 		$this->children=array(
 			'common/header',
