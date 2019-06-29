@@ -1,7 +1,7 @@
 <div>
-	
+
     
-	<div class="ben-left" id="ben-maincontent">
+	<div id="ben-maincontent">
     	<div class="ben-section">
             
         

@@ -13,6 +13,7 @@ class ControllerAddonCart extends Controller
 	
 	public function getList()
 	{
+
 		$this->data['medias'] =array();
 		if(isset($_SESSION['cart']))
 		{

@@ -22,14 +22,21 @@ class ControllerPageDetail extends Controller
 			$siteid = $this->member->getSiteId();
 			
 			
-			@$id = $this->request->get['id'];
+			$id = isset($this->request->get['id'])?$this->request->get['id']:'';
 			
 			$this->document->breadcrumb = $this->model_core_sitemap->getBreadcrumb($this->document->sitemapid, $siteid, -1);
 			
 			if($this->document->sitemapid != "")
 			{
 				$sitemap = $this->model_core_sitemap->getItem($this->document->sitemapid, $siteid);
+
+
+				if(count($sitemap) == 0){
+
+                    $sitemap['sitemapname'] = "Giỏ hàng";
+                }
 				$this->data['sitemap'] = $sitemap;
+
 				switch($sitemap['moduleid'])
 				{
 					case "":
