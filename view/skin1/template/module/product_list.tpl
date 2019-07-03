@@ -14,12 +14,12 @@ if(count($medias))
 <script language="javascript">
 $('#order').val('<?php echo $_GET["order"]?>');
 </script>
-		<div id="ben-view-type" class="ben-right">
+		<!--<div id="ben-view-type" class="ben-right">
         	<img src="<?php echo HTTP_SERVER.DIR_IMAGE?>viewtype/view_gallery.gif" onclick="setViewType('gallery')"/>
             <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>viewtype/view_des.gif" onclick="setViewType('des')"/>
             <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>viewtype/view_list.gif" onclick="setViewType('list')"/>
             <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>viewtype/view_line.gif" onclick="setViewType('line')"/>
-        </div>
+        </div>-->
         <div class="clearer">&nbsp;</div>
         
     </div>

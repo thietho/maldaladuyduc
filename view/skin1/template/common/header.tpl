@@ -24,8 +24,17 @@
         
         
     </div>
+    <div id="ben-mobile-menu">
+        <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>iconmenu.png">
+        <div class="ben-navigation-mobile">
+            <ul id="ben-main-nav-mobile">
+                <?php echo $mainmenu?>
+            </ul>
+
+        </div>
+    </div>
     <div id="ben-main-menu">
-        <div class="ben-navigation ">
+        <div class="ben-navigation">
             
             <ul id="ben-main-nav">
                 <?php echo $mainmenu?>

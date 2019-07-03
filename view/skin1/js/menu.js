@@ -10,3 +10,6 @@ $(" #ben-main-nav li").hover(function(){
  $(document).ready(function(){					
 	mainmenu();
 });
+$('#ben-mobile-menu img').click(function () {
+	$('.ben-navigation-mobile').toggle();
+});

@@ -25,7 +25,7 @@
         <div class="product-mainimage">
         	<table>
             	<tr valign="middle">
-                	<td id="product-preview" height="250px" align="center"><a class="zoom" href="<?php echo $post['imagepreview']?>"><img  src="<?php echo $post['imagethumbnail']?>" /></a></td>
+                	<td id="product-preview" height="250px" align="center"><a class="zoom" href="<?php echo $post['imagepreview']?>"><img  src="<?php echo $post['imagethumbnail']?>" width="100%"/></a></td>
                 </tr>
             </table>
 	        

@@ -1,7 +1,7 @@
 <div id="desscription" style="display:none">
 	<strong><?php echo $item['title']?></strong><br><?php echo html_entity_decode($item['description'])?>
 </div>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyCibpjemwZxmni5m0bFk_ceXWSyCF7iq8Q&sensor=false"></script>
 <script type="text/javascript">
 
 var pos = 0;

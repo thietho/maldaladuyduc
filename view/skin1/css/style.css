@@ -160,7 +160,7 @@ img.ben-bordered,img.ben-alignleft,img.ben-alignright,img.ben-aligncenter {
 	padding: 3px;
 }
 img.ben-alignleft, img.ben-left {margin: 5px;}
-img.ben-alignright, img.ben-right {5px;}
+img.ben-alignright, img.ben-right {margin: 5px;}
 
 
 /* 
@@ -292,7 +292,7 @@ legend {
 textarea {overflow: auto;}
 
 input.ben-textbox, textarea, select {
-	background: #FCFCFC;
+
 	border: 1px solid #6cbf0a;
 	border-radius:5px;
 	margin: 0.2em 0;
@@ -392,7 +392,38 @@ input.ben-button:active {border-style: inset;}
 /* Splash */
 #ben-splash {padding-top: 32px;}
 
+/* Mobile Menu */
+#ben-mobile-menu{
+	position: absolute;
+	top: 50px;
+	z-index: 1000;
+	width: 100%;
+}
+.ben-navigation-mobile{
+	background: #6cbf0a;
+	display: none;
+}
 
+#ben-main-nav-mobile, #ben-main-nav-mobile ul{
+	margin: 0 10px;
+	padding:0;
+	list-style-type:none;
+	list-style-position:outside;
+	position:relative;
+	line-height:1.5em;
+	z-index:100;
+}
+#ben-main-nav-mobile a{
+	display:block;
+	padding:5px 10px;
+	font-weight:bold;
+	color:#fff;
+	text-decoration:none;
+	text-transform:uppercase;
+	font-size:1.2em;
+
+}
+/* Mobile Menu */
 
 /* Main Menu */
 /* Main Level 1 */
@@ -889,6 +920,9 @@ ul#menu li ul li div:hover {
 	color:#fa8903;
 	text-decoration:none;
 }
+#home-mobile{
+	display: none;
+}
 #aboutdtht .item .text
 {
 	
@@ -905,8 +939,68 @@ ul#menu li ul li div:hover {
 	height:49px;
 	margin-top:-10px;
 }
+.homedtht td a{
+	font-family: Flamenco;
+	font-size:1.5em;
+}
 #sanphamhome
 {
 	margin-left:798px;
 	margin-top:295px;	
+}
+
+@media screen and (min-width:1024px)  {
+	#ben-mobile-menu{
+		display: none;
+	}
+}
+@media screen and (max-width: 1023px)  {
+	#ben-main-menu{
+		display: none;
+	}
+	#ben-top{
+		width: auto;
+	}
+	#ben-header{
+		background-image: none;
+	}
+	#ben-header-search{display: none}
+	#ben-logo{
+		width: 100%;
+		text-align: center;
+		margin: 15px 0;
+	}
+	#aboutdtht{
+		right: 0;
+		margin-left: auto;
+	}
+	#sanphamhome{
+		display: none;
+	}
+	#videohome{
+		margin-left: 50px;
+	}
+	#ben-content{
+		width: auto;
+	}
+	#ben-maincontent{
+		margin: 0 5px;
+	}
+}
+@media screen and (max-width: 740px)  {
+	#home-desktop{
+		display: none;
+	}
+	#home-mobile{
+		display: block;
+	}
+
+	.homeitem{
+		position: relative;
+	}
+	#ben-home {
+		background: none;
+		height: auto;
+	}
+
 }

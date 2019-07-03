@@ -1,19 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="<?php echo $direction; ?>" lang="<?php echo $language; ?>" xml:lang="<?php echo $language; ?>">
 <head>
-<link type="image/x-icon" href="<?php echo HTTP_SERVER.DIR_IMAGE?>logo-small.png" rel="icon">
-<link type="image/x-icon" href="<?php echo HTTP_SERVER.DIR_IMAGE?>logo-small.png" rel="shortcut icon">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="robots" content="INDEX,FOLLOW" />
-<meta http-equiv="REFRESH" content="5400" />
-<meta name="description" content="<?php echo $meta_description?>" />
-<meta name="keywords" content="<?php echo $meta_keyword?>" />		
-<title><?php echo $title?></title>
-<meta property="og:title" content="<?php echo $title?>">
-<meta property="og:type" content="Website">
-<meta property="og:url" content="<?php echo $url?>">
-<meta property="og:description" content="<?php echo $meta_description?>">
-<?php echo $meta_image?>
+    <link type="image/x-icon" href="<?php echo HTTP_SERVER.DIR_IMAGE?>logo-small.png" rel="icon">
+    <link type="image/x-icon" href="<?php echo HTTP_SERVER.DIR_IMAGE?>logo-small.png" rel="shortcut icon">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="robots" content="INDEX,FOLLOW" />
+    <meta http-equiv="REFRESH" content="5400" />
+    <meta name="description" content="<?php echo $meta_description?>" />
+    <meta name="keywords" content="<?php echo $meta_keyword?>" />
+    <title><?php echo $title?></title>
+    <meta property="og:title" content="<?php echo $title?>">
+    <meta property="og:type" content="Website">
+    <meta property="og:url" content="<?php echo $url?>">
+    <meta property="og:description" content="<?php echo $meta_description?>">
+    <?php echo $meta_image?>
 
 </head>
 
@@ -120,6 +121,31 @@ $(document).ready(function() {
         <div id="ben-popup-content"></div>
         
     </div>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml            : true,
+            version          : 'v3.3'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+     attribution=setup_tool
+     page_id="189914514887033"
+     logged_in_greeting="Chào bạn! Tôi có thể giúp gì cho bạn?"
+     logged_out_greeting="Chào bạn! Tôi có thể giúp gì cho bạn?">
+</div>
 </body>
 
 </html>

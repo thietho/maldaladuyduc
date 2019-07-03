@@ -189,8 +189,8 @@ class ControllerPageDetail extends Controller
 						{
 							$template = array(
 											  'template' => "module/product_list.tpl",
-											  'width' => 170,
-											  'height' =>170,
+											  'width' => 450,
+											  'height' =>450,
 											  'widthpreview' => 450,
 						 		 			  'heightpreview' =>450,
 											  'paging' => true,
@@ -204,8 +204,8 @@ class ControllerPageDetail extends Controller
 						{
 							$template = array(
 										  'template' => "module/product_detail.tpl",
-										  'width' => 250,
-										  'height' =>250
+										  'width' => 500,
+										  'height' =>500
 										  );
 							$arr = array($this->document->sitemapid,12,$template);
 							$this->data['module'] = $this->loadModule('module/pagedetail','getFormProduct',$arr);

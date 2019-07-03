@@ -1,10 +1,13 @@
 .product
 {
-	width:213px;
+	width:25%;
 	/*height:234px;
 	border:thin solid #CCC;
 	border-radius:5px;
 	margin:3px;*/
+}
+.product img{
+	width: 100%;
 }
 .product-price
 {	
@@ -141,4 +144,19 @@
 	width:121px;
 	text-align:center;
 	padding:12px 0;
+}
+
+@media screen and (max-width: 740px)  {
+	.product{
+		width: 100%;
+	}
+	.product-left{
+		width: 100%;
+	}
+	.product-right{
+		width: 100%;
+	}
+	.ben-comment td{
+		display: flow-root;
+	}
 }
