@@ -292,7 +292,6 @@ legend {
 textarea {overflow: auto;}
 
 input.ben-textbox, textarea, select {
-
 	border: 1px solid #6cbf0a;
 	border-radius:5px;
 	margin: 0.2em 0;
@@ -305,9 +304,12 @@ input.ben-textbox, textarea, select {
 textarea
 {
 	width:95%;
-	height:175px;
+	height:120px;
 }
-select{height:28px}
+select{
+	height:24px;
+	width: 98%;
+}
 
 input.ben-textbox:focus, textarea:focus, select:focus {background: #FFFFF5;}
 
@@ -557,7 +559,11 @@ display:block;
 
 
 /* Posts - News list */
-.ben-post {margin-bottom: 20px;}
+.ben-post {
+	margin-bottom: 20px;
+	width: 48%;
+	padding: 5px;
+}
 
 .ben-post img.ben-left{margin-bottom:1em}
 
@@ -1002,5 +1008,7 @@ ul#menu li ul li div:hover {
 		background: none;
 		height: auto;
 	}
-
+	.ben-post {
+		width: 100%;
+	}
 }

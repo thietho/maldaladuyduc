@@ -71,6 +71,13 @@ function sendMessage()
         
     </div>
     <div class="ben-left">
+        <p>
+            <label for="input-1">Liên hệ</label><br/>
+            <select name="type">
+                <option>Gửi thông tin liên hệ</option>
+                <option>Liên hệ làm đại lý</option>
+            </select>
+        </p>
     	<p>
             <label for="input-3"><?php echo $text_note?></label><br/>
             <textarea name="description" id="description" class="ben-textbox" cols="65"></textarea>

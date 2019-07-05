@@ -2,7 +2,7 @@
 <div class="ben-item-separator"></div>
 
 <?php foreach($medias as $media) {?>
-<div class="ben-post">
+<div class="ben-left ben-post">
 	<?php if($media['imagethumbnail'] !=""){ ?>
 	<a href='<?php echo $media['link']?>'><img src='<?php echo $media['imagethumbnail']?>' class='ben-left' /></a>
     <?php }?>
@@ -14,7 +14,7 @@
     <div class="clearer">&nbsp;</div>
 </div>
 <?php } ?>
-
+<div class="clearer"></div>
 <?php if($othernews) {?>
 <h3>Các tin khác</h3>             
 <div>

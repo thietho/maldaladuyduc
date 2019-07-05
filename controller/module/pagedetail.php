@@ -14,8 +14,9 @@ class ControllerModulePagedetail extends Controller
 		$siteid = $this->member->getSiteId();
 		
 		$this->data['post'] = $this->model_core_media->getByAlias($mediaid);
-		$this->document->title = $this->document->setup['Title']." - ".$this->data['post']['title'];
-		
+		//$this->document->title = $this->document->setup['Title']." - ".$this->data['post']['title'];
+		$this->document->title = $this->data['post']['title'];
+		$this->data['post']['link'] = $this->document->createLink($sid,$this->data['post']['alias']);
 		if(count($this->data['post']) == 0)
 		{
 			$this->data['post']['description'] = "Updating...";

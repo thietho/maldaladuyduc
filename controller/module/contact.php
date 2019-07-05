@@ -28,6 +28,7 @@ class ControllerModuleContact extends Controller
 	public function sendMessage()
 	{
 		$data=$this->request->post;
+		
 		$error = $this->validate($data);
 		if(count($error))
 		{
@@ -52,10 +53,12 @@ class ControllerModuleContact extends Controller
 				$arrmail[] = $email2;
 			if($email3)
 				$arrmail[] = $email3;
+
 			$this->load->model("core/message");
 			$message['to']="admin," .implode(",",$arrmail) ;
 			$message['from']='"'.$data['fullname'].'" '.$data['email'];
-			$message['title'] = $media['title'];
+			//$message['title'] = $media['title'];
+			$message['title'] = $data['type'];
 			$message['description']="Họ tên: ".$data['fullname']."<br>";
 			$message['description'].="Email: ".$data['email']."<br>";
 			$message['description'].="Địa chỉ: ".$data['address']."<br>";
