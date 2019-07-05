@@ -42,22 +42,22 @@
 	vertical-align:middle;
 }
 
-.product-left
-{
-		
+.product-left{
+
+	width: 40%;
 }
 .product-right
 {
-	width:510px;	
+	width:58%;	
 }
 .product-mainimage
 {
 	text-align:center;
-	height:300px;
+	
 }
-.product-mainimage table
+.product-mainimage img
 {
-	height:100%;	
+	max-width: 100%;
 }
 #product-preview
 {
@@ -153,6 +153,7 @@
 	.product-left{
 		width: 100%;
 	}
+	
 	.product-right{
 		width: 100%;
 	}

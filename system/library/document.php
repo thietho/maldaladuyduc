@@ -43,7 +43,7 @@ final class Document {
 						   'show' => "Luôn hiện"
 						   );
 	public $paymenttype = array(
-							'cash'=>'Tiền mặt',
+							'cash'=>'COD(Thanh toán khi nhận hàng)',
 							'bank' =>'Chuyển khoản'
 							);
 	public $gioitinh = array(

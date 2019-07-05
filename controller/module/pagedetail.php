@@ -162,26 +162,26 @@ class ControllerModulePagedetail extends Controller
 		$listfileid=array();
 		if($listfile)
 			$listfileid=explode(",",$listfile);
-			
-		array_unshift($listfileid,$this->data['post']['imageid']);
 		
+		array_unshift($listfileid,$this->data['post']['imagepath']);
 		$this->data['subimage']=array();
 		$this->data['attachment']=array();
 		
-		foreach($listfileid as $key => $item)
+		foreach($listfileid as $key => $file)
 		{
-			$file = $this->model_core_file->getFile($item);
-			if($this->string->isImage($file['extension']))
+			//$file = $this->model_core_file->getFile($item);
+			$ext = $this->string->getFileExt($file);
+			if($this->string->isImage($ext))
 			{
-				$this->data['subimage'][$key] = $file;
-				$this->data['subimage'][$key]['imagethumbnail'] = HelperImage::resizePNG($file['filepath'], $template['width'], $template['height']);
-				$this->data['subimage'][$key]['icon'] = HelperImage::resizePNG($file['filepath'], 60, 60);	
-				$this->data['subimage'][$key]['imagepreview'] = HelperImage::resizePNG($file['filepath'],  800, 800);
+				$this->data['subimage'][$key]['filepath'] = $file;
+				$this->data['subimage'][$key]['imagethumbnail'] = HelperImage::resizePNG($file, $template['width'], $template['height']);
+				$this->data['subimage'][$key]['icon'] = HelperImage::resizePNG($file, 60, 60);	
+				$this->data['subimage'][$key]['imagepreview'] = HelperImage::resizePNG($file,  800, 800);
 			}
 			
-			if(!$this->string->isImage($file['extension']))
+			if(!$this->string->isImage($ext))
 			{
-				$this->data['attachment'][$key] = $file;
+				$this->data['attachment'][$key]['filepath'] = $file;
 				$this->data['attachment'][$key]['imagethumbnail'] = DIR_IMAGE."icon/dinhkem.png";
 			}
 			

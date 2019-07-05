@@ -6,21 +6,21 @@ final class MailSMTP {
 	{
 		$mail = new PHPMailer();
 		$mail->IsSMTP(); // set mailer to use SMTP
-		/*$mail->Host = "smtp.gmail.com"; // specify main and backup server
-		$mail->Port = 465; // set the port to use
+		$mail->Host = "smtp.gmail.com"; // specify main and backup server
+		$mail->Port = 587; // set the port to use
 		$mail->SMTPAuth = true; // turn on SMTP authentication
-		$mail->SMTPSecure = 'ssl';
+		$mail->SMTPSecure = 'tls';
 		$mail->Username = "thietho1982@gmail.com"; // your SMTP username or your gmail username
-		$mail->Password = "Ho9501424"; // your SMTP password or your gmail password
-		*/
-		$mail->Host = "mail.mylanbeauty.net"; // specify main and backup server
+		$mail->Password = "ThietHo@1706"; // your SMTP password or your gmail password
+		
+		/*$mail->Host = "mail.mylanbeauty.net"; // specify main and backup server
 		$mail->Port = 587; // set the port to use
 		$mail->SMTPAuth = true; // turn on SMTP authentication
 		$mail->SMTPSecure = '';
 		$mail->Username = "info@mylanbeauty.net"; // your SMTP username or your gmail username
-		$mail->Password = "MyLanBeauty164";
+		$mail->Password = "MyLanBeauty164";*/
 		
-		$from = "info@mylanbeauty.net"; // Reply to this email
+		$from = "thietho1982@gmail.com"; // Reply to this email
 		@$arremail = split(',',$data['to']);
 		$to=$arremail[0]; // Recipients email ID
 		$name= $data['name']; // Recipient's name
@@ -38,7 +38,8 @@ final class MailSMTP {
 		$mail->Subject = $data['subject'];
 		$mail->Body = $data['body']; //HTML Body
 		$mail->AltBody = $data['altbody']; //Text Body
-		//$mail->SMTPDebug = 2;
+		print_r($mail);
+		$mail->SMTPDebug = 2;
 		if(!$mail->Send())
 		{
 			return false;
