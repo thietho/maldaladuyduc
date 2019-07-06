@@ -12,7 +12,7 @@
                         <th>Loại</th>
                         <th>Địa chỉ</th>
                         <th>Điện thoại</th>
-                        <th>Nhân viên</th>
+                        <!--<th>Nhân viên</th>-->
                         <?php if(@$dialog==false){ ?>
                         <th>Control</th>            
                         <?php } ?>                      
@@ -34,7 +34,7 @@
                         <td><?php echo @$this->document->shoptype[$item['shoptype']]?></td>
                         <td><?php echo @$item['address']?></td>
                         <td><?php echo @$item['phone']?></td>
-                       	<td>
+                       	<!--<td>
                         	<?php if(count($item['arr_staffid'])){ ?>
                             <ul>
                         	<?php foreach($item['arr_staffid'] as $staffid){ ?>
@@ -48,13 +48,13 @@
                             <?php } ?>
                             </ul>
                             <?php } ?>
-                        </td>
+                        </td>-->
                         <?php if(@$dialog==false){ ?>
                         <td class="link-control">
                             <?php if(@$this->user->checkPermission("sales/shop/update")==true){ ?>
                             <input type="button" class="button" name="btnEdit" value="<?php echo @$item['text_edit']?>" onclick="window.location='<?php echo @$item['link_edit']?>'"/>
                             <?php } ?>
-                            <?php if(@$this->user->checkPermission("sales/shop/addstaff")==true){ ?>
+                            <!--<?php if(@$this->user->checkPermission("sales/shop/addstaff")==true){ ?>
                             <input type="button" class="button" name="btnAddStaff" value="Thêm nhân viên vào cửa hàng" onclick="selectNhanVien(<?php echo @$item['id']?>)"/>
                             <?php } ?>
                             <?php if(@$this->user->checkPermission("sales/shop/export")==true){ ?>
@@ -62,7 +62,7 @@
                             <?php } ?>
                             <?php if(@$this->user->checkPermission("sales/shop/import")==true){ ?>
                             <input type="button" class="button" name="btnImportShop" value="Nhập kho từ cửa hàng" onclick="window.location = '?route=sales/shop/import&shopid=<?php echo @$item['id']?>'"/>
-                            <?php } ?>
+                            <?php } ?>-->
                         </td>
                         <?php } ?>
                     </tr>
