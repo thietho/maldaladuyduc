@@ -1,4 +1,4 @@
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyCibpjemwZxmni5m0bFk_ceXWSyCF7iq8Q&sensor=false"></script>
 <script type="text/javascript">
 
 var pos = 0;

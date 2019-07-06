@@ -5,8 +5,11 @@ class ModelSalesShop extends Model
 								'shopname',
 								'shoptype',
 								'address',
-								'phone'
-								
+								'phone',
+								'lat',
+								'lng',
+								'zoom',
+								'imagepath'
 							);
 	public function getList($where = "")
 	{

@@ -143,7 +143,7 @@ class ControllerSalesShop extends Controller
       		@$this->data['item'] = @$this->model_sales_shop->getItem(@$this->request->get['id']);
 			@$this->data['item']['arrnhom'] = array();
 			@$this->data['item']['arrnhom'] = @$this->string->referSiteMapToArray(@$this->data['item']['nhom']);
-			@$this->data['item']['imagethumbnail'] = HelperImage::resizePNG(@$this->data['item']['imagepath'], 200, 200);
+			$this->data['item']['imagethumbnail'] = HelperImage::resizePNG(@$this->data['item']['imagepath'], 200, 200);
     	}
 		@$this->data['DIR_UPLOADPHOTO'] = HTTP_SERVER."index.php?route=common/uploadpreview";
 		@$this->id='content';
