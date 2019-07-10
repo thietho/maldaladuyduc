@@ -6,6 +6,7 @@ class ModelSalesShop extends Model
 								'shoptype',
 								'address',
 								'phone',
+								'email',
 								'lat',
 								'lng',
 								'zoom',

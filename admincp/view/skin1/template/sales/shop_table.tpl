@@ -12,6 +12,7 @@
                         <th>Loại</th>
                         <th>Địa chỉ</th>
                         <th>Điện thoại</th>
+                        <th>Email</th>
                         <!--<th>Nhân viên</th>-->
                         <?php if(@$dialog==false){ ?>
                         <th>Control</th>            
@@ -34,6 +35,7 @@
                         <td><?php echo @$this->document->shoptype[$item['shoptype']]?></td>
                         <td><?php echo @$item['address']?></td>
                         <td><?php echo @$item['phone']?></td>
+                        <td><?php echo @$item['email']?></td>
                        	<!--<td>
                         	<?php if(count($item['arr_staffid'])){ ?>
                             <ul>

@@ -50,6 +50,11 @@
 					<input type="text" name="phone" value="<?php echo @$item['phone']?>" class="text" size=60 />
                     
             	</p>
+                <p>
+                    <label>Email</label><br />
+                    <input type="text" name="email" value="<?php echo @$item['email']?>" class="text" size=60 />
+                    
+                </p>
                
                 
             </div>

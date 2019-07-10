@@ -39,7 +39,7 @@ class ControllerPageDetail extends Controller
 
 				switch($sitemap['moduleid'])
 				{
-					case "":
+					case "module/addon":
 						$this->data['module'] = $this->loadModule('addon/'.$this->document->sitemapid);
 					break;
 					case "group":

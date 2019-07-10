@@ -20,6 +20,7 @@ class ModelCoreSitemap extends Model
 							//'module/question'=>'Questions',
 							'module/location'=>'Location',
 							'module/forward'=>'Forward',
+							'module/addon'=>'Addon',
 							);
 	private $moduleaddon = array(
 								 /*"core/changeskin" => "Change skin",*/
