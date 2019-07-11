@@ -11,9 +11,12 @@ class ControllerAddonShop extends Controller
 	public function index()
 	{
 		$this->load->model("sales/shop");
-
+        $this->load->helper('image');
 		$this->data['shops'] = $this->model_sales_shop->getList();
-		
+		foreach ($this->data['shops'] as &$shop){
+		    $shop['image'] = HelperImage::resizePNG($shop['imagepath'], 100, 100);
+        }
+
 		$this->id="content";
 		$this->template="addon/shop.tpl";
 		$this->render();	
