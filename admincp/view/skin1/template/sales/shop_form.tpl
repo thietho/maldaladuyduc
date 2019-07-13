@@ -10,30 +10,30 @@
     </style>
 <div class="section" id="sitemaplist">
 
-	<div class="section-title"><?php echo @$this->document->title?></div>
+	<div class="section-title"><?php echo $this->document->title?></div>
     
     <div class="section-content padding1">
     
-    	<form name="frm" id="frm" action="<?php echo @$action?>" method="post" enctype="multipart/form-data">
+    	<form name="frm" id="frm" action="<?php echo $action?>" method="post" enctype="multipart/form-data">
         
         	<div class="button right">
             	<input type="button" value="Lưu" class="button" onClick="save()"/>
      	        <input type="button" value="Bỏ qua" class="button" onclick="linkto('?route=quanlykho/donvitinh')"/>   
-     	        <input type="hidden" name="id" value="<?php echo @$item['id']?>"/>
+     	        <input type="hidden" name="id" value="<?php echo $item['id']?>"/>
             </div>
             <div class="clearer">^&nbsp;</div>
         	<div id="error" class="error" style="display:none"></div>
         	<div class="col2 left">
             	<p>
             		<label>Tên cửa hàng</label><br />
-					<input type="text" name="shopname" value="<?php echo @$item['shopname']?>" class="text" size=60/>
+					<input type="text" name="shopname" value="<?php echo $item['shopname']?>" class="text" size=60/>
                     
             	</p>
               	<p>
             		<label>Loại cửa hàng</label><br />
 					<select id="shoptype" name="shoptype">
-                    	<?php foreach(@$this->document->shoptype as $type => $typename){ ?>
-                        <option value="<?php echo @$type?>"><?php echo @$typename?></option>
+                    	<?php foreach($this->document->shoptype as $type => $typename){ ?>
+                        <option value="<?php echo $type?>"><?php echo $typename?></option>
                         <?php } ?>
                     </select>
                     
@@ -41,49 +41,49 @@
                 
                 <p>
             		<label>Địa chỉ</label><br />
-					<input type="text" id="address" name="address" value="<?php echo @$item['address']?>" class="text" size=60 />
+					<input type="text" id="address" name="address" value="<?php echo $item['address']?>" class="text" size=60 />
                     
             	</p>
                
                 <p>
             		<label>Số điện thoại</label><br />
-					<input type="text" name="phone" value="<?php echo @$item['phone']?>" class="text" size=60 />
+					<input type="text" name="phone" value="<?php echo $item['phone']?>" class="text" size=60 />
                     
             	</p>
                 <p>
                     <label>Email</label><br />
-                    <input type="text" name="email" value="<?php echo @$item['email']?>" class="text" size=60 />
+                    <input type="text" name="email" value="<?php echo $item['email']?>" class="text" size=60 />
                 </p>
                 <p>
                     <label>Fanpage</label><br />
-                    <input type="text" name="fanpage" value="<?php echo @$item['fanpage']?>" class="text" size=60 />
+                    <input type="text" name="fanpage" value="<?php echo $item['fanpage']?>" class="text" size=60 />
                 </p>
                 
             </div>
             <div class="col2 right">
                  <p>
                     <label>Kinh độ</label><br />
-                    <input type="text" id="lat" name="lat" value="<?php echo @$item['lat']?>" class="text" size=60 />
+                    <input type="text" id="lat" name="lat" value="<?php echo $item['lat']?>" class="text" size=60 />
                     
                 </p>
                 <p>
                     <label>Vĩ độ</label><br />
-                    <input type="text" id="lng" name="lng" value="<?php echo @$item['lng']?>" class="text" size=60 />
+                    <input type="text" id="lng" name="lng" value="<?php echo $item['lng']?>" class="text" size=60 />
                     
                 </p>
                 <p>
                     <label>Zoom</label><br />
-                    <input type="text" id="zoom" name="zoom" value="<?php echo @$item['zoom']?>" class="text" size=60 />
+                    <input type="text" id="zoom" name="zoom" value="<?php echo $item['zoom']?>" class="text" size=60 />
                     
                 </p>
                 
                 <p id="pnImage">
-                    <label for="image"><?php echo @$entry_image?></label><br />
+                    <label for="image"><?php echo $entry_image?></label><br />
                     
-                    <input type="button" class="button" value="<?php echo @$entry_photo ?>" onclick="browserFile('imageid','single')"/><br />
-                    <img id="imageid_preview" src="<?php echo @$item['imagethumbnail']?>" onclick="showFile($('#imageid_filepath').val())"/>
-                    <input type="hidden" id="imageid_filepath" name="imagepath" value="<?php echo @$post['imagepath']?>" />
-                    <input type="hidden" id="imageid_fileid" name="imageid" value="<?php echo @$post['imageid']?>" />
+                    <input type="button" class="button" value="<?php echo $entry_photo ?>" onclick="browserFile('imageid','single')"/><br />
+                    <img id="imageid_preview" src="<?php echo $item['imagethumbnail']?>" onclick="showFile($('#imageid_filepath').val())"/>
+                    <input type="hidden" id="imageid_filepath" name="imagepath" value="<?php echo $item['imagepath']?>" />
+
                     
                 </p>
                 

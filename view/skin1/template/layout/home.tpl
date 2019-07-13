@@ -90,6 +90,17 @@
     <div id="ben-content">
         <div id="ben-maincontent">
             <div class="ben-section">
+                <div class="ben-section-title">Khách hàng nói về chúng tôi</div>
+            </div>
+        </div>
+        <div class="ben-section-content">
+            
+        </div>
+
+    </div>
+    <div id="ben-content">
+        <div id="ben-maincontent">
+            <div class="ben-section">
                 <div class="ben-section-title"><?php echo $media['title']?></div>
             </div>
         </div>
