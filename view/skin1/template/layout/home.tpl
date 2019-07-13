@@ -128,6 +128,17 @@
     <div id="ben-content">
         <div id="ben-maincontent">
             <div class="ben-section">
+                <div class="ben-section-title">Sản phẩm</div>
+            </div>
+        </div>
+        <div class="ben-section-content">
+            <?php echo $producthome?>
+        </div>
+
+    </div>
+    <div id="ben-content">
+        <div id="ben-maincontent">
+            <div class="ben-section">
                 <div class="ben-section-title"><?php echo $media['title']?></div>
             </div>
         </div>
@@ -151,26 +162,5 @@
 </body>
 
 </html>
-<div id="mystickytooltip" class="stickytooltip">
-
-    <div id="sticky1">
-
-    </div>
-
-</div>
-<script language="javascript">
-
-    $(document).ready(function () {
-        $(".link_hover").hover(function () {
-            //var img = '<img src="'+$(this).attr('ref')+'">';
-            var price = $(this).attr('price');
-            var text = '<div class="tooltip-title">' + $(this).attr('title') + ' - <span>' + price + '</span></div>';
-            var summary = '<div class="tooltip-summary">' + $(this).attr('summary') + '</div>';
-            $('#sticky1').html(text + summary);
-
-        });
-
-    });
-
 
 </script>

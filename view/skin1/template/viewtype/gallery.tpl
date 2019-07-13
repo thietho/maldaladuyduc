@@ -2,7 +2,7 @@
 
     <?php for($i=0;$i<count($medias);$i++){ ?>
     <?php $media = $medias[$i]?>
-    <div class="ben-left product link_hover" data-tooltip="sticky1" ref="<?php echo $media['imagetpreview']?>"
+    <div class="ben-left product" data-tooltip="sticky1" ref="<?php echo $media['imagetpreview']?>"
          title="<?php echo $media['title']?>"
          price="<?php echo $media['pricepromotion']==0?$this->string->numberFormate($media['price']):$this->string->numberFormate($media['pricepromotion']) ?> <?php echo $this->document->setup['Currency']?>"
          summary="<?php echo strip_tags($media['summary'])?>">

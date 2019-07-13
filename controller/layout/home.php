@@ -34,6 +34,23 @@ class ControllerLayoutHome extends Controller
 			}
 		}
         $this->load->model("core/media");
+
+        //San pham moi
+        $template = array(
+            'template' => "module/product_list.tpl",
+            'width' => 170,
+            'height' =>170,
+            'widthpreview' => 450,
+            'heightpreview' =>450,
+            'paging' => false,
+            'sorting' =>false
+        );
+
+        $medias = $this->getHomeMedias('module/product');
+
+        $arr = array("",20,"",$template,$medias);
+        $this->data['producthome'] = $this->loadModule('module/productlist','index',$arr);
+
         $sitemapid = 'loi-ich-cho-suc-khoe';
         $this->data['media'] = $this->model_core_media->getItem($this->member->getSiteId().$sitemapid);
         $this->data['media']['description'] = html_entity_decode($this->data['media']['description']);
@@ -44,5 +61,21 @@ class ControllerLayoutHome extends Controller
 		);
 		$this->render();
 	}
+
+    function getHomeMedias($mediatype)
+    {
+
+        
+        //$siteid = $this->member->getSiteId();
+        //$sitemaps = $this->model_core_sitemap->getListByModule("module/product", $siteid);
+        //$arrsitemapid = $this->string->matrixToArray($sitemaps,"sitemapid");
+        $queryoptions = array();
+        $queryoptions['mediaparent'] = '';
+        $queryoptions['mediatype'] = $mediatype;
+        $queryoptions['refersitemap'] = '%';
+        $data = $this->model_core_media->getPaginationList($queryoptions,$step=0,$to=0);
+
+        return $data;
+    }
 }
 ?>

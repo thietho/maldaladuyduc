@@ -17,12 +17,11 @@ a img {border: none;}
 
 
 
-/* 
-   GENERAL 
-------------------------------------------------------------------- */
+
+
 html {
 	height: 100%;
-	padding-bottom: 1px; /* force scrollbars */
+	padding-bottom: 1px;
 }
 
 body {
@@ -32,20 +31,6 @@ body {
 	line-height: 1.5;
 }
 
-
-
-
-
-
-
-
-
-
-
-/* 
-   TYPING 
-------------------------------------------------------------------- */
-/* Headings */
 h1,h2,h3,h4,h5,h6 {
 	color: #444;
 	font-weight: normal;
@@ -59,7 +44,7 @@ h5 {font-size: 1.1em;}
 h6 {font-size: 1em;}
 h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {margin: 0;}
 
-/* Links */
+/*
 a {
 	color: #1e8801;
 	text-decoration: none;
@@ -73,23 +58,10 @@ a.ben-other {
 a.ben-other:hover {}
 
 
-/* Paragraph */
 p {margin-bottom: 0.5em;}
 
 object { vertical-align:top; outline:none;border:0}
 
-
-
-
-
-
-
-
-
-
-/* 
-   COMMON TYPING CLASS 
-------------------------------------------------------------------- */
 .ben-text-left {text-align: left;}
 .ben-text-right {text-align: right;}
 .ben-text-center {text-align: center;}
@@ -131,17 +103,14 @@ object { vertical-align:top; outline:none;border:0}
 
 
 
-/* 
-   COMMON ALIGNMENT CLASS 
-------------------------------------------------------------------- */
-/* General */
+
 .ben-center,.ben-aligncenter {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-/* Floats */   
+
 .ben-left,.ben-alignleft {float: left;}
 .ben-right,.ben-alignright {float: right;}
 .ben-center{margin:0 auto}
@@ -153,7 +122,6 @@ object { vertical-align:top; outline:none;border:0}
 	height: 0;
 }
 
-/* Images */
 img.ben-bordered,img.ben-alignleft,img.ben-alignright,img.ben-aligncenter {
 	background-color: #FFF;
 	border: 1px solid #DDD;
@@ -162,10 +130,6 @@ img.ben-bordered,img.ben-alignleft,img.ben-alignright,img.ben-aligncenter {
 img.ben-alignleft, img.ben-left {margin: 5px;}
 img.ben-alignright, img.ben-right {margin: 5px;}
 
-
-/* 
-   Separators 
-------------------------------------------------------------------- */
 .ben-content-separator, .ben-item-separator, .ben-hline {
 	background: #E5E5E5;
 	clear: both;
@@ -180,15 +144,6 @@ img.ben-alignright, img.ben-right {margin: 5px;}
 .ben-hline {margin-bottom: 5px;}
 
 
-
-
-
-
-
-/* 
-   LIST - TABLE
-------------------------------------------------------------------- */
-/* Default Lists */
 li ul, li ol {margin-left: 1.5em;}
 ul, ol {margin: 0 0 1.5em 1.5em;}
 ul {list-style-type: disc;}
@@ -202,16 +157,15 @@ dl dt {font-weight: bold;}
 dd {margin-left: 1.5em;}
 
 
-/* Special lists */
 ul.ben-blank-list li, ul.ben-list li, ul.ben-tab-list li {
 	list-style: none;
 	margin-top: 0;
 }
 
 
-ul.ben-blank-list {margin: 0;} /* DANH SACH KHONG CO CSS */
+ul.ben-blank-list {margin: 0;}
 
-ul.ben-list {margin-left: 0;} /* DANH SACH DANG VERTICAL */
+ul.ben-list {margin-left: 0;}
 ul.ben-list li {
 	border-top: 1px solid #EEE;
 	list-style: none;
@@ -220,7 +174,7 @@ ul.ben-list li {
 ul.ben-list li:first-child {border-top: none;}
 ul.ben-list li .ben-right {color: #999;}
 
-/* DANH SACH HORIZONTAL */
+
 ul.ben-tab-list {
 	display: inline;
 	margin: 0;
@@ -229,11 +183,11 @@ ul.ben-tab-list li {float: left;}
 
 
 
-/* Tables */
+
 table {margin-bottom: 0.5em; width: 100%;}
 th {font-weight: bold;}
 thead th {text-align:center}
-th,td,caption {/*padding: 4px 10px 4px 5px;*/}
+th,td,caption {}
 tr.even td {background: #F2F6FA;}
 tfoot {font-style:normal}
 caption {background: #EEE;}
@@ -267,14 +221,6 @@ table.ben-form tr{vertical-align:middle}
 
 
 
-
-
-
-
-
-/* 
-   FORM
-------------------------------------------------------------------- */
 .label {
 	cursor: pointer;
 	font-weight: bold;
@@ -336,27 +282,6 @@ input.ben-button:active {border-style: inset;}
 
 
 
-
-
-
-
-
-
-
-/* *************************************************** */
-/* *************************************************** */
-/* *************************************************** */
-/* *************************************************** */
-/* *************************************************** */
-/* *************************************************** */
-
-
-
-
-/* 
-   COMMON LAYOUT
-------------------------------------------------------------------- */
-/* Wrapper */
 #ben-main {
 	margin: 0 auto;
 	
@@ -367,14 +292,12 @@ input.ben-button:active {border-style: inset;}
 
 
 
-/*---------- HEADER AREA ------------*/
-/* Header */
+
 #ben-header {
 	padding-top: 0px;
 	background:url(../image/bg-header.png) no-repeat top center;
 }
 
-/* Optional Top */
 #ben-top{
 	margin: 0 auto;
 	width: 1020px;
@@ -383,7 +306,7 @@ input.ben-button:active {border-style: inset;}
 }
 
 
-/* Logo */
+
 #ben-logo {	
 	margin:15px 30px;
 }
@@ -391,10 +314,10 @@ input.ben-button:active {border-style: inset;}
 
 #ben-site-title{padding-top:30px}
 
-/* Splash */
+
 #ben-splash {padding-top: 32px;}
 
-/* Mobile Menu */
+
 #ben-mobile-menu{
 	position: absolute;
 	top: 50px;
@@ -425,10 +348,7 @@ input.ben-button:active {border-style: inset;}
 	font-size:1.2em;
 
 }
-/* Mobile Menu */
 
-/* Main Menu */
-/* Main Level 1 */
 #ben-main-nav, #ben-main-nav ul{
 margin:0;
 padding:0;
@@ -520,7 +440,7 @@ display:block;
 }
 
 
-/* Subnav Leve 2 */
+
 #ben-sub-nav {
 	border-bottom: 1px solid #DDD;
 	padding: 12px 5px;
@@ -536,7 +456,6 @@ display:block;
 
 
 
-/*---------- BODY AREA ------------*/
 #ben-content {margin:1px auto; width:1020px}
 
 #ben-maincontent{margin-left:14px}
@@ -546,19 +465,15 @@ display:block;
 .ben-three-columns-right #ben-maincontent{width:520px; margin-right:20px}
 
 
-/* Sidebar */
-#ben-sidebar{} /*Div chua 2 sidebar*/
+#ben-sidebar{}
 .ben-sidebar{width:200px;}
 
 
-/* Columns */
 .ben-col2 {width: 46%;}
 .ben-col2.ben-other{width:48%}
 .ben-col3, .col3-mid {width: 31%;}
 .ben-col3-mid {margin-left: 3%;}
 
-
-/* Posts - News list */
 .ben-post {
 	margin-bottom: 20px;
 	
@@ -593,7 +508,7 @@ display:block;
 	width: 48%;
 }
 
-/* Sections */
+
 .ben-section {margin-bottom: 10px; }
 .ben-sidebar .ben-section{}
 #ben-maincontent .ben-section{}
@@ -632,13 +547,6 @@ display:block;
 	margin:10px 6px;
 }
 
-
-
-
-
-
-
-/*---------- FOOTER AREA ------------*/
 #ben-footer {
 	background:url(../image/bg-footer.jpg) no-repeat center top;
 	margin-top:2px;
@@ -711,7 +619,7 @@ ul#menu ul {
 }
 
 ul#menu a {
-  /*display: block;*/
+
   text-decoration: none;
   padding: 0.2em;	
   background:transparent;
@@ -796,12 +704,7 @@ ul#menu li ul li div:hover {
 {
 	padding:10px;
 }
-/* *************************************************** */
-/* *************************************************** */
-/* *************************************************** */
-/* *************************************************** */
-/* *************************************************** */
-/* *************************************************** */
+
 #ben-popup-content
 {
 	padding:10px;	

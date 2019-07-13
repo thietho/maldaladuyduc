@@ -87,3 +87,4 @@ $(document).ready(function(e) {
         <img width="100%" src="<?php echo HTTP_SERVER.DIR_IMAGE?>slogan.png" />
     </div>
 </div>
+
