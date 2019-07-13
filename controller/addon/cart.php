@@ -13,13 +13,12 @@ class ControllerAddonCart extends Controller
 	
 	public function getList()
 	{
-
 		$this->data['medias'] =array();
 		if(isset($_SESSION['cart']))
 		{
 			$this->data['medias'] = $_SESSION['cart'];
 		}
-		
+
 		$this->id="content";
 		$this->template="addon/cart_list.tpl";
 		$this->render();
@@ -72,6 +71,7 @@ class ControllerAddonCart extends Controller
 											'imagethumbnail' => $media['imagethumbnail'],
 											'qty' => $qty+1
 											);
+
 		$this->data['output'] = "true";
 		$this->id='content';
 		$this->template='common/output.tpl';

@@ -25,30 +25,9 @@ function Cart()
 			function(data){
 				if(data == "true")
 				{
-					$("#ben-popup").attr('title','Thông đặt hàng');
-					$( "#ben-popup" ).dialog({
-						autoOpen: false,
-						show: "blind",
-						hide: "explode",
-						width: 550,
-						height: 300,
-						modal: true,
-						buttons: {
-							
-							
-							'Đóng': function() {
-								$( this ).dialog( "close" );
-							},
-							'Xem giỏ hàng': function(){
-								window.location = HTTP_SERVER+'cart.html';	
-							},
-							
-						}
-					});
-				
-					
-					$("#ben-popup-content").load(HTTP_SERVER+"?route=common/warring/cart&mediaid="+mediaid,function(){
-						$("#ben-popup").dialog("open");	
+					$('#cartModal .modal-title').html('Thông đặt hàng');
+					$('#cartModal .modal-body').load(HTTP_SERVER+"?route=common/warring/cart&mediaid="+mediaid,function(){
+						$('#cartModal').modal();
 					});
 					cart.load()
 					

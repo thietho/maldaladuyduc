@@ -68,3 +68,24 @@
      logged_in_greeting="Chào bạn! Tôi có thể giúp gì cho bạn?"
      logged_out_greeting="Chào bạn! Tôi có thể giúp gì cho bạn?">
 </div>
+<!-- Modal -->
+<div class="modal fade" id="cartModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="window.location = HTTP_SERVER+'cart.html';">Xem giỏ hàng</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+
+    </div>
+</div>

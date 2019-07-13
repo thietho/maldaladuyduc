@@ -23,7 +23,7 @@ class ControllerPageDetail extends Controller
 			
 			
 			$id = isset($this->request->get['id'])?$this->request->get['id']:'';
-			
+
 			$this->document->breadcrumb = $this->model_core_sitemap->getBreadcrumb($this->document->sitemapid, $siteid, -1);
 			
 			if($this->document->sitemapid != "")
@@ -32,13 +32,16 @@ class ControllerPageDetail extends Controller
 
 
 				if(count($sitemap) == 0){
-
-                    $sitemap['sitemapname'] = "Giỏ hàng";
+                    if($this->document->sitemapid == 'cart') {
+                        $sitemap['sitemapname'] = "Giỏ hàng";
+                        $sitemap['moduleid'] = "module/addon";
+                    }
                 }
 				$this->data['sitemap'] = $sitemap;
 
 				switch($sitemap['moduleid'])
 				{
+
 					case "module/addon":
 						$this->data['module'] = $this->loadModule('addon/'.$this->document->sitemapid);
 					break;
