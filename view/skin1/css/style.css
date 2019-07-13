@@ -850,6 +850,21 @@ ul#menu li ul li div:hover {
 	width:172px;
 	padding:2px 0;
 }
+.ben-testimonial img{
+	width: 100%;
+}
+.ben-testimonial .colinfo{
+	width: 30%;
+}
+.ben-testimonial .coldetail{
+	width: 67%;
+}
+.ben-testimonial .name{
+	font-weight: bold;
+}
+.ben-testimonial .item{
+	height: 266px;
+}
 #aboutdtht .item .icon
 {
 	background:url(../image/bg-home-item-icon.png) no-repeat;

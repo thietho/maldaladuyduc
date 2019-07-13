@@ -54,6 +54,9 @@ class ControllerLayoutHome extends Controller
         $sitemapid = 'loi-ich-cho-suc-khoe';
         $this->data['media'] = $this->model_core_media->getItem($this->member->getSiteId().$sitemapid);
         $this->data['media']['description'] = html_entity_decode($this->data['media']['description']);
+
+        //Khach hàng nói về chúng tôi
+        $this->data['customertalkaboutus'] = $this->loadModule('addon/customertalkaboutus','getList',array());
 		$this->template="layout/home.tpl";
 		$this->children=array(
 			'common/header',
