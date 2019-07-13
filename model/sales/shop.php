@@ -10,7 +10,8 @@ class ModelSalesShop extends Model
 								'lat',
 								'lng',
 								'zoom',
-								'imagepath'
+								'imagepath',
+								'fanpage'
 							);
 	public function getList($where = "")
 	{

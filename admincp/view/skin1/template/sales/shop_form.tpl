@@ -53,9 +53,11 @@
                 <p>
                     <label>Email</label><br />
                     <input type="text" name="email" value="<?php echo @$item['email']?>" class="text" size=60 />
-                    
                 </p>
-               
+                <p>
+                    <label>Fanpage</label><br />
+                    <input type="text" name="fanpage" value="<?php echo @$item['fanpage']?>" class="text" size=60 />
+                </p>
                 
             </div>
             <div class="col2 right">

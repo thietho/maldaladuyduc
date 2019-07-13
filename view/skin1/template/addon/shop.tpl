@@ -3,37 +3,59 @@
 		height: 500px;
 	}
 </style>
-<div id="map"></div>
+
 <div class="ben-listhop">
 	<?php foreach($shops as $key => $shop){ ?>
-	<div id="shop-<?php echo $key?>" class="item" shopname="<?php echo $shop['shopname']?>" index="<?php echo $key?>"
+	<div id="shop-<?php echo $key?>" class="item ben-left" shopname="<?php echo $shop['shopname']?>" index="<?php echo $key?>"
 		 address="<?php echo $shop['address']?>"
 		 phone="<?php echo $shop['phone']?>"
 		 email="<?php echo $shop['email']?>"
+		 fanpage="<?php echo $shop['fanpage']?>"
 		 lat="<?php echo $shop['lat']?>"
 		 lng="<?php echo $shop['lng']?>"
 		 zoom="<?php echo $shop['zoom']?>"
 		 image="<?php echo $shop['image']?>">
 		<h3><?php echo $shop['shopname']?></h3>
-		<div>Địa chỉ: <?php echo $shop['address']?></div>
-		<div>Điện thoại: <?php echo $shop['phone']?></div>
-		<div>Email: <?php echo $shop['email']?></div>
+		<table>
+			<tr>
+				<td width="100px"><img src="<?php echo $shop['image']?>"></td>
+				<td>
+					<div>Địa chỉ: <?php echo $shop['address']?></div>
+					<div>Điện thoại: <?php echo $shop['phone']?></div>
+					<div>Email: <?php echo $shop['email']?></div>
+					<div>Fanpage: <a href="<?php echo $shop['fanpage']?>"><?php echo $shop['fanpage']?></a></div>
+				</td>
+			</tr>
+		</table>
+
 	</div>
 	<?php } ?>
+	<div class="clearer"></div>
 </div>
-
+<div id="map"></div>
 <script>
     var map;
     var marker;
+	var infowindow;
 
-	var lat = 0;
-	var lng = 0;
-	var zoom = 10;
-	var content = '';
 
 function initMap() {
-    
-	setParaMap(0);
+	var pos = 0;
+	var lat = Number($('#shop-'+pos).attr('lat'));
+	var lng = Number($('#shop-'+pos).attr('lng'));
+	var zoom = Number($('#shop-'+pos).attr('zoom'));
+	var content = '<table>' +
+			'<tr>' +
+			'<td><img src="'+ $('#shop-'+pos).attr('image') +'"></td>' +
+			'<td>' +
+			'<h3>'+$('#shop-'+pos).attr('shopname')+'</h3>' +
+			'<div>Địa chỉ'+$('#shop-'+pos).attr('address')+'</div>' +
+			'<div>Điện thoại: '+$('#shop-'+pos).attr('phone')+'</div>' +
+			'<div>Email: '+$('#shop-'+pos).attr('email')+'</div>' +
+			'<div>fanpage: '+$('#shop-'+pos).attr('fanpage')+'</div>' +
+			'</td>' +
+			'</tr>' +
+			'</table>';
 
     var myLatLng = {lat: lat, lng: lng}
 
@@ -41,7 +63,7 @@ function initMap() {
         zoom: zoom,
         center: myLatLng
     });
-	var infowindow = new google.maps.InfoWindow({
+	infowindow = new google.maps.InfoWindow({
 		content: content
 	});
 
@@ -51,11 +73,12 @@ function initMap() {
 	});
 	infowindow.open(map, marker);
 }
-function setParaMap(pos) {
-	lat = Number($('#shop-'+pos).attr('lat'));
-	lng = Number($('#shop-'+pos).attr('lng'));
-	zoom = Number($('#shop-'+pos).attr('zoom'));
-	content = '<table>' +
+
+function setMap(pos){
+	var lat = Number($('#shop-'+pos).attr('lat'));
+	var lng = Number($('#shop-'+pos).attr('lng'));
+	var zoom = Number($('#shop-'+pos).attr('zoom'));
+	var content = '<table>' +
 			'<tr>' +
 			'<td><img src="'+ $('#shop-'+pos).attr('image') +'"></td>' +
 			'<td>' +
@@ -63,13 +86,21 @@ function setParaMap(pos) {
 			'<div>Địa chỉ'+$('#shop-'+pos).attr('address')+'</div>' +
 			'<div>Điện thoại: '+$('#shop-'+pos).attr('phone')+'</div>' +
 			'<div>Email: '+$('#shop-'+pos).attr('email')+'</div>' +
+			'<div>fanpage: '+$('#shop-'+pos).attr('fanpage')+'</div>' +
 			'</td>' +
 			'</tr>' +
 			'</table>';
+	var myLatLng = {lat: lat, lng: lng};
+	map.setCenter(myLatLng);
+	map.setZoom(zoom);
+	marker.setPosition(myLatLng);
+	infowindow.setContent(content);
+	$(document).scrollTop($('#map').position().top)
 }
 $(document).ready(function () {
-	$('item').click(function () {
-		var pos = $(this).attr('');
+	$('.ben-listhop .item').click(function () {
+		var pos = $(this).attr('index');
+		setMap(pos);
 	});
 });
 </script>
