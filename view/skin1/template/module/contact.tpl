@@ -14,7 +14,7 @@ function GetKey(evt)
 }
 function sendMessage()
 {
-	$.blockUI({ message: "<h1>Please wait...</h1>" }); 
+	//$.blockUI({ message: "<h1>Please wait...</h1>" });
 	$.post(HTTP_SERVER+"?route=module/contact/sendMessage", 
 			$("#contractForm").serialize(), 
 			function(data)
@@ -30,7 +30,7 @@ function sendMessage()
 					alert("<?php echo $war_contactsuccess?>")
 					window.location.reload();
 				}
-				$.unblockUI();
+				//$.unblockUI();
 			}
 	);
 }

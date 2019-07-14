@@ -143,13 +143,14 @@
     <div class="ben-right product-right">
         <h2><?php echo $post['title']?></h2>
         <?php if($post['noted'] != "") echo "<h4>".$post['noted']."</h4>"; ?>
-        <div class="zalo-share-button" data-href="" data-oaid="579745863508352884" data-layout="2" data-color="blue" data-customize=false></div>
-        <div class="zalo-follow-only-button" data-oaid="579745863508352884"></div>
-        <div id="fb-root"></div>
-
-        <div class="fb-like" data-href="<?php echo $post['link']?>" data-width="" data-layout="standard"
-             data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
-
+        <table>
+            <tr>
+                <td><div class="zalo-share-button" data-href="" data-oaid="579745863508352884" data-layout="2" data-color="blue" data-customize=false></div></td>
+                <td><div class="zalo-follow-only-button" data-oaid="579745863508352884"></div></td>
+                <td><div class="fb-like" data-href="<?php echo $post['link']?>" data-width="" data-layout="standard"
+                         data-action="like" data-size="small" data-show-faces="true" data-share="true"></div></td>
+            </tr>
+        </table>
 
         <div class="ben-post-body">
             <p>

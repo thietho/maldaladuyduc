@@ -10,8 +10,8 @@ final class MailSMTP {
 		$mail->Port = 587; // set the port to use
 		$mail->SMTPAuth = true; // turn on SMTP authentication
 		$mail->SMTPSecure = 'tls';
-		$mail->Username = "thietho1982@gmail.com"; // your SMTP username or your gmail username
-		$mail->Password = "ThietHo@1706"; // your SMTP password or your gmail password
+		$mail->Username = "infomaldaladuyduc@gmail.com"; // your SMTP username or your gmail username
+		$mail->Password = "mE27UdHX"; // your SMTP password or your gmail password
 		
 		/*$mail->Host = "mail.mylanbeauty.net"; // specify main and backup server
 		$mail->Port = 587; // set the port to use
