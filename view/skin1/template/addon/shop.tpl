@@ -4,33 +4,39 @@
 	}
 </style>
 
-<div class="ben-listhop">
-	<?php foreach($shops as $key => $shop){ ?>
-	<div id="shop-<?php echo $key?>" class="item ben-left" shopname="<?php echo $shop['shopname']?>" index="<?php echo $key?>"
-		 address="<?php echo $shop['address']?>"
-		 phone="<?php echo $shop['phone']?>"
-		 email="<?php echo $shop['email']?>"
-		 fanpage="<?php echo $shop['fanpage']?>"
-		 lat="<?php echo $shop['lat']?>"
-		 lng="<?php echo $shop['lng']?>"
-		 zoom="<?php echo $shop['zoom']?>"
-		 image="<?php echo $shop['image']?>">
-		<h3><?php echo $shop['shopname']?></h3>
-		<table>
-			<tr>
-				<td width="100px"><img src="<?php echo $shop['image']?>"></td>
-				<td>
-					<div>Địa chỉ: <?php echo $shop['address']?></div>
-					<div>Điện thoại: <?php echo $shop['phone']?></div>
-					<div>Email: <?php echo $shop['email']?></div>
-					<div>Fanpage: <a href="<?php echo $shop['fanpage']?>"><?php echo $shop['fanpage']?></a></div>
-				</td>
-			</tr>
-		</table>
+<div class="ben-listhop container">
+	<div class="row">
+		<?php foreach($shops as $key => $shop){ ?>
+		<div class="col-sm-6">
+			<div id="shop-<?php echo $key?>" class="item" shopname="<?php echo $shop['shopname']?>" index="<?php echo $key?>"
+				 address="<?php echo $shop['address']?>"
+				 phone="<?php echo $shop['phone']?>"
+				 email="<?php echo $shop['email']?>"
+				 fanpage="<?php echo $shop['fanpage']?>"
+				 lat="<?php echo $shop['lat']?>"
+				 lng="<?php echo $shop['lng']?>"
+				 zoom="<?php echo $shop['zoom']?>"
+				 image="<?php echo $shop['image']?>">
+				<div class="shopname"><?php echo $shop['shopname']?></div>
+				<table>
+					<tr>
+						<td width="100px"><img src="<?php echo $shop['image']?>"></td>
+						<td class="infor">
+							<div>Địa chỉ: <?php echo $shop['address']?></div>
+							<div>Điện thoại: <?php echo $shop['phone']?></div>
+							<div>Email: <?php echo $shop['email']?></div>
+							<div>Fanpage: <a href="<?php echo $shop['fanpage']?>"><?php echo $shop['fanpage']?></a></div>
+						</td>
+					</tr>
+				</table>
 
+			</div>
+		</div>
+
+		<?php } ?>
 	</div>
-	<?php } ?>
-	<div class="clearer"></div>
+
+
 </div>
 <div id="map"></div>
 <script>
