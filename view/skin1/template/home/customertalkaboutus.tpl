@@ -1,5 +1,5 @@
 <?php if(count($datas)){ ?>
-<div class="container">
+<div>
     <div class="row ben-testimonial">
         <?php foreach($datas as $item){ ?>
         <div class="col-md-4 item">
@@ -19,6 +19,7 @@
 
         </div>
         <?php } ?>
+
     </div>
 </div>
 <?php } ?>

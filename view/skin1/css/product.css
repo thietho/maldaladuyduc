@@ -68,7 +68,9 @@
 	text-align:center;
 	margin-top:5px;
 }
-
+.product-price-no{
+	text-decoration:line-through;
+}
 
 #ben-icon-sale-detail
 {
