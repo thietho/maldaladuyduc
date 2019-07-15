@@ -51,7 +51,7 @@ $(document).ready(function(e) {
         </div>
         <div class="item">
             <div class="ben-left text">
-                <a href="<?php echo $this->document->createLink('huong-dan-su-dung')?>">Hường dẫn sử dụng</a>
+                <a href="<?php echo $this->document->createLink('huong-dan-su-dung')?>">Hướng dẫn sử dụng</a>
             </div>
             <div class="ben-right icon">
                 <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon-huongdan.png" />
@@ -80,7 +80,7 @@ $(document).ready(function(e) {
         </tr>
         <tr>
             <td><img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon-huongdan.png" /></td>
-            <td><a href="<?php echo $this->document->createLink('huong-dan-su-dung')?>">Hường dẫn sử dụng</a></td>
+            <td><a href="<?php echo $this->document->createLink('huong-dan-su-dung')?>">Hướng dẫn sử dụng</a></td>
         </tr>
     </table>
     <div>

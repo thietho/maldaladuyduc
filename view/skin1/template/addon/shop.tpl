@@ -4,7 +4,7 @@
 	}
 </style>
 
-<div class="ben-listhop container">
+<div class="ben-listhop">
 	<div class="row">
 		<?php foreach($shops as $key => $shop){ ?>
 		<div class="col-sm-6">
@@ -20,7 +20,7 @@
 				<div class="shopname"><?php echo $shop['shopname']?></div>
 				<table>
 					<tr>
-						<td width="100px"><img src="<?php echo $shop['image']?>"></td>
+						<td width="100px"><img width="100px" src="<?php echo $shop['image']?>"></td>
 						<td class="infor">
 							<div>Địa chỉ: <?php echo $shop['address']?></div>
 							<div>Điện thoại: <?php echo $shop['phone']?></div>

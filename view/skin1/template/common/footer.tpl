@@ -9,8 +9,8 @@
         <div class="item">
             <h5>Về Duy Đức</h5>
             <ul>
-                <li><a href="#">Giới thiệu</a></li>
-                <li><a href="#">Tài liệu tham khảo</a></li>
+                <li><a href="<?php echo $this->document->createLink('gioi-thieu-ve-cong-ty-duy-duc')?>">Giới thiệu</a></li>
+                <li><a href="<?php echo $this->document->createLink('tai-lieu-tham-khao')?>">Tài liệu tham khảo</a></li>
             </ul>
         </div>
         
@@ -19,10 +19,8 @@
         <div class="item">
             <h5>Chính sách</h5>
             <ul>
-                <li><a href="#">Chính sách bán hàng</a></li>
-                <li><a href="#">Chinh sách đổi trả và hoàn tiền</a></li>
-                <li><a href="#">Chinh sách giao nhận</a></li>
-                <li><a href="#">Quy định và hình thức thanh toán</a></li>
+                <li><a href="<?php echo $this->document->createLink('chinh-sach-ban-hang')?>">Chính sách bán hàng</a></li>
+                <li><a href="<?php echo $this->document->createLink('quy-dinh-va-hinh-thuc-thanh-toan')?>">Quy định và hình thức thanh toán</a></li>
             </ul>
         </div>
         
@@ -131,8 +129,8 @@
         top:16px !important;
     }
 </style>
-<a id="alo-phoneIcon" href="tel:0906876799" class="alo-phone alo-green alo-show">
+<a id="alo-phoneIcon" href="tel:0903940171" class="alo-phone alo-green alo-show">
     <div class="alo-ph-circle"></div>
     <div class="alo-ph-circle-fill"></div>
-    <div class="alo-ph-img-circle"><span class="glyphicon glyphicon-earphone"></span></div><span class="alo-ph-text">0906.87.67.99</span>
+    <div class="alo-ph-img-circle"><span class="glyphicon glyphicon-earphone"></span></div><span class="alo-ph-text">0903.940.171</span>
 </a>

@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7cf73a4-ace4-4972-a197-702883ef1929" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/controller/layout/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/layout/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/page/detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/page/detail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/addon/brand.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/addon/brand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/addon/shop.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/addon/shop.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/module/pagedetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/module/pagedetail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/skin1/css/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/view/skin1/css/product.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/skin1/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/view/skin1/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/skin1/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/view/skin1/js/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/skin1/template/addon/checkout.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/view/skin1/template/addon/checkout.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/skin1/template/module/contact.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/view/skin1/template/module/contact.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/skin1/template/viewtype/gallery.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/view/skin1/template/viewtype/gallery.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/skin1/template/addon/cart.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/view/skin1/template/addon/cart.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/skin1/template/addon/shop.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/view/skin1/template/addon/shop.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/skin1/template/common/footer.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/view/skin1/template/common/footer.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/skin1/template/module/product_detail.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/view/skin1/template/module/product_detail.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/skin1/template/page/home.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/view/skin1/template/page/home.tpl" afterDir="false" />
     </list>
     <ignored path="maldaladuyduc.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,38 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/view/skin1/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="238" selection-start-line="238" selection-end-line="238" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/skin1/template/module/contact.tpl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="76" column="108" lean-forward="true" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="108" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/view/skin1/css/product.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/skin1/template/addon/checkout.tpl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="103" column="88" selection-start-line="103" selection-start-column="88" selection-end-line="103" selection-end-column="88" />
+            <state relative-caret-position="322">
+              <caret line="555" column="20" selection-start-line="555" selection-start-column="20" selection-end-line="555" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -74,7 +49,6 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>ben-main-nav</find>
-      <find>170</find>
       <find>250</find>
       <find>style.css</find>
       <find>sele</find>
@@ -86,6 +60,10 @@
       <find>quanlykho/sanpham</find>
       <find>@$</find>
       <find>.alo-ph-text</find>
+      <find>Hường dẫn sử dụng</find>
+      <find>resizePNG</find>
+      <find>170</find>
+      <find>saphamcungnhanhieu</find>
     </findStrings>
     <replaceStrings>
       <replace>customertalkaboutus</replace>
@@ -108,9 +86,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/system/library/member.php" />
-        <option value="$PROJECT_DIR$/system/library/pager.php" />
-        <option value="$PROJECT_DIR$/system/library/request.php" />
         <option value="$PROJECT_DIR$/system/library/string.php" />
         <option value="$PROJECT_DIR$/system/library/user.php" />
         <option value="$PROJECT_DIR$/admincp/model/core/category.php" />
@@ -120,7 +95,6 @@
         <option value="$PROJECT_DIR$/system/library/validation.php" />
         <option value="$PROJECT_DIR$/admincp/controller/core/postcontent.php" />
         <option value="$PROJECT_DIR$/admincp/view/skin1/js/common.js" />
-        <option value="$PROJECT_DIR$/controller/module/pagedetail.php" />
         <option value="$PROJECT_DIR$/controller/module/comment.php" />
         <option value="$PROJECT_DIR$/view/skin1/template/module/product_page.tpl" />
         <option value="$PROJECT_DIR$/view/skin1/template/page/detail.tpl" />
@@ -128,10 +102,8 @@
         <option value="$PROJECT_DIR$/view/skin1/js/menu.js" />
         <option value="$PROJECT_DIR$/view/skin1/template/module/location.tpl" />
         <option value="$PROJECT_DIR$/view/skin1/template/module/product_list.tpl" />
-        <option value="$PROJECT_DIR$/controller/addon/shop.php" />
         <option value="$PROJECT_DIR$/admincp/model/sales/shop.php" />
         <option value="$PROJECT_DIR$/model/sales/shop.php" />
-        <option value="$PROJECT_DIR$/view/skin1/template/page/home.tpl" />
         <option value="$PROJECT_DIR$/view/skin1/js/cart.js" />
         <option value="$PROJECT_DIR$/controller/addon/cart.php" />
         <option value="$PROJECT_DIR$/admincp/controller/quanlykho/nhacungcap.php" />
@@ -144,21 +116,27 @@
         <option value="$PROJECT_DIR$/admincp/view/skin1/template/sales/shop_form.tpl" />
         <option value="$PROJECT_DIR$/admincp/view/skin1/template/module/customertalkaboutus_table.tpl" />
         <option value="$PROJECT_DIR$/controller/addon/customertalkaboutus.php" />
-        <option value="$PROJECT_DIR$/view/skin1/template/module/product_detail.tpl" />
         <option value="$PROJECT_DIR$/system/library/mailsmtp.php" />
         <option value="$PROJECT_DIR$/view/skin1/template/layout/detail.tpl" />
-        <option value="$PROJECT_DIR$/view/skin1/template/common/footer.tpl" />
         <option value="$PROJECT_DIR$/view/skin1/template/layout/home.tpl" />
-        <option value="$PROJECT_DIR$/view/skin1/template/addon/shop.tpl" />
         <option value="$PROJECT_DIR$/view/skin1/template/home/customertalkaboutus.tpl" />
         <option value="$PROJECT_DIR$/controller/layout/home.php" />
         <option value="$PROJECT_DIR$/view/skin1/template/viewtype/gallery.tpl" />
         <option value="$PROJECT_DIR$/controller/page/detail.php" />
         <option value="$PROJECT_DIR$/view/skin1/js/common.js" />
-        <option value="$PROJECT_DIR$/view/skin1/css/style.css" />
         <option value="$PROJECT_DIR$/view/skin1/template/module/contact.tpl" />
         <option value="$PROJECT_DIR$/view/skin1/template/addon/checkout.tpl" />
+        <option value="$PROJECT_DIR$/view/skin1/template/common/footer.tpl" />
+        <option value="$PROJECT_DIR$/view/skin1/template/page/home.tpl" />
+        <option value="$PROJECT_DIR$/view/skin1/template/addon/cart.tpl" />
+        <option value="$PROJECT_DIR$/system/helper/image.php" />
+        <option value="$PROJECT_DIR$/controller/addon/shop.php" />
+        <option value="$PROJECT_DIR$/view/skin1/template/addon/shop.tpl" />
+        <option value="$PROJECT_DIR$/view/skin1/template/module/product_detail.tpl" />
         <option value="$PROJECT_DIR$/view/skin1/css/product.css" />
+        <option value="$PROJECT_DIR$/controller/module/pagedetail.php" />
+        <option value="$PROJECT_DIR$/controller/addon/brand.php" />
+        <option value="$PROJECT_DIR$/view/skin1/css/style.css" />
       </list>
     </option>
   </component>
@@ -179,7 +157,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -191,6 +168,41 @@
               <item name="maldaladuyduc" type="b2602c69:ProjectViewProjectNode" />
               <item name="maldaladuyduc" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="maldaladuyduc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="maldaladuyduc" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="addon" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="maldaladuyduc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="maldaladuyduc" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="maldaladuyduc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="maldaladuyduc" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="maldaladuyduc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="maldaladuyduc" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="maldaladuyduc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="maldaladuyduc" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="maldaladuyduc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="maldaladuyduc" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="helper" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="maldaladuyduc" type="b2602c69:ProjectViewProjectNode" />
@@ -215,7 +227,7 @@
               <item name="maldaladuyduc" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
               <item name="skin1" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="image" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="maldaladuyduc" type="b2602c69:ProjectViewProjectNode" />
@@ -232,10 +244,19 @@
               <item name="template" type="462c0819:PsiDirectoryNode" />
               <item name="addon" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="maldaladuyduc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="maldaladuyduc" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="skin1" type="462c0819:PsiDirectoryNode" />
+              <item name="template" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -309,11 +330,12 @@
       <workItem from="1563092531709" duration="1247000" />
       <workItem from="1563162512093" duration="742000" />
       <workItem from="1563176646777" duration="5647000" />
+      <workItem from="1563196020635" duration="5536000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66265000" />
+    <option name="totallyTimeSpent" value="71801000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -325,9 +347,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32879657" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33358547" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -347,38 +370,32 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33358547" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32405892" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49924356" weight="0.3289689" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49848714" weight="0.3289689" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49924356" weight="0.3289689" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50075644" side_tool="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/view/skin1/js/menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/skin1/template/common/header.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="28" column="41" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/module/contact.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/skin1/template/module/location.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="114" selection-start-line="3" selection-start-column="114" selection-end-line="3" selection-end-column="114" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/skin1/template/viewtype/list.tpl">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -387,37 +404,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/view/skin1/template/viewtype/des.tpl">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/module/product.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/module/productlist.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/module/pagedetail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1348">
-          <caret line="111" column="9" selection-start-line="111" selection-start-column="9" selection-end-line="111" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/module/pagelist.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="37" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/addon/shop.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="37" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admincp/model/sales/shop.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -444,20 +430,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="424">
           <caret line="131" column="5" lean-forward="true" selection-start-line="117" selection-start-column="4" selection-end-line="131" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/skin1/template/page/home.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="89" selection-start-line="89" selection-end-line="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/skin1/template/addon/cart.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="21" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -589,13 +561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/skin1/template/module/product_detail.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2584">
-          <caret line="152" column="16" selection-start-line="152" selection-start-column="16" selection-end-line="152" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/system/library/mailsmtp.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -603,24 +568,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/skin1/template/common/footer.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="136" column="117" selection-start-line="136" selection-start-column="117" selection-end-line="136" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/skin1/template/layout/home.tpl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="658">
           <caret line="115" column="10" selection-start-line="115" selection-start-column="10" selection-end-line="115" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/skin1/template/addon/shop.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="6" column="33" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -659,13 +610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/page/detail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="68" selection-start-line="43" selection-start-column="68" selection-end-line="43" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/skin1/js/control.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -689,31 +633,136 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/skin1/css/style.css">
+    <entry file="file://$PROJECT_DIR$/view/skin1/template/addon/checkout.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="238" selection-start-line="238" selection-end-line="238" />
+        <state relative-caret-position="1785">
+          <caret line="105" column="11" selection-start-line="105" selection-start-column="11" selection-end-line="105" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/common/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="65" column="103" lean-forward="true" selection-start-line="65" selection-start-column="56" selection-end-line="65" selection-end-column="103" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/view/skin1/template/module/contact.tpl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="488">
-          <caret line="76" column="108" lean-forward="true" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="108" />
+          <caret line="60" column="10" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/skin1/template/addon/checkout.tpl">
+    <entry file="file://$PROJECT_DIR$/view/skin1/template/common/footer.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="103" column="88" selection-start-line="103" selection-start-column="88" selection-end-line="103" selection-end-column="88" />
+        <state relative-caret-position="272">
+          <caret line="22" column="101" selection-start-line="22" selection-start-column="101" selection-end-line="22" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/skin1/template/page/home.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="53" column="91" selection-start-line="53" selection-start-column="91" selection-end-line="53" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/skin1/template/addon/cart.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="114" lean-forward="true" selection-start-line="12" selection-start-column="114" selection-end-line="12" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/system/helper/image.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="71" column="8" lean-forward="true" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/system/config/directory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="31" column="17" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/skin1/template/addon/shop.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="22" column="59" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="59" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/view/skin1/css/product.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        <state relative-caret-position="306">
+          <caret line="141" column="1" lean-forward="true" selection-start-line="141" selection-start-column="1" selection-end-line="141" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/module/productlist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/module/pagelist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="37" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/skin1/template/module/product_detail.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="439" column="34" selection-start-line="439" selection-start-column="16" selection-end-line="439" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/page/detail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2664">
+          <caret line="43" column="68" selection-start-line="43" selection-start-column="68" selection-end-line="43" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/module/product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/module/pagedetail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="228" column="89" selection-start-line="228" selection-start-column="89" selection-end-line="228" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/addon/brand.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="72" column="44" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/addon/shop.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/skin1/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="555" column="20" selection-start-line="555" selection-start-column="20" selection-end-line="555" selection-end-column="20" />
         </state>
       </provider>
     </entry>

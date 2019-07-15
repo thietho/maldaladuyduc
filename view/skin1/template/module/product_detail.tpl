@@ -146,7 +146,7 @@
         <table>
             <tr>
                 <td><div class="zalo-share-button" data-href="" data-oaid="579745863508352884" data-layout="2" data-color="blue" data-customize=false></div></td>
-                <td><div class="zalo-follow-only-button" data-oaid="579745863508352884"></div></td>
+
                 <td><div class="fb-like" data-href="<?php echo $post['link']?>" data-width="" data-layout="standard"
                          data-action="like" data-size="small" data-show-faces="true" data-share="true"></div></td>
             </tr>
