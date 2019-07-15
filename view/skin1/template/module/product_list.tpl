@@ -5,12 +5,12 @@ if(count($medias))
 ?>
 <?php if($sorting){ ?>
    	<div class="ben-post">
-        <select id="order" class="ben-textbox ben-left" onchange="window.location = '?order='+this.value">
+        <!--<select id="order" class="ben-textbox ben-left" onchange="window.location = '?order='+this.value">
             <option value="new">Mới</option>
             <option value="gt">Giá tăng dần</option>
             <option value="gg">Giá giảm dần</option>
             <option value="az">Tên: A-Z</option>
-        </select>
+        </select>-->
 <script language="javascript">
 $('#order').val('<?php echo $_GET["order"]?>');
 </script>

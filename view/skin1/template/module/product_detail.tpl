@@ -145,7 +145,7 @@
         <?php if($post['noted'] != "") echo "<h4>".$post['noted']."</h4>"; ?>
         <table>
             <tr>
-                <td><div class="zalo-share-button" data-href="" data-oaid="579745863508352884" data-layout="2" data-color="blue" data-customize=false></div></td>
+                <td style="vertical-align: top"><div class="zalo-share-button" data-href="" data-oaid="579745863508352884" data-layout="2" data-color="blue" data-customize=false></div></td>
 
                 <td><div class="fb-like" data-href="<?php echo $post['link']?>" data-width="" data-layout="standard"
                          data-action="like" data-size="small" data-show-faces="true" data-share="true"></div></td>
@@ -224,7 +224,7 @@
                 </tr>
                 <tr>
                     <td>Giảm</td>
-                    <td><?php echo $this->string->numberFormate($post['discountpercent'])?>%</td>
+                    <td><?php echo $this->string->numberFormate($post['discountpercent'])?>%(Khi đặt hàng qua website)</td>
                 </tr>
                 <tr>
                     <td>Giá giảm</td>
