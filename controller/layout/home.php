@@ -38,8 +38,8 @@ class ControllerLayoutHome extends Controller
         //San pham moi
         $template = array(
             'template' => "module/product_list.tpl",
-            'width' => 170,
-            'height' =>170,
+            'width' => 250,
+            'height' =>250,
             'widthpreview' => 450,
             'heightpreview' =>450,
             'paging' => false,

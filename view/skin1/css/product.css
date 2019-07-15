@@ -1,10 +1,13 @@
 .product
 {
 	width:25%;
-	/*height:234px;
-	border:thin solid #CCC;
+
+}
+.productcell{
+	height: 300px;
+	border:thin solid #6cbf0a;
 	border-radius:5px;
-	margin:3px;*/
+	margin:3px;
 }
 .product img{
 	width: 100%;

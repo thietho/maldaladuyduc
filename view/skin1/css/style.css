@@ -237,16 +237,6 @@ input.ben-textbox, textarea, select {
 	background:#fdfde1;
 }
 
-textarea
-{
-	width:95%;
-	height:120px;
-}
-select{
-	height:24px;
-	width: 98%;
-}
-
 input.ben-textbox:focus, textarea:focus, select:focus {background: #FFFFF5;}
 
 input.ben-button {
@@ -277,11 +267,6 @@ input.ben-button:active {border-style: inset;}
 	
 	
 }
-
-
-
-
-
 
 #ben-header {
 	padding-top: 0px;

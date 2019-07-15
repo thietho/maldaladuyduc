@@ -14,7 +14,7 @@ function GetKey(evt)
 }
 function sendMessage()
 {
-	//$.blockUI({ message: "<h1>Please wait...</h1>" });
+	waitingDialog.show('Sending...');
 	$.post(HTTP_SERVER+"?route=module/contact/sendMessage", 
 			$("#contractForm").serialize(), 
 			function(data)
@@ -30,7 +30,7 @@ function sendMessage()
 					alert("<?php echo $war_contactsuccess?>")
 					window.location.reload();
 				}
-				//$.unblockUI();
+				waitingDialog.hide();
 			}
 	);
 }
@@ -47,48 +47,36 @@ function sendMessage()
 <form method="post" action="" id="contractForm" name="contractForm">
 <div>
     <input type="hidden" name="sitemapid" value="<?php echo $this->document->sitemapid;?>" />
-    <div class="ben-left contact-left">
-        <p>
-            <label for="input-1"><?php echo $text_fullname?></label><br/>
-            <input type="text" name="fullname" id="fullname" class="ben-textbox" size="40" onkeypress='GetKey(event)'/>
-        </p>
-        
-        <p>
-            <label for="input-1"><?php echo $text_email?></label><br/>
-            <input type="text" name="email" id="email" class="ben-textbox" size="40" onkeypress='GetKey(event)'/>
-        </p>
-    
-        <p>
-            <label for="input-1"><?php echo $text_address?></label><br/>
-            <input type="text" name="address" id="address" class="ben-textbox" size="40" onkeypress='GetKey(event)'/>
-        </p>
-        
-        <p>
-            <label for="input-1"><?php echo $text_phone?></label><br/>
-            <input type="text" name="phone" id="phone" class="ben-textbox" size="40" onkeypress='GetKey(event)'/>
-        </p>
-    
-        
+    <div class="form-group">
+        <label for="fullname"><?php echo $text_fullname?></label>
+        <input type="fullname" class="form-control" id="fullname">
     </div>
-    <div class="ben-left">
-        <p>
-            <label for="input-1">Liên hệ</label><br/>
-            <select name="type">
-                <option>Gửi thông tin liên hệ</option>
-                <option>Liên hệ làm đại lý</option>
-            </select>
-        </p>
-    	<p>
-            <label for="input-3"><?php echo $text_note?></label><br/>
-            <textarea name="description" id="description" class="ben-textbox" cols="65"></textarea>
-        </p>
-        
+    <div class="form-group">
+        <label for="email"><?php echo $text_email?></label>
+        <input type="email" class="form-control" id="email">
     </div>
-    <div class="clearer">&nbsp;</div>
-    <p>
-        <input type="button" class="ben-button" value="<?php echo $button_send?>" onclick="sendMessage()"/>
-        <input type="reset" class="ben-button" value="<?php echo $button_reset?>"/>
-    </p>
+    <div class="form-group">
+        <label for="address"><?php echo $text_address?></label>
+        <input type="address" class="form-control" id="address" onkeypress='GetKey(event)'>
+    </div>
+    <div class="form-group">
+        <label for="phone"><?php echo $text_phone?></label>
+        <input type="phone" class="form-control" id="phone" onkeypress='GetKey(event)'>
+    </div>
+    <div class="form-group">
+        <label for="type">Liên hệ</label>
+        <select class="form-control" id="type" name="type">
+            <option>Gửi thông tin liên hệ</option>
+            <option>Liên hệ làm đại lý</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="description"><?php echo $text_note?></label>
+        <textarea class="form-control" rows="5" id="description" name="description"></textarea>
+    </div>
+    <button type="button" class="btn btn-success" onclick="sendMessage()"><?php echo $button_send?></button>
+    <button type="reset" class="btn btn-danger"><?php echo $button_reset?></button>
+
 </div>			
 </form>
 </div>

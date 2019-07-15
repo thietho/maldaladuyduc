@@ -36,6 +36,14 @@ class ControllerPageDetail extends Controller
                         $sitemap['sitemapname'] = "Giỏ hàng";
                         $sitemap['moduleid'] = "module/addon";
                     }
+                    if($this->document->sitemapid == 'checkout') {
+                        $sitemap['sitemapname'] = "Thanh toán đơn hàng";
+                        $sitemap['moduleid'] = "module/addon";
+                    }
+                    if($this->document->sitemapid == 'checkoutcomplete') {
+                        $sitemap['sitemapname'] = "Xác nhận đơn hàng";
+                        $sitemap['moduleid'] = "module/addon";
+                    }
                 }
 				$this->data['sitemap'] = $sitemap;
 
