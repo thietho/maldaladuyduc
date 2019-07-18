@@ -51,7 +51,7 @@
                             </a>
                         </div>
                         <?php $cls = '';?>
-                        <?php if($media['pricepromotion']!=0){ ?>
+                        <!--<?php if($media['pricepromotion']!=0){ ?>
                         <div align="center" class="product-pricepromotion">
 
                             <?php if($media['pricepromotion']){ ?>
@@ -62,6 +62,9 @@
                         </div>
                         <?php } ?>
                         <div align="center" class="product-price <?php echo $cls?>"><?php echo $this->
+                            string->numberFormate($media['price'])?> <?php echo $this->document->setup['Currency']?>
+                        </div>-->
+                        <div align="center" class="product-price"><?php echo $this->
                             string->numberFormate($media['price'])?> <?php echo $this->document->setup['Currency']?>
                         </div>
                         <div align="center">

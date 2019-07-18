@@ -13,8 +13,14 @@ class ControllerAddonShop extends Controller
 		$this->load->model("sales/shop");
         $this->load->helper('image');
 		$this->data['shops'] = $this->model_sales_shop->getList();
+
 		foreach ($this->data['shops'] as &$shop){
-		    $shop['image'] = HelperImage::resizePNG($shop['imagepath'], 100, 100);
+		    if($shop['imagepath']){
+                $shop['image'] = HelperImage::resizePNG($shop['imagepath'], 100, 100);
+            }else{
+                $shop['image'] = HTTP_SERVER.DIR_IMAGE."logo.png";
+            }
+
         }
 
 		$this->id="content";

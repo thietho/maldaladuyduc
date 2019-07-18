@@ -209,12 +209,12 @@ class ControllerModulePagedetail extends Controller
 			$this->data['othernews'] = $this->model_core_media->getOthersMedia($this->data['post']['mediaid'], $queryoptions, $count);*/
 		
 		
-		/*$temp = array(
+		$temp = array(
 						  'template' => "module/product_list.tpl",
-						  'width' => 170,
-						  'height' =>170
+						  'width' => 450,
+						  'height' =>450
 						  );
-		$arr = array($this->document->sitemapid,9,"",$temp,$this->data['othernews']);*/
+		//$arr = array($this->document->sitemapid,9,"",$temp,$this->data['othernews']);*/
 		//$this->data['other'] = $this->loadModule('module/productlist','index',$arr);
 		//Load san phang cung hieu
 		$nhanhieuid = "";
@@ -224,9 +224,9 @@ class ControllerModulePagedetail extends Controller
 				$nhanhieuid = $nhanhieu['categoryid'];
 		}
 		$where = " AND mediaid not like '".$mediaid."'";
-		$arr = array($where,$nhanhieuid);
+		$arr = array($where,$nhanhieuid,$temp);
 		if($count)
-			$this->data['saphamcungnhanhieu'] = $this->loadModule('addon/brand','getList',$arr);
+			$this->data['saphamcungnhanhieu'] = $this->loadModule('addon/brand','getList');
 		//Load comemnt
 		$temp = array(
 						  'template' => "module/comment_list.tpl"
