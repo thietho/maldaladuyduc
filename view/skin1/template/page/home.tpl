@@ -64,6 +64,7 @@ $(document).ready(function(e) {
     </div>-->
 </div>
 <div id="home-mobile">
+    <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>bg-ben-body.png" style="width: 100%">
     <!--<video src="<?php echo HTTP_SERVER.DIR_IMAGE?>QC.mp4" width="100%" controls="controls"></video>
     <table class="homedtht">
         <tr>
