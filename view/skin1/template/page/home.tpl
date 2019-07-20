@@ -8,13 +8,13 @@ if(detectflash()){
 }
 
 $(document).ready(function(e) {
-    $('#videohome').html(video);
+    //$('#videohome').html(video);
 });
 
 
 </script>
 <div id="home-desktop">
-    <div id="videohome" class="homeitem">
+    <!--<div id="videohome" class="homeitem">
 
     </div>
     <div id="sloganhome" class="homeitem">
@@ -61,10 +61,10 @@ $(document).ready(function(e) {
     </div>
     <div id="sanphamhome" class="homeitem">
         <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>hopthuoc.png" />
-    </div>
+    </div>-->
 </div>
 <div id="home-mobile">
-    <video src="<?php echo HTTP_SERVER.DIR_IMAGE?>QC.mp4" width="100%" controls="controls"></video>
+    <!--<video src="<?php echo HTTP_SERVER.DIR_IMAGE?>QC.mp4" width="100%" controls="controls"></video>
     <table class="homedtht">
         <tr>
             <td width="50px"><img src="<?php echo HTTP_SERVER.DIR_IMAGE?>icon-dtht.png" /></td>
@@ -85,6 +85,6 @@ $(document).ready(function(e) {
     </table>
     <div>
         <img width="100%" src="<?php echo HTTP_SERVER.DIR_IMAGE?>slogan.png" />
-    </div>
+    </div>-->
 </div>
 
