@@ -1,5 +1,5 @@
 <?php if(count($datas)){ ?>
-<div>
+<div class="container">
     <div class="row ben-testimonial">
         <?php foreach($datas as $item){ ?>
         <div class="col-md-4 item">

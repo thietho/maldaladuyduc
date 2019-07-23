@@ -1078,8 +1078,8 @@ ul#menu li ul li div:hover {
 }
 
 #ben-home {
-    background: url(../image/bg-ben-body.png) no-repeat center top;
-    height: 511px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .homeitem {

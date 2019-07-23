@@ -14,6 +14,7 @@ $(document).ready(function(e) {
 
 </script>
 <div id="home-desktop">
+    <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>bg-ben-body.png">
     <!--<div id="videohome" class="homeitem">
 
     </div>
