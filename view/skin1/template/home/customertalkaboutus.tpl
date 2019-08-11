@@ -3,20 +3,10 @@
     <div class="row ben-testimonial">
         <?php foreach($datas as $item){ ?>
         <div class="col-md-4 item">
-
-            <div class="ben-left colinfo">
-                <img src="<?php echo $item['imagethumbnail']?>">
-                <div class="name">
-                    <?php echo $item['customername']?>
-                </div>
-                <div class="info">
-                    <?php echo $item['customerinfo']?>
-                </div>
-            </div>
-            <div class="ben-right coldetail">
-                <?php echo $item['talkaboutus']?>
-            </div>
-
+            <img class="ben-left" src="<?php echo $item['imagethumbnail']?>">
+            <strong><?php echo $item['customername']?></strong><br>
+            <?php echo $item['customerinfo']?><br>
+            <?php echo $item['talkaboutus']?>
         </div>
         <?php } ?>
 

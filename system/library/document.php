@@ -44,7 +44,7 @@ final class Document {
 						   );
 	public $paymenttype = array(
 							'cash'=>'COD(Thanh toán khi nhận hàng)',
-							'bank' =>'Chuyển khoản'
+							'bank' =>'Chuyển khoản - Công ty CP Dược Phẩm Duy Đức. Số tài khoản: 200014851140319. Ngân hàng Eximbank chi nhánh TPHCM'
 							);
 	public $gioitinh = array(
 							'male' => "Nam",
