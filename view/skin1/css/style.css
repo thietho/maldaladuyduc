@@ -1155,7 +1155,7 @@ ul#menu li ul li div:hover {
 }
 
 .ben-testimonial .item {
-    height: 290px;
+    height: 275px;
 }
 
 #aboutdtht .item .icon {
@@ -1269,6 +1269,11 @@ ul#menu li ul li div:hover {
 
 }
 
+@media screen and (max-width: 991px) {
+    .ben-testimonial .item{
+        height: auto;
+    }
+}
 @media screen and (max-width: 740px) {
     #home-desktop {
         display: none;

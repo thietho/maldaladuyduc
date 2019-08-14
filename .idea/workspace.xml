@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c7cf73a4-ace4-4972-a197-702883ef1929" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/library/document.php" beforeDir="false" afterPath="$PROJECT_DIR$/system/library/document.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/skin1/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/view/skin1/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/skin1/template/home/customertalkaboutus.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/view/skin1/template/home/customertalkaboutus.tpl" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -146,6 +144,9 @@
       <workItem from="1563176646777" duration="5647000" />
       <workItem from="1563418777729" duration="2976000" />
       <workItem from="1565536658697" duration="1224000" />
+      <workItem from="1565789040687" duration="344000" />
+      <workItem from="1565789461353" duration="191000" />
+      <workItem from="1565790133694" duration="337000" />
     </task>
     <servers />
   </component>
@@ -166,7 +167,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
