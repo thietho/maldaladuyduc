@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c7cf73a4-ace4-4972-a197-702883ef1929" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/skin1/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/view/skin1/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/skin1/template/layout/home.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/view/skin1/template/layout/home.tpl" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,9 +58,6 @@
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="20a925c3-1961-49f7-92c5-cd61da174081" />
   </component>
-  <component name="PhpServers">
-    <servers />
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="100" />
     <option name="y" value="20" />
@@ -76,8 +73,11 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
   </component>
@@ -147,6 +147,7 @@
       <workItem from="1565789040687" duration="344000" />
       <workItem from="1565789461353" duration="191000" />
       <workItem from="1565790133694" duration="337000" />
+      <workItem from="1579015318750" duration="718000" />
     </task>
     <servers />
   </component>

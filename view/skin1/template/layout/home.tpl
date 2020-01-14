@@ -16,7 +16,7 @@
     <meta property="og:type" content="Website">
     <meta property="og:url" content="<?php echo $url?>">
     <meta property="og:description" content="<?php echo $meta_description?>">
-    <?php echo $meta_image?>
+    <meta property="og:image" content="<?php echo HTTP_SERVER.DIR_IMAGE?>logo.png">
 
 </head>
 
